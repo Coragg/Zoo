@@ -1,8 +1,10 @@
 package app;
 
 
+import app.gui.Login;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world");
+        Login sesion = new Login();
     }
 }

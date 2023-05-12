@@ -1,20 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package app.gui;
 
-/**
- *
- * @author coragg
- */
+
+import javax.swing.*;
+
 public class Login extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
      */
     public Login() {
+        this.setTitle("Login");
         initComponents();
+        this.setVisible(true);
     }
 
     /**
@@ -121,6 +118,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Usuario no valido");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTXTuserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTXTuserNameActionPerformed
