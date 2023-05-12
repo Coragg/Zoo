@@ -8,6 +8,7 @@ package app.animales;
  *
  * @author coragg
  */
-public class Mamifero {
-    
+public class Mamifero extends  Vertebrado{
+    private int cantidadPatas;
+
 }

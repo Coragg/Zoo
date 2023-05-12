@@ -1,13 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package app.animales;
 
-/**
- *
- * @author coragg
- */
-public class Celentereo {
-    
+public class Celentereo extends Vertebrado{
+    private boolean tentaculos;
+
+    public void setTentaculos(boolean tentaculos){
+        this.tentaculos = tentaculos;
+    }
+
+    public boolean getTentaculos(){
+        return this.tentaculos;
+    }
 }

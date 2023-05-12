@@ -1,6 +1,6 @@
 package app.animales;
 
 
-public class Poriferos {
+public class Poriferos extends Invertebrado{
     
 }

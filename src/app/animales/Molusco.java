@@ -1,13 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package app.animales;
 
-/**
- *
- * @author coragg
- */
-public class Molusco {
-    
+public class Molusco extends Invertebrado {
+    private String tipoErizoEstrellas;
+
+    public void setTipoErizoEstrellas(String tipoErizoEstrellas){
+        this.tipoErizoEstrellas = tipoErizoEstrellas;
+    }
+
+    public String getTipoErizoEstrellas(){
+        return this.tipoErizoEstrellas;
+    }
 }

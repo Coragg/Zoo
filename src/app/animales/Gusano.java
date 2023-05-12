@@ -1,13 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package app.animales;
 
-/**
- *
- * @author coragg
- */
-public class Gusano {
-    
+public class Gusano extends Invertebrado {
+    private String tipoCuerpo;
+
+    public void setTipoCuerpo(String tipoCuerpo){
+        this.tipoCuerpo = tipoCuerpo;
+    }
+
+    public String getTipoCuerpo(){
+        return this.tipoCuerpo;
+    }
+
 }

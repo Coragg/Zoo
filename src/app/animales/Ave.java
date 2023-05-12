@@ -1,13 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package app.animales;
 
-/**
- *
- * @author coragg
- */
-public class Ave {
-    
+public class Ave extends  Vertebrado {
+    private int cantidadAlas;
+
+    public void setCantidadAlas(int cantidadAlas){
+        this.cantidadAlas = cantidadAlas;
+    }
+
+    public int getCantidadAlas(){
+        return this.cantidadAlas;
+    }
+
 }
