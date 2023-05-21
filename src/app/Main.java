@@ -1,8 +1,13 @@
 package app;
 
 
+import app.bd.Conexion;
+import app.gui.Login;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world");
+        Login sesion = new Login();
+        //Conexion data = new Conexion();
+        //data.getConexion();
     }
 }

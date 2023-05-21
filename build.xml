@@ -70,4 +70,15 @@
     nbproject/build-impl.xml file. 
 
     -->
+
+  <path id="classpath">
+    <pathelement location="lib/sqlite-jdbc-3.36.0.3.jar"/>
+  </path>
+  <target name="run">
+    <java classname="Main" fork="true">
+      <classpath refid="classpath"/>
+      <arg value="arg1"/>
+    </java>
+  </target>
+
 </project>
