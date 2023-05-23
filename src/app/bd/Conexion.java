@@ -9,13 +9,13 @@ import java.util.logging.Logger;
 
 
 public class Conexion {
-    String url = "/home/coragg/Documentos/universidad/paradigmas/tareas/tarea2/Zoologico/zoo.db";
+    String url = "/home/coragg/Documentos/universidad/paradigmas/tareas/tarea2/Zoo/animales.db";
     Connection conexion;
     public Connection getConexion(){
         try{
             Class.forName("org.sqlite.JDBC");
             conexion = DriverManager.getConnection("jdbc:sqlite:" + url);
-
+            System.out.println("Coneccion ");
             return conexion;
         } catch (SQLException excepcion){
             System.out.println("No se ha podido establecer la conexion " + excepcion.getMessage());

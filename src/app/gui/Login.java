@@ -118,6 +118,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+<<<<<<< HEAD
         // JOptionPane.showMessageDialog(null, "Usuario no validado.");
         MenuPrincipal call = new MenuPrincipal();
         
@@ -125,6 +126,10 @@ public class Login extends javax.swing.JFrame {
         
         this.dispose(); //se utiliza para no acumular ventanas
 
+=======
+        this.dispose();
+        Mamifero call = new Mamifero();
+>>>>>>> dab9661410763a91da8f3efc7943d0dbc6796e2b
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTXTuserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTXTuserNameActionPerformed
