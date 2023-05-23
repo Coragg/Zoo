@@ -119,7 +119,11 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         // JOptionPane.showMessageDialog(null, "Usuario no validado.");
-        Mamifero call = new Mamifero();
+        MenuPrincipal call = new MenuPrincipal();
+        
+        call.setVisible(true); //se hace visible la variable
+        
+        this.dispose(); //se utiliza para no acumular ventanas
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
