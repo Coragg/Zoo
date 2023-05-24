@@ -179,16 +179,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
         // TODO add your handling code here:
+        // Formulario para ingresar animal
         Mamifero mamifero = new Mamifero();
+        mamifero.setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_button2ActionPerformed
 
     private void button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button4ActionPerformed
         // TODO add your handling code here:
         MenuSecundario call = new MenuSecundario();
-        
         call.setVisible(true);
-        
         this.dispose();
     }//GEN-LAST:event_button4ActionPerformed
 

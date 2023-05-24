@@ -16,7 +16,6 @@ public class MenuSecundario extends javax.swing.JFrame {
     public MenuSecundario() {
         this.setTitle("Reporte Animal");
         initComponents();
-        this.setVisible(true);
     }
 
     /**

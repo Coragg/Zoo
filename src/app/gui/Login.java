@@ -11,7 +11,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         this.setTitle("Login");
         initComponents();
-        this.setVisible(true);
+//        this.setVisible(true);
     }
 
     /**

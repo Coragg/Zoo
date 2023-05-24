@@ -16,7 +16,6 @@ public class Mamifero extends javax.swing.JFrame {
     public Mamifero() {
         this.setTitle("Mamiferos");
         initComponents();
-        this.setVisible(true);
     }
 
     /**
@@ -119,6 +118,9 @@ public class Mamifero extends javax.swing.JFrame {
 
     private void BtSalir(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSalir
         // TODO add your handling code here:
+        // cierre de esta ventana con vuelta al menu principal
+        MenuPrincipal vueltaMenu = new MenuPrincipal();
+        vueltaMenu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BtSalir
 
