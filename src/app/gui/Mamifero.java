@@ -98,6 +98,7 @@ public class Mamifero extends javax.swing.JFrame {
         jLabel3.setText("ID:");
 
         jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextField1.setEnabled(false);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -108,6 +109,7 @@ public class Mamifero extends javax.swing.JFrame {
 
         VertebradoOinvertebrado.add(jRadioButton1);
         jRadioButton1.setText("Vertebrado");
+        jRadioButton1.setEnabled(false);
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);
@@ -116,6 +118,7 @@ public class Mamifero extends javax.swing.JFrame {
 
         VertebradoOinvertebrado.add(jRadioButton2);
         jRadioButton2.setText("Invertebrado");
+        jRadioButton2.setEnabled(false);
 
         jLabel5.setText("Grupo o tipo:");
 
