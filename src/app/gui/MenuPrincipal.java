@@ -75,6 +75,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         button4.setLabel("Reporte animal");
+        button4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button4ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
         jLabel1.setText("Menu Principal");
@@ -168,6 +173,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void button5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button5ActionPerformed
         // TODO add your handling code here:
+        
         System.exit(0);
     }//GEN-LAST:event_button5ActionPerformed
 
@@ -176,6 +182,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Mamifero mamifero = new Mamifero();
         
     }//GEN-LAST:event_button2ActionPerformed
+
+    private void button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button4ActionPerformed
+        // TODO add your handling code here:
+        MenuSecundario call = new MenuSecundario();
+        
+        call.setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_button4ActionPerformed
 
     /**
      * @param args the command line arguments
