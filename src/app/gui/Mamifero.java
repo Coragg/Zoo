@@ -57,7 +57,7 @@ public class Mamifero extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(102, 255, 102));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 255));
 
         jLabel1.setText("Nombre:");
 
@@ -107,8 +107,9 @@ public class Mamifero extends javax.swing.JFrame {
 
         jLabel4.setText("Color:");
 
-        jRadioButton1.setBackground(new java.awt.Color(102, 255, 102));
+        jRadioButton1.setBackground(new java.awt.Color(0, 102, 255));
         VertebradoOinvertebrado.add(jRadioButton1);
+        jRadioButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jRadioButton1.setText("Vertebrado");
         jRadioButton1.setEnabled(false);
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -117,7 +118,7 @@ public class Mamifero extends javax.swing.JFrame {
             }
         });
 
-        jRadioButton2.setBackground(new java.awt.Color(102, 255, 102));
+        jRadioButton2.setBackground(new java.awt.Color(0, 102, 255));
         VertebradoOinvertebrado.add(jRadioButton2);
         jRadioButton2.setText("Invertebrado");
         jRadioButton2.setEnabled(false);
@@ -171,7 +172,7 @@ public class Mamifero extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTxtNombreAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton1)
+                    .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

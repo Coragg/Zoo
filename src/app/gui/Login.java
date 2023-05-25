@@ -34,7 +34,7 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(102, 255, 102));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 255));
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Mi proyecto.png"))); // NOI18N
 

@@ -45,7 +45,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        panel1.setBackground(new java.awt.Color(102, 255, 102));
+        panel1.setBackground(new java.awt.Color(0, 102, 255));
         panel1.setName(""); // NOI18N
 
         checkbox1.setLabel("checkbox1");
