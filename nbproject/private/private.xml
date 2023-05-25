@@ -2,17 +2,10 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
-            <file>file:/C:/Users/nicox/OneDrive/Escritorio/Zoo/src/app/gui/MenuSecundario.java</file>
-            <file>file:/C:/Users/nicox/OneDrive/Escritorio/Zoo/src/app/gui/Login.java</file>
-            <file>file:/C:/Users/nicox/OneDrive/Escritorio/Zoo/src/app/Main.java</file>
-            <file>file:/C:/Users/nicox/OneDrive/Escritorio/Zoo/src/app/bd/Conexion.java</file>
-            <file>file:/C:/Users/nicox/OneDrive/Escritorio/Zoo/src/app/gui/Mamifero.java</file>
-            <file>file:/C:/Users/nicox/OneDrive/Escritorio/Zoo/src/app/gui/MenuPrincipal.java</file>
+            <file>file:/home/coragg/Documentos/universidad/paradigmas/tareas/tarea2/Zoo/src/app/gui/Login.java</file>
+            <file>file:/home/coragg/Documentos/universidad/paradigmas/tareas/tarea2/Zoo/src/app/gui/Mamifero.java</file>
+            <file>file:/home/coragg/Documentos/universidad/paradigmas/tareas/tarea2/Zoo/src/app/gui/MenuSecundario.java</file>
         </group>
->>>>>>> 20cf8269c58c55629dc3c3675df595c0944d4697
     </open-files>
 </project-private>
