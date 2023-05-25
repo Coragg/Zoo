@@ -40,7 +40,7 @@ public class MenuSecundario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 255, 102));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
         jLabel1.setText("Reporte Animal");
@@ -53,10 +53,10 @@ public class MenuSecundario extends javax.swing.JFrame {
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(102, 255, 102));
+        jPanel2.setBackground(new java.awt.Color(0, 102, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Opciones para mostrar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
-        jCheckBox1.setBackground(new java.awt.Color(102, 255, 102));
+        jCheckBox1.setBackground(new java.awt.Color(0, 102, 255));
         CHKreporte.add(jCheckBox1);
         jCheckBox1.setText("Cantidad por tipo o grupo");
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -65,7 +65,7 @@ public class MenuSecundario extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox2.setBackground(new java.awt.Color(102, 255, 102));
+        jCheckBox2.setBackground(new java.awt.Color(0, 102, 255));
         CHKreporte.add(jCheckBox2);
         jCheckBox2.setText("Promedio del peso por tipo o grupo de animales");
         jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
@@ -74,11 +74,11 @@ public class MenuSecundario extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox4.setBackground(new java.awt.Color(102, 255, 102));
+        jCheckBox4.setBackground(new java.awt.Color(0, 102, 255));
         CHKreporte.add(jCheckBox4);
         jCheckBox4.setText("Porcentaje de cada grupo o tipo de animales del zoológico");
 
-        jCheckBox5.setBackground(new java.awt.Color(102, 255, 102));
+        jCheckBox5.setBackground(new java.awt.Color(0, 102, 255));
         CHKreporte.add(jCheckBox5);
         jCheckBox5.setText("Mostrar la lista de animales con sus caracteristicas ");
         jCheckBox5.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +87,7 @@ public class MenuSecundario extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox6.setBackground(new java.awt.Color(102, 255, 102));
+        jCheckBox6.setBackground(new java.awt.Color(0, 102, 255));
         CHKreporte.add(jCheckBox6);
         jCheckBox6.setText("Realizar búsqueda del animal por nombre");
 
