@@ -107,6 +107,7 @@ public class Mamifero extends javax.swing.JFrame {
 
         jLabel4.setText("Color:");
 
+        jRadioButton1.setBackground(new java.awt.Color(102, 255, 102));
         VertebradoOinvertebrado.add(jRadioButton1);
         jRadioButton1.setText("Vertebrado");
         jRadioButton1.setEnabled(false);
@@ -116,6 +117,7 @@ public class Mamifero extends javax.swing.JFrame {
             }
         });
 
+        jRadioButton2.setBackground(new java.awt.Color(102, 255, 102));
         VertebradoOinvertebrado.add(jRadioButton2);
         jRadioButton2.setText("Invertebrado");
         jRadioButton2.setEnabled(false);
