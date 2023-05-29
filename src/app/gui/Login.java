@@ -15,8 +15,9 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     public Login() {
-        this.setTitle("Login");
         initComponents();
+        this.setTitle("Login");
+        this.setLocationRelativeTo(null);
 //        this.setVisible(true);
     }
 
