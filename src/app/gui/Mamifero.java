@@ -14,8 +14,9 @@ public class Mamifero extends javax.swing.JFrame {
      * Creates new form Mamifero
      */
     public Mamifero() {
-        this.setTitle("Mamiferos");
         initComponents();
+        this.setTitle("Mamiferos");
+        this.setLocationRelativeTo(null);
     }
 
     /**
