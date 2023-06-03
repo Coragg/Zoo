@@ -1,7 +1,13 @@
 package app.gui;
 
 
+import app.bd.Conexion;
+
 import javax.swing.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Login extends javax.swing.JFrame {
 
@@ -9,9 +15,10 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     public Login() {
-        this.setTitle("Login");
         initComponents();
-        this.setVisible(true);
+        this.setTitle("Login");
+        this.setLocationRelativeTo(null);
+//        this.setVisible(true);
     }
 
     /**
@@ -34,10 +41,11 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(102, 255, 102));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 255));
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Mi proyecto.png"))); // NOI18N
 
+        jTXTuserName.setActionCommand("<Not Set>");
         jTXTuserName.setName(""); // NOI18N
         jTXTuserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,7 +64,7 @@ public class Login extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setText("Send");
         jButton1.setBorder(null);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -118,7 +126,43 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Usuario no validado.");
+        String userName = jTXTuserName.getText();
+        String password = new String(jPassword.getPassword());
+
+        // Validar el usuario en la base de datos
+        Conexion conexion = new Conexion();
+        Connection connection = conexion.getConexion();
+
+        if (connection != null) {
+            // Consulta SQL para validar el usuario
+            String query = "SELECT COUNT(*) FROM user WHERE name = ? AND password = ?";
+
+            try (PreparedStatement statement = connection.prepareStatement(query)) {
+                statement.setString(1, userName);
+                statement.setString(2, password);
+
+                try (ResultSet resultSet = statement.executeQuery()) {
+                    if (resultSet.next()) {
+                        int count = resultSet.getInt(1);
+
+                        if (count > 0) {
+                            // El usuario y contraseña son válidos
+                            MenuPrincipal call = new MenuPrincipal();
+                            call.setVisible(true);
+                            this.dispose();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Usuario no válido.");
+                        }
+                    }
+                }
+            } catch (SQLException errror) {
+                JOptionPane.showMessageDialog(null, "Error al validar el usuario: " + errror.getMessage());
+            } finally {
+                conexion.cerrar(); // Cerrar la conexión a la base de datos
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo establecer la conexión con la base de datos.");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTXTuserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTXTuserNameActionPerformed

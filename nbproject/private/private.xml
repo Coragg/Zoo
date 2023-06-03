@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Nico/Desktop/github/Zoo/src/app/Main.java</file>
             <file>file:/C:/Users/Nico/Desktop/github/Zoo/src/app/gui/Login.java</file>
+=======
+            <file>file:/D:/documentos/universidad/paradigmas/tareas/tarea2/Zoo/src/app/gui/Login.java</file>
+            <file>file:/D:/documentos/universidad/paradigmas/tareas/tarea2/Zoo/src/app/Main.java</file>
+>>>>>>> 80c06ca673416fbe37af5039052febd4d1b7ee58
         </group>
     </open-files>
 </project-private>

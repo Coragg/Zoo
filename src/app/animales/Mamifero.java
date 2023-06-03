@@ -1,14 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package app.animales;
 
-/**
- *
- * @author coragg
- */
+
 public class Mamifero extends  Vertebrado{
     private int cantidadPatas;
+    
+    public void setCantidadPatas(int cantidadPatas){
+        this.cantidadPatas = cantidadPatas;
+        }
+    public int getCantidadPatas(){
+        return this.cantidadPatas;
+    }
 
 }
