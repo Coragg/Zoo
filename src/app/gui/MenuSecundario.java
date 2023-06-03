@@ -14,8 +14,9 @@ public class MenuSecundario extends javax.swing.JFrame {
      * Creates new form MenuSecundario
      */
     public MenuSecundario() {
-        this.setTitle("Reporte Animal");
         initComponents();
+        this.setTitle("Reporte Animal");
+        this.setLocationRelativeTo(null);
     }
 
     /**

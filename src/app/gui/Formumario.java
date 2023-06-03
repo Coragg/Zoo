@@ -8,14 +8,14 @@ package app.gui;
  *
  * @author v_e_c
  */
-public class Mamifero extends javax.swing.JFrame {
+public class Formumario extends javax.swing.JFrame {
 
     /**
      * Creates new form Mamifero
      */
-    public Mamifero() {
+    public Formumario() {
         initComponents();
-        this.setTitle("Mamiferos");
+        this.setTitle("Formulario de animales");
         this.setLocationRelativeTo(null);
     }
 
@@ -89,7 +89,7 @@ public class Mamifero extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Salir");
+        jButton4.setText("Cancelar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtSalir(evt);
@@ -239,9 +239,10 @@ public class Mamifero extends javax.swing.JFrame {
 
     private void jTxtPesoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtPesoKeyTyped
         // TODO add your handling code here:
-        char c = evt.getKeyChar();
-        if (c < '0' || c > '9')
+        char caracteres = evt.getKeyChar();
+        if (caracteres < '0' || caracteres > '9'){
             evt.consume();
+        }
     }//GEN-LAST:event_jTxtPesoKeyTyped
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
@@ -269,20 +270,21 @@ public class Mamifero extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Mamifero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Formumario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Mamifero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Formumario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Mamifero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Formumario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Mamifero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Formumario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Mamifero().setVisible(true);
+                new Formumario().setVisible(true);
             }
         });
     }

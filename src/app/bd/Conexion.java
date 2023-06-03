@@ -19,7 +19,7 @@ public class Conexion {
         try{
             Class.forName("org.sqlite.JDBC");
             conexion = DriverManager.getConnection("jdbc:sqlite:" + url);
-            System.out.println("Me he conectado, hijos de puta ");
+            // System.out.println("Me he conectado, hijos de puta ");
             return conexion;
         } catch (SQLException excepcion){
             System.out.println("No se ha podido establecer la conexion " + excepcion.getMessage());
