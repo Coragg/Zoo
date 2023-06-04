@@ -1,10 +1,8 @@
 package app.gui;
 
 import app.bd.Conexion;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import java.sql.*;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -292,10 +290,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        Random random = new Random();
-        int numeroAleatorio = random.nextInt(129) + 1;
-        Formumario mamifero = new Formumario();
-        mamifero.setVisible(true);
+        Formumario formulario = new Formumario();
+        formulario.setVisible(true);
         this.dispose();
         
     }//GEN-LAST:event_jButton5ActionPerformed
