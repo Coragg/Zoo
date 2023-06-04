@@ -143,7 +143,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.setEnabled(false);
+        jTable1.setRowSelectionAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
         jButton2.setText("Cerrar Sesión");
