@@ -396,10 +396,7 @@ public class Formumario extends javax.swing.JFrame {
 
     private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
         // TODO add your handling code here:
-        String textoIngresado = jTextField9.getText();
-    if (textoIngresado.isEmpty()) {
-        jTextField9.setText("Texto de fondo");
-    }
+        
     }//GEN-LAST:event_jTextField9ActionPerformed
 
     /**
