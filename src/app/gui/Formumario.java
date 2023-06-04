@@ -233,6 +233,7 @@ public class Formumario extends javax.swing.JFrame {
 
         jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Erizo", "Estrella" }));
 
+        jTextField5.setEditable(false);
         jTextField5.setText("2");
         jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
