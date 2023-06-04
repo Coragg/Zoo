@@ -47,12 +47,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
             model.addColumn("tipo");
             model.addColumn("Categoria");
             model.addColumn("Atributo");
+            model.addColumn("Atributo Secundario");
             // Añadir más columnas según sea necesario
 
             // Recorrer el resultado de la consulta y agregar los datos al modelo de tabla
             while (resultSet.next()) {
                 // Obtener los valores de cada columna en una fila
-                Object[] row = new Object[7]; // Cambiar el tamaño según el número de columnas
+                Object[] row = new Object[8]; // Cambiar el tamaño según el número de columnas
                 row[0] = resultSet.getObject("Id");
                 row[1] = resultSet.getObject("Nombre");
                 row[2] = resultSet.getObject("Color");
@@ -65,8 +66,37 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 String tipo = resultSet.getString("tipo");
                 if (tipo.equals("Mamifero")) {
                     row[6] = resultSet.getObject("cantidadPatas");
+                    row[7] = "Null";
+                } else if (tipo.equals("Ave")) {
+                    row[6] = resultSet.getObject("cantidadAlas");
+                    row[7] = "Null";
+                } else if (tipo.equals("Pez")) {
+                    row[6] = resultSet.getObject("cantidadAletas");
+                    row[7] = resultSet.getObject("escamas");
+                } else if (tipo.equals("Anfibio")) {
+                    row[6] = resultSet.getObject("piel");
+                    row[7] = "Null";
+                } else if (tipo.equals("Reptil")) {
+                    row[6] = resultSet.getObject("tierraMar_ambos");
+                    row[7] = "Null";
+                } else if (tipo.equals("Antropodo")) {
+                    row[6] = resultSet.getObject("cantidadParesPatas");
+                    row[7] = resultSet.getObject("antenas");
+                } else if (tipo.equals("Molusco")) {
+                    row[6] = resultSet.getObject("erizo_o_estrella");
+                    row[7] = "Null";
                 } else if (tipo.equals("Equinodermo")) {
                     row[6] = resultSet.getObject("erizo_o_estrella");
+                    row[7] = "Null";
+                } else if (tipo.equals("Gusano")) {
+                    row[6] = resultSet.getObject("tipoCuerpo");
+                    row[7] = "Null";
+                } else if (tipo.equals("Porifero")) {
+                    row[6] = "Null";
+                    row[7] = "Null";
+                } else if (tipo.equals("Celentereo")) {
+                    row[6] = resultSet.getObject("tentaculos");
+                    row[7] = "Null";
                 }
     
 
@@ -192,23 +222,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(jLabel1))
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 785, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(283, 283, 283))
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel1)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
+                        .addGap(104, 104, 104)
                         .addComponent(jButton5)
                         .addGap(48, 48, 48)
                         .addComponent(jButton4)
@@ -217,7 +244,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addGap(42, 42, 42)
                         .addComponent(jButton3))
                     .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel1)
+                        .addGap(31, 31, 31)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
@@ -226,9 +255,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
