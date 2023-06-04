@@ -205,6 +205,7 @@ public class Formumario extends javax.swing.JFrame {
 
         jLabel14.setText("N° pares de patas:");
 
+        jTextField10.setText("(1 A 400 pares)");
         jTextField10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField10ActionPerformed(evt);
