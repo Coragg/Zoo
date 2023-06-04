@@ -4,6 +4,15 @@
  */
 package app.gui;
 
+import app.bd.Conexion;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
+
 /**
  *
  * @author nicox
@@ -17,7 +26,10 @@ public class MenuSecundario extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Reporte Animal");
         this.setLocationRelativeTo(null);
+        tipoAnimal.setVisible(false);
+        cantidadPorTipo.setVisible(false);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,6 +50,9 @@ public class MenuSecundario extends javax.swing.JFrame {
         jCheckBox4 = new javax.swing.JCheckBox();
         jCheckBox5 = new javax.swing.JCheckBox();
         jCheckBox6 = new javax.swing.JCheckBox();
+        jPanel3 = new javax.swing.JPanel();
+        cantidadPorTipo = new javax.swing.JLabel();
+        tipoAnimal = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,7 +62,7 @@ public class MenuSecundario extends javax.swing.JFrame {
         jLabel1.setText("Reporte Animal");
 
         jButton1.setText("Volver");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -122,6 +137,32 @@ public class MenuSecundario extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        cantidadPorTipo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        cantidadPorTipo.setText("aaaaa");
+
+        tipoAnimal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mamifero", "Ave", "Pez", "Anfibio", "Reptil", "Antropodo", "Molusco", "Equinodermo", "Gusano", "Porifero", "Celentereo" }));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cantidadPorTipo)
+                    .addComponent(tipoAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(66, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(tipoAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(cantidadPorTipo)
+                .addContainerGap(76, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -130,7 +171,10 @@ public class MenuSecundario extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 75, 75)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(311, Short.MAX_VALUE)
@@ -140,10 +184,15 @@ public class MenuSecundario extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
@@ -165,6 +214,7 @@ public class MenuSecundario extends javax.swing.JFrame {
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -174,10 +224,164 @@ public class MenuSecundario extends javax.swing.JFrame {
         call.setVisible(true);
         
         this.dispose();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
+        // Verificar el estado del jCheckBox1
+        if (jCheckBox1.isSelected() == true) {
+        // Si está seleccionado, realizar la consulta y mostrar la cantidad de animales según su tipo
+            
+            int cantidad = 0;
+            tipoAnimal.setVisible(true); // Manejo de excepciones
+            cantidadPorTipo.setVisible(true);
+            // Obtener una conexión a la base de datos
+            try {
+                Conexion conexion = new Conexion();
+                Connection conn = conexion.getConexion();
+                String opcionSeleccionada = tipoAnimal.getSelectedItem().toString();
+
+                if (opcionSeleccionada.equals("Mamifero")){
+                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Mamifero'";
+                    Statement statement = conn.createStatement();
+                    ResultSet resultSet = statement.executeQuery(sql);
+                    cantidad = resultSet.getInt("cantidad");
+                    cantidadPorTipo.setText("0");
+                    cantidadPorTipo.setText(Integer.toString(cantidad));
+                    // Cerrar los recursos
+                    resultSet.close();
+                    statement.close();
+                    conn.close();
+                }
+                else if (opcionSeleccionada.equals("Ave")){
+                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Ave'";
+                    Statement statement = conn.createStatement();
+                    ResultSet resultSet = statement.executeQuery(sql);
+                    cantidad = resultSet.getInt("cantidad");
+                    cantidadPorTipo.setText("0");
+                    cantidadPorTipo.setText(Integer.toString(cantidad));
+                    // Cerrar los recursos
+                    resultSet.close();
+                    statement.close();
+                    conn.close();
+                }
+                else if (opcionSeleccionada.equals("Pez")){
+                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Pez'";
+                                    Statement statement = conn.createStatement();
+                                    ResultSet resultSet = statement.executeQuery(sql);
+                                    cantidad = resultSet.getInt("cantidad");
+                                    cantidadPorTipo.setText("0");
+                                    cantidadPorTipo.setText(Integer.toString(cantidad));
+                                    // Cerrar los recursos
+                                    resultSet.close();
+                                    statement.close();
+                                    conn.close();
+                }
+                else if (opcionSeleccionada.equals("Anfibio")){
+                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Anfibio'";
+                                    Statement statement = conn.createStatement();
+                                    ResultSet resultSet = statement.executeQuery(sql);
+                                    cantidad = resultSet.getInt("cantidad");
+                                    cantidadPorTipo.setText("0");
+                                    cantidadPorTipo.setText(Integer.toString(cantidad));
+                                    // Cerrar los recursos
+                                    resultSet.close();
+                                    statement.close();
+                                    conn.close();
+                }
+                else if (opcionSeleccionada.equals("Reptil")){
+                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Reptil'";
+                                    Statement statement = conn.createStatement();
+                                    ResultSet resultSet = statement.executeQuery(sql);
+                                    cantidad = resultSet.getInt("cantidad");
+                                    cantidadPorTipo.setText("0");
+                                    cantidadPorTipo.setText(Integer.toString(cantidad));
+                                    // Cerrar los recursos
+                                    resultSet.close();
+                                    statement.close();
+                                    conn.close();
+                }
+                else if (opcionSeleccionada.equals("Antropodo")){
+                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Antropodo'";
+                                    Statement statement = conn.createStatement();
+                                    ResultSet resultSet = statement.executeQuery(sql);
+                                    cantidad = resultSet.getInt("cantidad");
+                                    cantidadPorTipo.setText("0");
+                                    cantidadPorTipo.setText(Integer.toString(cantidad));
+                                    // Cerrar los recursos
+                                    resultSet.close();
+                                    statement.close();
+                                    conn.close();
+                }
+                else if (opcionSeleccionada.equals("Molusco")){
+                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Molusco'";
+                                    Statement statement = conn.createStatement();
+                                    ResultSet resultSet = statement.executeQuery(sql);
+                                    cantidad = resultSet.getInt("cantidad");
+                                    cantidadPorTipo.setText("0");
+                                    cantidadPorTipo.setText(Integer.toString(cantidad));
+                                    // Cerrar los recursos
+                                    resultSet.close();
+                                    statement.close();
+                                    conn.close();
+                }
+                else if (opcionSeleccionada.equals("Equinodermo")){
+                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Equinodermo'";
+                                    Statement statement = conn.createStatement();
+                                    ResultSet resultSet = statement.executeQuery(sql);
+                                    cantidad = resultSet.getInt("cantidad");
+                                    cantidadPorTipo.setText("0");
+                                    cantidadPorTipo.setText(Integer.toString(cantidad));
+                                    // Cerrar los recursos
+                                    resultSet.close();
+                                    statement.close();
+                                    conn.close();
+                }
+                else if (opcionSeleccionada.equals("Gusano")){
+                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Gusano'";
+                                    Statement statement = conn.createStatement();
+                                    ResultSet resultSet = statement.executeQuery(sql);
+                                    cantidad = resultSet.getInt("cantidad");
+                                    cantidadPorTipo.setText("0");
+                                    cantidadPorTipo.setText(Integer.toString(cantidad));
+                                    // Cerrar los recursos
+                                    resultSet.close();
+                                    statement.close();
+                                    conn.close();
+                }
+                else if (opcionSeleccionada.equals("Porifero")){
+                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Porifero'";
+                                    Statement statement = conn.createStatement();
+                                    ResultSet resultSet = statement.executeQuery(sql);
+                                    cantidad = resultSet.getInt("cantidad");
+                                    cantidadPorTipo.setText("0");
+                                    cantidadPorTipo.setText(Integer.toString(cantidad));
+                                    // Cerrar los recursos
+                                    resultSet.close();
+                                    statement.close();
+                                    conn.close();
+                }
+                else if (opcionSeleccionada.equals("Celentereo")){
+                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Celentereo'";
+                                    Statement statement = conn.createStatement();
+                                    ResultSet resultSet = statement.executeQuery(sql);
+                                    cantidad = resultSet.getInt("cantidad");
+                                    cantidadPorTipo.setText("0");
+                                    cantidadPorTipo.setText(Integer.toString(cantidad));
+                                    // Cerrar los recursos
+                                    resultSet.close();
+                                    statement.close();
+                                    conn.close();
+                }
+             } catch (SQLException ex) {
+                    // Manejar el error en caso de que ocurra una excepción
+                    ex.printStackTrace();
+        }
+            
+        } else{
+            // Si no está seleccionado, ocultar el jLabel cantidadPorTipo
+            tipoAnimal.setVisible(false);
+    }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
@@ -221,6 +425,7 @@ public class MenuSecundario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup CHKreporte;
+    private javax.swing.JLabel cantidadPorTipo;
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
@@ -230,5 +435,7 @@ public class MenuSecundario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JComboBox<String> tipoAnimal;
     // End of variables declaration//GEN-END:variables
 }
