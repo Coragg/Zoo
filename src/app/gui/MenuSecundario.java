@@ -31,6 +31,7 @@ public class MenuSecundario extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         tipoAnimal.setVisible(false);
         cantidadPorTipo.setVisible(false);
+        jPanel3.setVisible(false);
     }
     
 
@@ -96,6 +97,11 @@ public class MenuSecundario extends javax.swing.JFrame {
         jCheckBox4.setBackground(new java.awt.Color(0, 102, 255));
         CHKreporte.add(jCheckBox4);
         jCheckBox4.setText("Porcentaje de cada grupo o tipo de animales del zoológico");
+        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox4ActionPerformed(evt);
+            }
+        });
 
         jCheckBox3.setBackground(new java.awt.Color(0, 102, 255));
         CHKreporte.add(jCheckBox3);
@@ -254,6 +260,18 @@ public class MenuSecundario extends javax.swing.JFrame {
                         statement.close();
                         conn.close();
                     }
+                    else if(jCheckBox4.isSelected() == true){
+                        String sql = "SELECT (COUNT(*) * 100/(SELECT COUNT(*) FROM animalesZoo)) AS porcentaje FROM animalesZoo WHERE tipo= 'Mamifero'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("porcentaje");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad) + "%");
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
                     
                     
                 }
@@ -277,6 +295,18 @@ public class MenuSecundario extends javax.swing.JFrame {
                         cantidad = resultSet.getInt("promedio");
                         cantidadPorTipo.setText("0");
                         cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
+                    else if(jCheckBox4.isSelected() == true){
+                        String sql = "SELECT (COUNT(*) * 100/(SELECT COUNT(*) FROM animalesZoo)) AS porcentaje FROM animalesZoo WHERE tipo= 'Ave'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("porcentaje");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad) + "%");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -308,6 +338,18 @@ public class MenuSecundario extends javax.swing.JFrame {
                         statement.close();
                         conn.close();
                     }
+                    else if(jCheckBox4.isSelected() == true){
+                        String sql = "SELECT (COUNT(*) * 100/(SELECT COUNT(*) FROM animalesZoo)) AS porcentaje FROM animalesZoo WHERE tipo= 'Pez'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("porcentaje");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad) + "%");
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
                 }
                 else if (opcionSeleccionada.equals("Anfibio")){
                     if(jCheckBox1.isSelected() == true){
@@ -329,6 +371,18 @@ public class MenuSecundario extends javax.swing.JFrame {
                         cantidad = resultSet.getInt("promedio");
                         cantidadPorTipo.setText("0");
                         cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
+                    else if(jCheckBox4.isSelected() == true){
+                        String sql = "SELECT (COUNT(*) * 100/(SELECT COUNT(*) FROM animalesZoo)) AS porcentaje FROM animalesZoo WHERE tipo= 'Anfibio'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("porcentaje");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad) + "%");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -360,6 +414,18 @@ public class MenuSecundario extends javax.swing.JFrame {
                         statement.close();
                         conn.close();
                     }
+                    else if(jCheckBox4.isSelected() == true){
+                        String sql = "SELECT (COUNT(*) * 100/(SELECT COUNT(*) FROM animalesZoo)) AS porcentaje FROM animalesZoo WHERE tipo= 'Reptil'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("porcentaje");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad) + "%");
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
                 }
                 else if (opcionSeleccionada.equals("Antropodo")){
                     if(jCheckBox1.isSelected() == true){
@@ -381,6 +447,18 @@ public class MenuSecundario extends javax.swing.JFrame {
                         cantidad = resultSet.getInt("promedio");
                         cantidadPorTipo.setText("0");
                         cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
+                    else if(jCheckBox4.isSelected() == true){
+                        String sql = "SELECT (COUNT(*) * 100/(SELECT COUNT(*) FROM animalesZoo)) AS porcentaje FROM animalesZoo WHERE tipo= 'Antropodo'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("porcentaje");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad) + "%");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -412,6 +490,18 @@ public class MenuSecundario extends javax.swing.JFrame {
                         statement.close();
                         conn.close();
                     }
+                    else if(jCheckBox4.isSelected() == true){
+                        String sql = "SELECT (COUNT(*) * 100/(SELECT COUNT(*) FROM animalesZoo)) AS porcentaje FROM animalesZoo WHERE tipo= 'Molusco'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("porcentaje");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad) + "%");
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
                 }
                 else if (opcionSeleccionada.equals("Equinodermo")){
                     if(jCheckBox1.isSelected() == true){
@@ -433,6 +523,18 @@ public class MenuSecundario extends javax.swing.JFrame {
                         cantidad = resultSet.getInt("promedio");
                         cantidadPorTipo.setText("0");
                         cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
+                    else if(jCheckBox4.isSelected() == true){
+                        String sql = "SELECT (COUNT(*) * 100/(SELECT COUNT(*) FROM animalesZoo)) AS porcentaje FROM animalesZoo WHERE tipo= 'Equinodermo'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("porcentaje");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad) + "%");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -464,6 +566,18 @@ public class MenuSecundario extends javax.swing.JFrame {
                         statement.close();
                         conn.close();
                     }
+                    else if(jCheckBox4.isSelected() == true){
+                        String sql = "SELECT (COUNT(*) * 100/(SELECT COUNT(*) FROM animalesZoo)) AS porcentaje FROM animalesZoo WHERE tipo= 'Gusano'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("porcentaje");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad) + "%");
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
                 }
                 else if (opcionSeleccionada.equals("Porifero")){
                     if(jCheckBox1.isSelected() == true){
@@ -485,6 +599,18 @@ public class MenuSecundario extends javax.swing.JFrame {
                         cantidad = resultSet.getInt("promedio");
                         cantidadPorTipo.setText("0");
                         cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
+                    else if(jCheckBox4.isSelected() == true){
+                        String sql = "SELECT (COUNT(*) * 100/(SELECT COUNT(*) FROM animalesZoo)) AS porcentaje FROM animalesZoo WHERE tipo= 'Porifero'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("porcentaje");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad) + "%");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -516,6 +642,18 @@ public class MenuSecundario extends javax.swing.JFrame {
                         statement.close();
                         conn.close();
                     }
+                    else if(jCheckBox4.isSelected() == true){
+                        String sql = "SELECT (COUNT(*) * 100/(SELECT COUNT(*) FROM animalesZoo)) AS porcentaje FROM animalesZoo WHERE tipo= 'Celentereo'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("porcentaje");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad) + "%");
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
                 }
              } catch (SQLException ex) {
                     // Manejar el error en caso de que ocurra una excepción
@@ -529,6 +667,7 @@ public class MenuSecundario extends javax.swing.JFrame {
             // Si no está seleccionado, ocultar el jLabel cantidadPorTipo
             tipoAnimal.setVisible(true);
             cantidadPorTipo.setVisible(true);
+            jPanel3.setVisible(true);
     }
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
@@ -548,6 +687,7 @@ public class MenuSecundario extends javax.swing.JFrame {
         // Si está seleccionado, realizar la consulta y mostrar la cantidad de animales según su tipo
             tipoAnimal.setVisible(true); // Manejo de excepciones
             cantidadPorTipo.setVisible(true);
+            jPanel3.setVisible(true);
             
             
         } 
@@ -568,6 +708,16 @@ public class MenuSecundario extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_jCheckBox3ActionPerformed
+
+    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+        // TODO add your handling code here:
+        if(jCheckBox4.isSelected() == true){
+            // Si no está seleccionado, ocultar el jLabel cantidadPorTipo
+            tipoAnimal.setVisible(true);
+            cantidadPorTipo.setVisible(true);
+            jPanel3.setVisible(true);
+        }
+    }//GEN-LAST:event_jCheckBox4ActionPerformed
 
     /**
      * @param args the command line arguments

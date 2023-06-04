@@ -198,6 +198,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Porcentaje de cada grupo o tipo de animales del zool&#xf3;gico"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox4ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="jCheckBox3">
               <Properties>
