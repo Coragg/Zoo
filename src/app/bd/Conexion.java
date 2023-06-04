@@ -9,19 +9,14 @@ import java.util.logging.Logger;
 
 
 public class Conexion {
-<<<<<<< HEAD
+
     //String url = "D:\\documentos\\universidad\\paradigmas\\tareas\\tarea2\\Zoo\\animales.db";
     String url = "C:\\Users\\maxor\\OneDrive\\Escritorio\\Zoo\\Zoo\\animales.db";
    //String url = "C:\\Users\\rafis\\OneDrive\\Escritorio\\tarea 2\\Zoo\\animales.db";
    //String url = "C:\\Users\\nicox\\OneDrive\\Escritorio\\Zoo\\animales.db";
     //String url = "C:\\Users\\Nico\\Desktop\\github\\Zoo\\animales.db";
-=======
-    String url = "D:\\documentos\\universidad\\paradigmas\\tareas\\tarea2\\Zoo\\animales.db";
-   // String url = "C:\\Users\\maxor\\OneDrive\\Escritorio\\Zoo\\Zoo\\animales.db";
-   //String url = "C:\\Users\\rafis\\OneDrive\\Escritorio\\tarea 2\\Zoo\\animales.db";
-   //String url = "C:\\Users\\nicox\\OneDrive\\Escritorio\\Zoo\\animales.db";
-    // url = "C:\\Users\\Nico\\Desktop\\github\\Zoo\\animales.db";
->>>>>>> d8322adf3019701eb714bb2859922bfcd532855a
+
+   
 
 
     Connection conexion;
