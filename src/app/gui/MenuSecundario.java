@@ -141,7 +141,6 @@ public class MenuSecundario extends javax.swing.JFrame {
         );
 
         cantidadPorTipo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        cantidadPorTipo.setText("aaaaa");
 
         tipoAnimal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mamifero", "Ave", "Pez", "Anfibio", "Reptil", "Antropodo", "Molusco", "Equinodermo", "Gusano", "Porifero", "Celentereo" }));
 
@@ -223,7 +222,6 @@ public class MenuSecundario extends javax.swing.JFrame {
 
     private void tipoAnimalActionPerformed(java.awt.event.ActionEvent evt) {
         int cantidad = 0;
-            
             // Obtener una conexión a la base de datos
             try {
                 Conexion conexion = new Conexion();
