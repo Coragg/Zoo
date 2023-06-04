@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 
 public class Conexion {
 
+
     //String url = "D:\\documentos\\universidad\\paradigmas\\tareas\\tarea2\\Zoo\\animales.db";
     String url = "C:\\Users\\maxor\\OneDrive\\Escritorio\\Zoo\\Zoo\\animales.db";
    //String url = "C:\\Users\\rafis\\OneDrive\\Escritorio\\tarea 2\\Zoo\\animales.db";
@@ -18,7 +19,7 @@ public class Conexion {
 
    
 
-
+  
     Connection conexion;
     public Connection getConexion(){
         try{
