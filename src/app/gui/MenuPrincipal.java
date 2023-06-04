@@ -1,5 +1,15 @@
 package app.gui;
 
+import app.bd.Conexion;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+
+
 public class MenuPrincipal extends javax.swing.JFrame {
 
     /**
@@ -10,6 +20,67 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.setTitle("Menu Principal");
         this.setVisible(true);
         this.setLocationRelativeTo(null);
+        // Código para llenar la JTable con los datos de la tabla "animalesZoo"
+        try {
+            // Crear una instancia de la clase Conexion para obtener la conexión a la base de datos
+            Conexion conexion = new Conexion();
+            Connection conn = conexion.getConexion();
+
+            // Crear la sentencia SQL para seleccionar todos los registros de la tabla "animalesZoo"
+            String sql = "SELECT * FROM animalesZoo";
+
+            // Crear un objeto Statement para ejecutar la consulta SQL
+            Statement statement = conn.createStatement();
+
+            // Ejecutar la consulta SQL y obtener el resultado en un objeto ResultSet
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            // Crear un modelo de tabla por defecto para almacenar los datos de la consulta
+            DefaultTableModel model = new DefaultTableModel();
+
+            // Agregar las columnas al modelo de tabla
+            model.addColumn("nombre");
+            model.addColumn("color");
+            model.addColumn("peso");
+            model.addColumn("tipo");
+            model.addColumn("categoria");
+            // Añadir más columnas según sea necesario
+
+            // Recorrer el resultado de la consulta y agregar los datos al modelo de tabla
+            while (resultSet.next()) {
+                // Obtener los valores de cada columna en una fila
+                Object[] row = new Object[7]; // Cambiar el tamaño según el número de columnas
+                row[0] = resultSet.getObject("nombre");
+                row[1] = resultSet.getObject("color");
+                row[2] = resultSet.getObject("peso");
+                row[3] = resultSet.getObject("tipo");
+                // Añadir más columnas según sea necesario
+                
+                // Determinar el valor de la columna "categoria" en función del valor de "tipo"
+                String tipo = resultSet.getString("tipo");
+                if (tipo.equals("Mamifero")) {
+                    row[4] = resultSet.getObject("cantidadPatas");
+                } else if (tipo.equals("Equinodermo")) {
+                    row[4] = resultSet.getObject("erizo_o_estrella");
+                }
+    
+
+                // Agregar la fila al modelo de tabla
+                model.addRow(row);
+            }
+
+            // Asignar el modelo de tabla a la JTable
+            jTable1.setModel(model);
+
+            // Cerrar la conexión y liberar los recursos
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException ex) {
+            // Manejar el error en caso de que ocurra una excepción
+            ex.printStackTrace();
+        }
+
     }
 
     /**
