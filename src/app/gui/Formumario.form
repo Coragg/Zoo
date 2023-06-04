@@ -180,7 +180,7 @@
                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                           <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
                           <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelimagen" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jButton4" min="-2" max="-2" attributes="0"/>
@@ -214,7 +214,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
-                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelimagen" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
@@ -385,7 +385,7 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel6">
+        <Component class="javax.swing.JLabel" name="jLabelimagen">
           <Properties>
             <Property name="text" type="java.lang.String" value="imagen"/>
           </Properties>

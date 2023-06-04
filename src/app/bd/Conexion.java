@@ -12,15 +12,13 @@ public class Conexion {
 
 
 
-<<<<<<< HEAD
-=======
    //String url = "D:\\documentos\\universidad\\paradigmas\\tareas\\tarea2\\Zoo\\animales.db";
 
     //String url = "D:\\documentos\\universidad\\paradigmas\\tareas\\tarea2\\Zoo\\animales.db";
    // String url = "C:\\Users\\maxor\\OneDrive\\Escritorio\\Zoo\\Zoo\\animales.db";
 
    String url = "C:\\Users\\maxor\\OneDrive\\Escritorio\\Zoo\\Zoo\\animales.db";
->>>>>>> 7c3b868e53bf27c80537944a6820bd10d3f9d207
+
 
     //String url = "D:\\documentos\\universidad\\paradigmas\\tareas\\tarea2\\Zoo\\animales.db";
    // String url = "C:\\Users\\maxor\\OneDrive\\Escritorio\\Zoo\\Zoo\\animales.db";
