@@ -11,6 +11,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 
 /**
@@ -163,6 +166,12 @@ public class MenuSecundario extends javax.swing.JFrame {
                 .addContainerGap(76, Short.MAX_VALUE))
         );
 
+        tipoAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoAnimalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -212,29 +221,9 @@ public class MenuSecundario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        MenuPrincipal call = new MenuPrincipal();
-        
-        call.setVisible(true);
-        
-        this.dispose();
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // Verificar el estado del jCheckBox1
-        if (jCheckBox1.isSelected() == true) {
-        // Si está seleccionado, realizar la consulta y mostrar la cantidad de animales según su tipo
+    private void tipoAnimalActionPerformed(java.awt.event.ActionEvent evt) {
+        int cantidad = 0;
             
-            int cantidad = 0;
-            tipoAnimal.setVisible(true); // Manejo de excepciones
-            cantidadPorTipo.setVisible(true);
             // Obtener una conexión a la base de datos
             try {
                 Conexion conexion = new Conexion();
@@ -377,6 +366,30 @@ public class MenuSecundario extends javax.swing.JFrame {
                     // Manejar el error en caso de que ocurra una excepción
                     ex.printStackTrace();
         }
+    }
+    
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        MenuPrincipal call = new MenuPrincipal();
+        
+        call.setVisible(true);
+        
+        this.dispose();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // Verificar el estado del jCheckBox1
+        if (jCheckBox1.isSelected() == true) {
+        // Si está seleccionado, realizar la consulta y mostrar la cantidad de animales según su tipo
+            tipoAnimal.setVisible(true); // Manejo de excepciones
+            cantidadPorTipo.setVisible(true);
+            
             
         } else{
             // Si no está seleccionado, ocultar el jLabel cantidadPorTipo
