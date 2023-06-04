@@ -143,6 +143,7 @@ public class MenuSecundario extends javax.swing.JFrame {
         cantidadPorTipo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         tipoAnimal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mamifero", "Ave", "Pez", "Anfibio", "Reptil", "Antropodo", "Molusco", "Equinodermo", "Gusano", "Porifero", "Celentereo" }));
+        tipoAnimal.setFocusable(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -229,16 +230,32 @@ public class MenuSecundario extends javax.swing.JFrame {
                 String opcionSeleccionada = tipoAnimal.getSelectedItem().toString();
 
                 if (opcionSeleccionada.equals("Mamifero")){
-                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Mamifero'";
-                    Statement statement = conn.createStatement();
-                    ResultSet resultSet = statement.executeQuery(sql);
-                    cantidad = resultSet.getInt("cantidad");
-                    cantidadPorTipo.setText("0");
-                    cantidadPorTipo.setText(Integer.toString(cantidad));
-                    // Cerrar los recursos
-                    resultSet.close();
-                    statement.close();
-                    conn.close();
+                    if(jCheckBox1.isSelected() == true){
+                        String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Mamifero'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("cantidad");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
+                    else if(jCheckBox2.isSelected() == true){
+                        String sql = "SELECT AVG(peso) AS promedio FROM animalesZoo WHERE tipo = 'Mamifero'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("promedio");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
+                    
+                    
                 }
                 else if (opcionSeleccionada.equals("Ave")){
                     String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Ave'";
@@ -368,7 +385,10 @@ public class MenuSecundario extends javax.swing.JFrame {
     
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
         // TODO add your handling code here:
-        
+        if(jCheckBox2.isSelected() == true){
+            // Si no está seleccionado, ocultar el jLabel cantidadPorTipo
+            cantidadPorTipo.setVisible(true);
+    }
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -389,10 +409,8 @@ public class MenuSecundario extends javax.swing.JFrame {
             cantidadPorTipo.setVisible(true);
             
             
-        } else{
-            // Si no está seleccionado, ocultar el jLabel cantidadPorTipo
-            tipoAnimal.setVisible(false);
-    }
+        } 
+        
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed

@@ -278,6 +278,7 @@
                     <StringItem index="10" value="Celentereo"/>
                   </StringArray>
                 </Property>
+                <Property name="focusable" type="boolean" value="false"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="tipoAnimal.addActionListener(new java.awt.event.ActionListener() {&#xa;    public void actionPerformed(java.awt.event.ActionEvent evt) {&#xa;        tipoAnimalActionPerformed(evt);&#xa;    }&#xa;});"/>
