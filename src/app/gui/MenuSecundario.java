@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 
 /**
@@ -28,6 +29,7 @@ public class MenuSecundario extends javax.swing.JFrame {
         tipoAnimal.setVisible(false);
         cantidadPorTipo.setVisible(false);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -226,22 +228,25 @@ public class MenuSecundario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-            // Verificar el estado del jCheckBox1
+        // Verificar el estado del jCheckBox1
         if (jCheckBox1.isSelected() == true) {
         // Si está seleccionado, realizar la consulta y mostrar la cantidad de animales según su tipo
-            String opcionSeleccionada = tipoAnimal.getSelectedItem().toString();
+            
             int cantidad = 0;
+            tipoAnimal.setVisible(true); // Manejo de excepciones
+            cantidadPorTipo.setVisible(true);
+            // Obtener una conexión a la base de datos
             try {
-                tipoAnimal.setVisible(true);
-                cantidadPorTipo.setVisible(true);
-                // Obtener una conexión a la base de datos
                 Conexion conexion = new Conexion();
                 Connection conn = conexion.getConexion();
+                String opcionSeleccionada = tipoAnimal.getSelectedItem().toString();
+
                 if (opcionSeleccionada.equals("Mamifero")){
-                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'mamifero'";
+                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Mamifero'";
                     Statement statement = conn.createStatement();
                     ResultSet resultSet = statement.executeQuery(sql);
                     cantidad = resultSet.getInt("cantidad");
+                    cantidadPorTipo.setText("0");
                     cantidadPorTipo.setText(Integer.toString(cantidad));
                     // Cerrar los recursos
                     resultSet.close();
@@ -249,10 +254,11 @@ public class MenuSecundario extends javax.swing.JFrame {
                     conn.close();
                 }
                 else if (opcionSeleccionada.equals("Ave")){
-                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'ave'";
+                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Ave'";
                     Statement statement = conn.createStatement();
                     ResultSet resultSet = statement.executeQuery(sql);
                     cantidad = resultSet.getInt("cantidad");
+                    cantidadPorTipo.setText("0");
                     cantidadPorTipo.setText(Integer.toString(cantidad));
                     // Cerrar los recursos
                     resultSet.close();
@@ -260,110 +266,118 @@ public class MenuSecundario extends javax.swing.JFrame {
                     conn.close();
                 }
                 else if (opcionSeleccionada.equals("Pez")){
-                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'pez'";
-                    Statement statement = conn.createStatement();
-                    ResultSet resultSet = statement.executeQuery(sql);
-                    cantidad = resultSet.getInt("cantidad");
-                    cantidadPorTipo.setText(Integer.toString(cantidad));
-                    // Cerrar los recursos
-                    resultSet.close();
-                    statement.close();
-                    conn.close();
+                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Pez'";
+                                    Statement statement = conn.createStatement();
+                                    ResultSet resultSet = statement.executeQuery(sql);
+                                    cantidad = resultSet.getInt("cantidad");
+                                    cantidadPorTipo.setText("0");
+                                    cantidadPorTipo.setText(Integer.toString(cantidad));
+                                    // Cerrar los recursos
+                                    resultSet.close();
+                                    statement.close();
+                                    conn.close();
                 }
                 else if (opcionSeleccionada.equals("Anfibio")){
-                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'anfibio'";
-                    Statement statement = conn.createStatement();
-                    ResultSet resultSet = statement.executeQuery(sql);
-                    cantidad = resultSet.getInt("cantidad");
-                    cantidadPorTipo.setText(Integer.toString(cantidad));
-                    // Cerrar los recursos
-                    resultSet.close();
-                    statement.close();
-                    conn.close();
+                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Anfibio'";
+                                    Statement statement = conn.createStatement();
+                                    ResultSet resultSet = statement.executeQuery(sql);
+                                    cantidad = resultSet.getInt("cantidad");
+                                    cantidadPorTipo.setText("0");
+                                    cantidadPorTipo.setText(Integer.toString(cantidad));
+                                    // Cerrar los recursos
+                                    resultSet.close();
+                                    statement.close();
+                                    conn.close();
                 }
                 else if (opcionSeleccionada.equals("Reptil")){
-                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'reptil'";
-                    Statement statement = conn.createStatement();
-                    ResultSet resultSet = statement.executeQuery(sql);
-                    cantidad = resultSet.getInt("cantidad");
-                    cantidadPorTipo.setText(Integer.toString(cantidad));
-                    // Cerrar los recursos
-                    resultSet.close();
-                    statement.close();
-                    conn.close();
+                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Reptil'";
+                                    Statement statement = conn.createStatement();
+                                    ResultSet resultSet = statement.executeQuery(sql);
+                                    cantidad = resultSet.getInt("cantidad");
+                                    cantidadPorTipo.setText("0");
+                                    cantidadPorTipo.setText(Integer.toString(cantidad));
+                                    // Cerrar los recursos
+                                    resultSet.close();
+                                    statement.close();
+                                    conn.close();
                 }
                 else if (opcionSeleccionada.equals("Antropodo")){
-                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'antropodo'";
-                    Statement statement = conn.createStatement();
-                    ResultSet resultSet = statement.executeQuery(sql);
-                    cantidad = resultSet.getInt("cantidad");
-                    cantidadPorTipo.setText(Integer.toString(cantidad));
-                    // Cerrar los recursos
-                    resultSet.close();
-                    statement.close();
-                    conn.close();
+                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Antropodo'";
+                                    Statement statement = conn.createStatement();
+                                    ResultSet resultSet = statement.executeQuery(sql);
+                                    cantidad = resultSet.getInt("cantidad");
+                                    cantidadPorTipo.setText("0");
+                                    cantidadPorTipo.setText(Integer.toString(cantidad));
+                                    // Cerrar los recursos
+                                    resultSet.close();
+                                    statement.close();
+                                    conn.close();
                 }
                 else if (opcionSeleccionada.equals("Molusco")){
-                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'molusco'";
-                    Statement statement = conn.createStatement();
-                    ResultSet resultSet = statement.executeQuery(sql);
-                    cantidad = resultSet.getInt("cantidad");
-                    cantidadPorTipo.setText(Integer.toString(cantidad));
-                    // Cerrar los recursos
-                    resultSet.close();
-                    statement.close();
-                    conn.close();
+                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Molusco'";
+                                    Statement statement = conn.createStatement();
+                                    ResultSet resultSet = statement.executeQuery(sql);
+                                    cantidad = resultSet.getInt("cantidad");
+                                    cantidadPorTipo.setText("0");
+                                    cantidadPorTipo.setText(Integer.toString(cantidad));
+                                    // Cerrar los recursos
+                                    resultSet.close();
+                                    statement.close();
+                                    conn.close();
                 }
                 else if (opcionSeleccionada.equals("Equinodermo")){
-                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'equinodermo'";
-                    Statement statement = conn.createStatement();
-                    ResultSet resultSet = statement.executeQuery(sql);
-                    cantidad = resultSet.getInt("cantidad");
-                    cantidadPorTipo.setText(Integer.toString(cantidad));
-                    // Cerrar los recursos
-                    resultSet.close();
-                    statement.close();
-                    conn.close();
+                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Equinodermo'";
+                                    Statement statement = conn.createStatement();
+                                    ResultSet resultSet = statement.executeQuery(sql);
+                                    cantidad = resultSet.getInt("cantidad");
+                                    cantidadPorTipo.setText("0");
+                                    cantidadPorTipo.setText(Integer.toString(cantidad));
+                                    // Cerrar los recursos
+                                    resultSet.close();
+                                    statement.close();
+                                    conn.close();
                 }
                 else if (opcionSeleccionada.equals("Gusano")){
-                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'gusano'";
-                    Statement statement = conn.createStatement();
-                    ResultSet resultSet = statement.executeQuery(sql);
-                    cantidad = resultSet.getInt("cantidad");
-                    cantidadPorTipo.setText(Integer.toString(cantidad));
-                    // Cerrar los recursos
-                    resultSet.close();
-                    statement.close();
-                    conn.close();
+                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Gusano'";
+                                    Statement statement = conn.createStatement();
+                                    ResultSet resultSet = statement.executeQuery(sql);
+                                    cantidad = resultSet.getInt("cantidad");
+                                    cantidadPorTipo.setText("0");
+                                    cantidadPorTipo.setText(Integer.toString(cantidad));
+                                    // Cerrar los recursos
+                                    resultSet.close();
+                                    statement.close();
+                                    conn.close();
                 }
                 else if (opcionSeleccionada.equals("Porifero")){
-                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'porifero'";
-                    Statement statement = conn.createStatement();
-                    ResultSet resultSet = statement.executeQuery(sql);
-                    cantidad = resultSet.getInt("cantidad");
-                    cantidadPorTipo.setText(Integer.toString(cantidad));
-                    // Cerrar los recursos
-                    resultSet.close();
-                    statement.close();
-                    conn.close();
+                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Porifero'";
+                                    Statement statement = conn.createStatement();
+                                    ResultSet resultSet = statement.executeQuery(sql);
+                                    cantidad = resultSet.getInt("cantidad");
+                                    cantidadPorTipo.setText("0");
+                                    cantidadPorTipo.setText(Integer.toString(cantidad));
+                                    // Cerrar los recursos
+                                    resultSet.close();
+                                    statement.close();
+                                    conn.close();
                 }
                 else if (opcionSeleccionada.equals("Celentereo")){
-                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'celentereo'";
-                    Statement statement = conn.createStatement();
-                    ResultSet resultSet = statement.executeQuery(sql);
-                    cantidad = resultSet.getInt("cantidad");
-                    cantidadPorTipo.setText(Integer.toString(cantidad));
-                    // Cerrar los recursos
-                    resultSet.close();
-                    statement.close();
-                    conn.close();
+                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Celentereo'";
+                                    Statement statement = conn.createStatement();
+                                    ResultSet resultSet = statement.executeQuery(sql);
+                                    cantidad = resultSet.getInt("cantidad");
+                                    cantidadPorTipo.setText("0");
+                                    cantidadPorTipo.setText(Integer.toString(cantidad));
+                                    // Cerrar los recursos
+                                    resultSet.close();
+                                    statement.close();
+                                    conn.close();
                 }
-
+             } catch (SQLException ex) {
+                    // Manejar el error en caso de que ocurra una excepción
+                    ex.printStackTrace();
+        }
             
-            } catch (SQLException e) {
-                e.printStackTrace();
-                // Manejo de excepciones
-            }
         } else{
             // Si no está seleccionado, ocultar el jLabel cantidadPorTipo
             tipoAnimal.setVisible(false);
