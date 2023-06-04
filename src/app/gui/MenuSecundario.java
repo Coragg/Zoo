@@ -51,8 +51,8 @@ public class MenuSecundario extends javax.swing.JFrame {
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
         jCheckBox4 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         cantidadPorTipo = new javax.swing.JLabel();
         tipoAnimal = new javax.swing.JComboBox<>();
@@ -97,18 +97,18 @@ public class MenuSecundario extends javax.swing.JFrame {
         CHKreporte.add(jCheckBox4);
         jCheckBox4.setText("Porcentaje de cada grupo o tipo de animales del zoológico");
 
-        jCheckBox5.setBackground(new java.awt.Color(0, 102, 255));
-        CHKreporte.add(jCheckBox5);
-        jCheckBox5.setText("Mostrar la lista de animales con sus caracteristicas ");
-        jCheckBox5.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBox3.setBackground(new java.awt.Color(0, 102, 255));
+        CHKreporte.add(jCheckBox3);
+        jCheckBox3.setText("Mostrar la lista de animales con sus caracteristicas ");
+        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox5ActionPerformed(evt);
+                jCheckBox3ActionPerformed(evt);
             }
         });
 
-        jCheckBox6.setBackground(new java.awt.Color(0, 102, 255));
-        CHKreporte.add(jCheckBox6);
-        jCheckBox6.setText("Realizar búsqueda del animal por nombre");
+        jCheckBox5.setBackground(new java.awt.Color(0, 102, 255));
+        CHKreporte.add(jCheckBox5);
+        jCheckBox5.setText("Realizar búsqueda del animal por nombre");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -119,8 +119,8 @@ public class MenuSecundario extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jCheckBox1)
                     .addComponent(jCheckBox2)
+                    .addComponent(jCheckBox3)
                     .addComponent(jCheckBox5)
-                    .addComponent(jCheckBox6)
                     .addComponent(jCheckBox4))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -132,17 +132,18 @@ public class MenuSecundario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jCheckBox2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox5)
+                .addComponent(jCheckBox3)
                 .addGap(12, 12, 12)
                 .addComponent(jCheckBox4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox6)
+                .addComponent(jCheckBox5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         cantidadPorTipo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         tipoAnimal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mamifero", "Ave", "Pez", "Anfibio", "Reptil", "Antropodo", "Molusco", "Equinodermo", "Gusano", "Porifero", "Celentereo" }));
+        tipoAnimal.setFocusable(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -201,9 +202,9 @@ public class MenuSecundario extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(92, 92, 92)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap())
+                .addGap(15, 15, 15))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -214,7 +215,7 @@ public class MenuSecundario extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -229,136 +230,292 @@ public class MenuSecundario extends javax.swing.JFrame {
                 String opcionSeleccionada = tipoAnimal.getSelectedItem().toString();
 
                 if (opcionSeleccionada.equals("Mamifero")){
-                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Mamifero'";
-                    Statement statement = conn.createStatement();
-                    ResultSet resultSet = statement.executeQuery(sql);
-                    cantidad = resultSet.getInt("cantidad");
-                    cantidadPorTipo.setText("0");
-                    cantidadPorTipo.setText(Integer.toString(cantidad));
-                    // Cerrar los recursos
-                    resultSet.close();
-                    statement.close();
-                    conn.close();
+                    if(jCheckBox1.isSelected() == true){
+                        String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Mamifero'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("cantidad");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
+                    else if(jCheckBox2.isSelected() == true){
+                        String sql = "SELECT AVG(peso) AS promedio FROM animalesZoo WHERE tipo = 'Mamifero'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("promedio");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
+                    
+                    
                 }
                 else if (opcionSeleccionada.equals("Ave")){
-                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Ave'";
-                    Statement statement = conn.createStatement();
-                    ResultSet resultSet = statement.executeQuery(sql);
-                    cantidad = resultSet.getInt("cantidad");
-                    cantidadPorTipo.setText("0");
-                    cantidadPorTipo.setText(Integer.toString(cantidad));
-                    // Cerrar los recursos
-                    resultSet.close();
-                    statement.close();
-                    conn.close();
+                    if(jCheckBox1.isSelected() == true){
+                        String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Ave'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("cantidad");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
+                    else if(jCheckBox2.isSelected() == true){
+                        String sql = "SELECT AVG(peso) AS promedio FROM animalesZoo WHERE tipo = 'Ave'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("promedio");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
                 }
                 else if (opcionSeleccionada.equals("Pez")){
-                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Pez'";
-                                    Statement statement = conn.createStatement();
-                                    ResultSet resultSet = statement.executeQuery(sql);
-                                    cantidad = resultSet.getInt("cantidad");
-                                    cantidadPorTipo.setText("0");
-                                    cantidadPorTipo.setText(Integer.toString(cantidad));
-                                    // Cerrar los recursos
-                                    resultSet.close();
-                                    statement.close();
-                                    conn.close();
+                    if(jCheckBox1.isSelected() == true){
+                        String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Pez'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("cantidad");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
+                    else if(jCheckBox2.isSelected() == true){
+                        String sql = "SELECT AVG(peso) AS promedio FROM animalesZoo WHERE tipo = 'Pez'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("promedio");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
                 }
                 else if (opcionSeleccionada.equals("Anfibio")){
-                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Anfibio'";
-                                    Statement statement = conn.createStatement();
-                                    ResultSet resultSet = statement.executeQuery(sql);
-                                    cantidad = resultSet.getInt("cantidad");
-                                    cantidadPorTipo.setText("0");
-                                    cantidadPorTipo.setText(Integer.toString(cantidad));
-                                    // Cerrar los recursos
-                                    resultSet.close();
-                                    statement.close();
-                                    conn.close();
+                    if(jCheckBox1.isSelected() == true){
+                        String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Anfibio'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("cantidad");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
+                    else if(jCheckBox2.isSelected() == true){
+                        String sql = "SELECT AVG(peso) AS promedio FROM animalesZoo WHERE tipo = 'Anfibio'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("promedio");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
                 }
                 else if (opcionSeleccionada.equals("Reptil")){
-                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Reptil'";
-                                    Statement statement = conn.createStatement();
-                                    ResultSet resultSet = statement.executeQuery(sql);
-                                    cantidad = resultSet.getInt("cantidad");
-                                    cantidadPorTipo.setText("0");
-                                    cantidadPorTipo.setText(Integer.toString(cantidad));
-                                    // Cerrar los recursos
-                                    resultSet.close();
-                                    statement.close();
-                                    conn.close();
+                    if(jCheckBox1.isSelected() == true){
+                        String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Reptil'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("cantidad");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
+                    else if(jCheckBox2.isSelected() == true){
+                        String sql = "SELECT AVG(peso) AS promedio FROM animalesZoo WHERE tipo = 'Reptil'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("promedio");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
                 }
                 else if (opcionSeleccionada.equals("Antropodo")){
-                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Antropodo'";
-                                    Statement statement = conn.createStatement();
-                                    ResultSet resultSet = statement.executeQuery(sql);
-                                    cantidad = resultSet.getInt("cantidad");
-                                    cantidadPorTipo.setText("0");
-                                    cantidadPorTipo.setText(Integer.toString(cantidad));
-                                    // Cerrar los recursos
-                                    resultSet.close();
-                                    statement.close();
-                                    conn.close();
+                    if(jCheckBox1.isSelected() == true){
+                        String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Antropodo'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("cantidad");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
+                    else if(jCheckBox2.isSelected() == true){
+                        String sql = "SELECT AVG(peso) AS promedio FROM animalesZoo WHERE tipo = 'Antropodo'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("promedio");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
                 }
                 else if (opcionSeleccionada.equals("Molusco")){
-                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Molusco'";
-                                    Statement statement = conn.createStatement();
-                                    ResultSet resultSet = statement.executeQuery(sql);
-                                    cantidad = resultSet.getInt("cantidad");
-                                    cantidadPorTipo.setText("0");
-                                    cantidadPorTipo.setText(Integer.toString(cantidad));
-                                    // Cerrar los recursos
-                                    resultSet.close();
-                                    statement.close();
-                                    conn.close();
+                    if(jCheckBox1.isSelected() == true){
+                        String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Molusco'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("cantidad");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
+                    else if(jCheckBox2.isSelected() == true){
+                        String sql = "SELECT AVG(peso) AS promedio FROM animalesZoo WHERE tipo = 'Molusco'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("promedio");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
                 }
                 else if (opcionSeleccionada.equals("Equinodermo")){
-                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Equinodermo'";
-                                    Statement statement = conn.createStatement();
-                                    ResultSet resultSet = statement.executeQuery(sql);
-                                    cantidad = resultSet.getInt("cantidad");
-                                    cantidadPorTipo.setText("0");
-                                    cantidadPorTipo.setText(Integer.toString(cantidad));
-                                    // Cerrar los recursos
-                                    resultSet.close();
-                                    statement.close();
-                                    conn.close();
+                    if(jCheckBox1.isSelected() == true){
+                        String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Equinodermo'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("cantidad");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
+                    else if(jCheckBox2.isSelected() == true){
+                        String sql = "SELECT AVG(peso) AS promedio FROM animalesZoo WHERE tipo = 'Equinodermo'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("promedio");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
                 }
                 else if (opcionSeleccionada.equals("Gusano")){
-                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Gusano'";
-                                    Statement statement = conn.createStatement();
-                                    ResultSet resultSet = statement.executeQuery(sql);
-                                    cantidad = resultSet.getInt("cantidad");
-                                    cantidadPorTipo.setText("0");
-                                    cantidadPorTipo.setText(Integer.toString(cantidad));
-                                    // Cerrar los recursos
-                                    resultSet.close();
-                                    statement.close();
-                                    conn.close();
+                    if(jCheckBox1.isSelected() == true){
+                        String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Gusano'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("cantidad");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
+                    else if(jCheckBox2.isSelected() == true){
+                        String sql = "SELECT AVG(peso) AS promedio FROM animalesZoo WHERE tipo = 'Gusano'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("promedio");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
                 }
                 else if (opcionSeleccionada.equals("Porifero")){
-                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Porifero'";
-                                    Statement statement = conn.createStatement();
-                                    ResultSet resultSet = statement.executeQuery(sql);
-                                    cantidad = resultSet.getInt("cantidad");
-                                    cantidadPorTipo.setText("0");
-                                    cantidadPorTipo.setText(Integer.toString(cantidad));
-                                    // Cerrar los recursos
-                                    resultSet.close();
-                                    statement.close();
-                                    conn.close();
+                    if(jCheckBox1.isSelected() == true){
+                        String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Porifero'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("cantidad");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
+                    else if(jCheckBox2.isSelected() == true){
+                        String sql = "SELECT AVG(peso) AS promedio FROM animalesZoo WHERE tipo = 'Porifero'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("promedio");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
                 }
                 else if (opcionSeleccionada.equals("Celentereo")){
-                                    String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Celentereo'";
-                                    Statement statement = conn.createStatement();
-                                    ResultSet resultSet = statement.executeQuery(sql);
-                                    cantidad = resultSet.getInt("cantidad");
-                                    cantidadPorTipo.setText("0");
-                                    cantidadPorTipo.setText(Integer.toString(cantidad));
-                                    // Cerrar los recursos
-                                    resultSet.close();
-                                    statement.close();
-                                    conn.close();
+                    if(jCheckBox1.isSelected() == true){
+                        String sql = "SELECT tipo, COUNT(*) AS cantidad FROM animalesZoo WHERE tipo = 'Celentereo'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("cantidad");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
+                    else if(jCheckBox2.isSelected() == true){
+                        String sql = "SELECT AVG(peso) AS promedio FROM animalesZoo WHERE tipo = 'Celentereo'";
+                        Statement statement = conn.createStatement();
+                        ResultSet resultSet = statement.executeQuery(sql);
+                        cantidad = resultSet.getInt("promedio");
+                        cantidadPorTipo.setText("0");
+                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        // Cerrar los recursos
+                        resultSet.close();
+                        statement.close();
+                        conn.close();
+                    }
                 }
              } catch (SQLException ex) {
                     // Manejar el error en caso de que ocurra una excepción
@@ -368,7 +525,11 @@ public class MenuSecundario extends javax.swing.JFrame {
     
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
         // TODO add your handling code here:
-        
+        if(jCheckBox2.isSelected() == true){
+            // Si no está seleccionado, ocultar el jLabel cantidadPorTipo
+            tipoAnimal.setVisible(true);
+            cantidadPorTipo.setVisible(true);
+    }
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -389,15 +550,24 @@ public class MenuSecundario extends javax.swing.JFrame {
             cantidadPorTipo.setVisible(true);
             
             
-        } else{
-            // Si no está seleccionado, ocultar el jLabel cantidadPorTipo
-            tipoAnimal.setVisible(false);
-    }
+        } 
+        
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
-    private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
+    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox5ActionPerformed
+        if(jCheckBox3.isSelected()== true){
+            tipoAnimal.setVisible(false); // Manejo de excepciones
+            cantidadPorTipo.setVisible(false);
+            jPanel3.setVisible(false);
+            tablaAnimales tablaAnimales = new tablaAnimales();
+            tablaAnimales.setVisible(true);
+            this.dispose();
+            
+            
+            
+        }
+    }//GEN-LAST:event_jCheckBox3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -440,9 +610,9 @@ public class MenuSecundario extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
