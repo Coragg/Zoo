@@ -44,26 +44,28 @@ public class MenuPrincipal extends javax.swing.JFrame {
             model.addColumn("color");
             model.addColumn("peso");
             model.addColumn("tipo");
-            model.addColumn("categoria");
+            model.addColumn("Categoria");
+            model.addColumn("Atributo");
             // Añadir más columnas según sea necesario
 
             // Recorrer el resultado de la consulta y agregar los datos al modelo de tabla
             while (resultSet.next()) {
                 // Obtener los valores de cada columna en una fila
-                Object[] row = new Object[6]; // Cambiar el tamaño según el número de columnas
+                Object[] row = new Object[7]; // Cambiar el tamaño según el número de columnas
                 row[0] = resultSet.getObject("Id");
                 row[1] = resultSet.getObject("Nombre");
                 row[2] = resultSet.getObject("Color");
                 row[3] = resultSet.getObject("Peso");
                 row[4] = resultSet.getObject("Tipo");
+                row[5] = resultSet.getObject("Categoria");
                 // Añadir más columnas según sea necesario
                 
                 // Determinar el valor de la columna "categoria" en función del valor de "tipo"
                 String tipo = resultSet.getString("tipo");
                 if (tipo.equals("Mamifero")) {
-                    row[5] = resultSet.getObject("cantidadPatas");
+                    row[6] = resultSet.getObject("cantidadPatas");
                 } else if (tipo.equals("Equinodermo")) {
-                    row[5] = resultSet.getObject("erizo_o_estrella");
+                    row[6] = resultSet.getObject("erizo_o_estrella");
                 }
     
 
@@ -199,21 +201,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel1Layout.createSequentialGroup()
-                .addGap(104, 104, 104)
-                .addComponent(jButton5)
-                .addGap(48, 48, 48)
-                .addComponent(jButton4)
-                .addGap(46, 46, 46)
-                .addComponent(jButton2)
-                .addGap(42, 42, 42)
-                .addComponent(jButton3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jButton5)
+                        .addGap(48, 48, 48)
+                        .addComponent(jButton4)
+                        .addGap(46, 46, 46)
+                        .addComponent(jButton2)
+                        .addGap(42, 42, 42)
+                        .addComponent(jButton3))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
