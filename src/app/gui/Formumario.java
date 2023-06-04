@@ -18,7 +18,8 @@ public class Formumario extends javax.swing.JFrame {
     public String nombre;
     private String tipo;
     private String categoria;
-    private double pesoMinimo
+    private double  pesoMinimo;
+    private double pesoMaximo;
     
     public Formumario() {
         initComponents();
@@ -48,11 +49,15 @@ public class Formumario extends javax.swing.JFrame {
                 String nombre = rs.getString("nombre");
                 String tipo = rs.getString("tipo");
                 String categoria = rs.getString("categoria");
+                double minimo = rs.getDouble("min");
+                double maximo = rs.getDouble("max");
                 
                 this.id = id;
                 this.nombre = nombre;
                 this.tipo = tipo;
                 this.categoria = categoria;
+                this.pesoMinimo = minimo;
+                this.pesoMaximo = maximo;
                 
 
                 jTextNombreAnimal.setText(this.nombre);
