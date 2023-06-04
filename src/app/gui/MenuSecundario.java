@@ -115,6 +115,11 @@ public class MenuSecundario extends javax.swing.JFrame {
         jCheckBox5.setBackground(new java.awt.Color(0, 102, 255));
         CHKreporte.add(jCheckBox5);
         jCheckBox5.setText("Realizar búsqueda del animal por nombre");
+        jCheckBox5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -723,6 +728,13 @@ public class MenuSecundario extends javax.swing.JFrame {
             cantidadPorTipo.setText("Elija una opcion");
         }
     }//GEN-LAST:event_jCheckBox4ActionPerformed
+
+    private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
+        // TODO add your handling code here:
+        BusquedaPorNombre busqueda = new BusquedaPorNombre();
+        busqueda.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jCheckBox5ActionPerformed
 
     /**
      * @param args the command line arguments
