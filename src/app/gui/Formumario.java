@@ -495,9 +495,13 @@ public class Formumario extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Tiene que colocar un valor mayor a 0.");
         }
         
-        /*if("Mamifero".equals(this.tipo)) { 
+        if("Mamifero".equals(this.tipo)) { 
 
-        }*/
+        }else if("Ave".equals(this.tipo)){
+            
+        }else if("Pez".equals(this.tipo)){
+
+        }
         
     }//GEN-LAST:event_jButGuardarActionPerformed
 
