@@ -49,19 +49,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
             // Recorrer el resultado de la consulta y agregar los datos al modelo de tabla
             while (resultSet.next()) {
                 // Obtener los valores de cada columna en una fila
-                Object[] row = new Object[7]; // Cambiar el tamaño según el número de columnas
-                row[0] = resultSet.getObject("nombre");
-                row[1] = resultSet.getObject("color");
-                row[2] = resultSet.getObject("peso");
-                row[3] = resultSet.getObject("tipo");
+                Object[] row = new Object[6]; // Cambiar el tamaño según el número de columnas
+                row[0] = resultSet.getObject("Id");
+                row[1] = resultSet.getObject("Nombre");
+                row[2] = resultSet.getObject("Color");
+                row[3] = resultSet.getObject("Peso");
+                row[4] = resultSet.getObject("Tipo");
                 // Añadir más columnas según sea necesario
                 
                 // Determinar el valor de la columna "categoria" en función del valor de "tipo"
                 String tipo = resultSet.getString("tipo");
                 if (tipo.equals("Mamifero")) {
-                    row[4] = resultSet.getObject("cantidadPatas");
+                    row[5] = resultSet.getObject("cantidadPatas");
                 } else if (tipo.equals("Equinodermo")) {
-                    row[4] = resultSet.getObject("erizo_o_estrella");
+                    row[5] = resultSet.getObject("erizo_o_estrella");
                 }
     
 
@@ -138,10 +139,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setEnabled(false);
         jScrollPane1.setViewportView(jTable1);
 
         jButton2.setText("Cerrar Sesión");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -149,7 +151,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         jButton3.setText("Cerrar Programa");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -158,7 +160,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jButton4.setText("Reporte Animal");
         jButton4.setToolTipText("");
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -166,7 +168,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         jButton5.setText("Crear Animal");
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
