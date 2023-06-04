@@ -1,17 +1,20 @@
 package app.gui;
 
+import app.bd.Conexion;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Random;
 
 
 
-/**
- *
- * @author v_e_c
- */
 public class Formumario extends javax.swing.JFrame {
 
     /**
@@ -21,6 +24,46 @@ public class Formumario extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Formulario de animales");
         this.setLocationRelativeTo(null);
+
+        Conexion conexion = new Conexion();
+        Connection connection = conexion.getConexion();
+
+        // Generar un número aleatorio para la id
+        Random random = new Random();
+        int numeroAleatorio = random.nextInt(129) + 1;
+
+        try {
+            // Crear un objeto PreparedStatement para ejecutar la consulta SQL
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM animal WHERE id=?");
+
+            // Establecer el valor de la id en el objeto PreparedStatement
+            ps.setInt(1, numeroAleatorio);
+
+            // Ejecutar la consulta SQL
+            ResultSet rs = ps.executeQuery();
+
+            // Obtener los resultados
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String nombre = rs.getString("nombre");
+                String tipo = rs.getString("tipo");
+                String categoria = rs.getString("categoria");
+
+                // Mostrar los resultados
+                System.out.println("ID: " + id);
+                System.out.println("Nombre: " + nombre);
+                System.out.println("Tipo: " + tipo);
+                System.out.println("Categoria: " + categoria);
+            }
+
+            // Cerrar el objeto ResultSet, el objeto PreparedStatement y la conexión
+            rs.close();
+            ps.close();
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     /**
@@ -41,20 +84,20 @@ public class Formumario extends javax.swing.JFrame {
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTxtNombreAnimal = new javax.swing.JTextField();
+        jTxIdAnimal = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jTxtPeso = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextNombreAnimal = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField15 = new javax.swing.JTextField();
+        jTextColor = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -99,10 +142,10 @@ public class Formumario extends javax.swing.JFrame {
 
         jLabel1.setText("Nombre:");
 
-        jTxtNombreAnimal.setEnabled(false);
-        jTxtNombreAnimal.addActionListener(new java.awt.event.ActionListener() {
+        jTxIdAnimal.setEnabled(false);
+        jTxIdAnimal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTxtNombreAnimalActionPerformed(evt);
+                jTxIdAnimalActionPerformed(evt);
             }
         });
 
@@ -135,11 +178,11 @@ public class Formumario extends javax.swing.JFrame {
 
         jLabel3.setText("ID:");
 
-        jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextField1.setEnabled(false);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextNombreAnimal.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextNombreAnimal.setEnabled(false);
+        jTextNombreAnimal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextNombreAnimalActionPerformed(evt);
             }
         });
 
@@ -167,9 +210,14 @@ public class Formumario extends javax.swing.JFrame {
 
         jLabel6.setText("imagen");
 
-        jTextField15.addActionListener(new java.awt.event.ActionListener() {
+        jTextColor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField15ActionPerformed(evt);
+                jTextColorActionPerformed(evt);
+            }
+        });
+        jTextColor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextColorKeyTyped(evt);
             }
         });
 
@@ -234,6 +282,11 @@ public class Formumario extends javax.swing.JFrame {
         jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Erizo", "Estrella" }));
 
         jTextField5.setText("2");
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
         jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField5KeyTyped(evt);
@@ -258,7 +311,7 @@ public class Formumario extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(78, 78, 78)
-                                .addComponent(jTxtNombreAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTxIdAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(64, 64, 64)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -293,8 +346,8 @@ public class Formumario extends javax.swing.JFrame {
                                     .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTxtPeso)
-                                    .addComponent(jTextField1)
-                                    .addComponent(jTextField15)
+                                    .addComponent(jTextNombreAnimal)
+                                    .addComponent(jTextColor)
                                     .addComponent(jTextField3)
                                     .addComponent(jComboBox7, 0, 152, Short.MAX_VALUE))
                                 .addGap(64, 64, 64)
@@ -331,7 +384,7 @@ public class Formumario extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTxtNombreAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTxIdAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11)
                             .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -347,7 +400,7 @@ public class Formumario extends javax.swing.JFrame {
                         .addGap(3, 3, 3)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextNombreAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12)
                             .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(15, 15, 15)
@@ -358,7 +411,7 @@ public class Formumario extends javax.swing.JFrame {
                             .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(15, 15, 15)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
                             .addComponent(jLabel14)
                             .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -409,9 +462,9 @@ public class Formumario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTxtNombreAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtNombreAnimalActionPerformed
+    private void jTxIdAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxIdAnimalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTxtNombreAnimalActionPerformed
+    }//GEN-LAST:event_jTxIdAnimalActionPerformed
 
     private void BtSalir(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSalir
         // TODO add your handling code here:
@@ -443,13 +496,13 @@ public class Formumario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextNombreAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNombreAnimalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextNombreAnimalActionPerformed
 
-    private void jTextField15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField15ActionPerformed
+    private void jTextColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextColorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField15ActionPerformed
+    }//GEN-LAST:event_jTextColorActionPerformed
 
     private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
         // TODO add your handling code here:
@@ -485,6 +538,17 @@ public class Formumario extends javax.swing.JFrame {
             evt.consume();
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jTextField10KeyTyped
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jTextColorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextColorKeyTyped
+        // TODO add your handling code here:
+        char limitarCaracteres = evt.getKeyChar();
+        if((limitarCaracteres<'a'||limitarCaracteres>'z') && (limitarCaracteres<'A'||limitarCaracteres>'Z') && (limitarCaracteres<' '||limitarCaracteres>' '))evt.consume();
+        
+    }//GEN-LAST:event_jTextColorKeyTyped
 
     /**
      * @param args the command line arguments
@@ -559,15 +623,15 @@ public class Formumario extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextColor;
     private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField9;
-    private javax.swing.JTextField jTxtNombreAnimal;
+    private javax.swing.JTextField jTextNombreAnimal;
+    private javax.swing.JTextField jTxIdAnimal;
     private javax.swing.JTextField jTxtPeso;
     // End of variables declaration//GEN-END:variables
 }
