@@ -21,7 +21,7 @@ public class Formumario extends javax.swing.JFrame {
     private double  pesoMinimo;
     private double pesoMaximo;
     
-    //private Map<String, String> animalImagenes = new HashMap<>();
+   
 
     public Formumario() {
         initComponents();
@@ -104,7 +104,7 @@ public class Formumario extends javax.swing.JFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
         jTextTipo = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        jLabelimagen = new javax.swing.JLabel();
         jTextColor = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jTextNumeroPatas = new javax.swing.JTextField();
@@ -217,7 +217,7 @@ public class Formumario extends javax.swing.JFrame {
 
         jTextTipo.setEnabled(false);
 
-        jLabel6.setText("imagen");
+        jLabelimagen.setText("imagen");
 
         jTextColor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -380,7 +380,7 @@ public class Formumario extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jRadioButton2)
                         .addComponent(jRadioButton1)
-                        .addComponent(jLabel6))
+                        .addComponent(jLabelimagen))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton4)
                         .addGap(50, 50, 50)))
@@ -405,7 +405,7 @@ public class Formumario extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jRadioButton2)
                         .addGap(110, 110, 110)
-                        .addComponent(jLabel6))
+                        .addComponent(jLabelimagen))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -682,9 +682,9 @@ public class Formumario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelimagen;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
