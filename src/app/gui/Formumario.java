@@ -53,6 +53,7 @@ public class Formumario extends javax.swing.JFrame {
                 String categoria = rs.getString("categoria");
                 double minimo = rs.getDouble("min");
                 double maximo = rs.getDouble("max");
+                // poner datos en variables globales
                 this.id = id;
                 this.nombre = nombre;
                 this.tipo = tipo;
@@ -487,23 +488,28 @@ public class Formumario extends javax.swing.JFrame {
     private void jButGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButGuardarActionPerformed
         // TODO add your handling code here:
         // ESTE BOTÓN GENERARÁ EL ANIMAL ALEATORIO.
-        
+        Conexion conexion = new Conexion();
+        Connection connection = conexion.getConexion();
+
         if(jTxtPeso.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Es obligatorio colocar un valor en el peso.");
         } else {
 
             double peso = Double.parseDouble(jTxtPeso.getText());
-            if(peso <= 0)
-                JOptionPane.showMessageDialog(null, "Tiene que colocar un valor mayor a 0.");
+
+            if(peso < this.pesoMinimo || peso > this.pesoMaximo)
+                JOptionPane.showMessageDialog(null, "Tiene que colocar un valor mayor a " + pesoMinimo + " y menor a " + pesoMaximo);
+
             else if("Mamifero".equals(this.tipo)) {
 
 
                 if(jTextNumeroPatas.getText().equals(""))
                     JOptionPane.showMessageDialog(null, "Tiene que ingresar el numero de patas del animal.");
 
-                else if((this.nombre != "Delfin" || this.nombre != "Ballena" ) &&  Integer.parseInt(jTextNumeroPatas.getText()) < 1)
+                else if((this.nombre != "Delfin" && this.nombre != "Ballena") && Integer.parseInt(jTextNumeroPatas.getText()) < 1  ){
                     JOptionPane.showMessageDialog(null, "Tiene que ser mayor 0 a  el numero de patas.");
-                else{
+
+                }else{
                     System.out.println("Weee, mandando datos a la base de datos. Sabia que no eras un idiota ");
                 }
 
