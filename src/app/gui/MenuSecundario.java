@@ -146,6 +146,8 @@ public class MenuSecundario extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         cantidadPorTipo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         tipoAnimal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mamifero", "Ave", "Pez", "Anfibio", "Reptil", "Antropodo", "Molusco", "Equinodermo", "Gusano", "Porifero", "Celentereo" }));
@@ -254,7 +256,7 @@ public class MenuSecundario extends javax.swing.JFrame {
                         ResultSet resultSet = statement.executeQuery(sql);
                         cantidad = resultSet.getInt("promedio");
                         cantidadPorTipo.setText("0");
-                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        cantidadPorTipo.setText(Integer.toString(cantidad)+ " kg");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -294,7 +296,7 @@ public class MenuSecundario extends javax.swing.JFrame {
                         ResultSet resultSet = statement.executeQuery(sql);
                         cantidad = resultSet.getInt("promedio");
                         cantidadPorTipo.setText("0");
-                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        cantidadPorTipo.setText(Integer.toString(cantidad)+ " kg");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -332,7 +334,7 @@ public class MenuSecundario extends javax.swing.JFrame {
                         ResultSet resultSet = statement.executeQuery(sql);
                         cantidad = resultSet.getInt("promedio");
                         cantidadPorTipo.setText("0");
-                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        cantidadPorTipo.setText(Integer.toString(cantidad)+ " kg");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -370,7 +372,7 @@ public class MenuSecundario extends javax.swing.JFrame {
                         ResultSet resultSet = statement.executeQuery(sql);
                         cantidad = resultSet.getInt("promedio");
                         cantidadPorTipo.setText("0");
-                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        cantidadPorTipo.setText(Integer.toString(cantidad)+ " kg");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -408,7 +410,7 @@ public class MenuSecundario extends javax.swing.JFrame {
                         ResultSet resultSet = statement.executeQuery(sql);
                         cantidad = resultSet.getInt("promedio");
                         cantidadPorTipo.setText("0");
-                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        cantidadPorTipo.setText(Integer.toString(cantidad)+ " kg");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -446,7 +448,7 @@ public class MenuSecundario extends javax.swing.JFrame {
                         ResultSet resultSet = statement.executeQuery(sql);
                         cantidad = resultSet.getInt("promedio");
                         cantidadPorTipo.setText("0");
-                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        cantidadPorTipo.setText(Integer.toString(cantidad)+ " kg");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -484,7 +486,7 @@ public class MenuSecundario extends javax.swing.JFrame {
                         ResultSet resultSet = statement.executeQuery(sql);
                         cantidad = resultSet.getInt("promedio");
                         cantidadPorTipo.setText("0");
-                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        cantidadPorTipo.setText(Integer.toString(cantidad)+ " kg");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -522,7 +524,7 @@ public class MenuSecundario extends javax.swing.JFrame {
                         ResultSet resultSet = statement.executeQuery(sql);
                         cantidad = resultSet.getInt("promedio");
                         cantidadPorTipo.setText("0");
-                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        cantidadPorTipo.setText(Integer.toString(cantidad)+ " kg");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -560,7 +562,7 @@ public class MenuSecundario extends javax.swing.JFrame {
                         ResultSet resultSet = statement.executeQuery(sql);
                         cantidad = resultSet.getInt("promedio");
                         cantidadPorTipo.setText("0");
-                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        cantidadPorTipo.setText(Integer.toString(cantidad)+ " kg");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -598,7 +600,7 @@ public class MenuSecundario extends javax.swing.JFrame {
                         ResultSet resultSet = statement.executeQuery(sql);
                         cantidad = resultSet.getInt("promedio");
                         cantidadPorTipo.setText("0");
-                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        cantidadPorTipo.setText(Integer.toString(cantidad)+ " kg");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -636,7 +638,7 @@ public class MenuSecundario extends javax.swing.JFrame {
                         ResultSet resultSet = statement.executeQuery(sql);
                         cantidad = resultSet.getInt("promedio");
                         cantidadPorTipo.setText("0");
-                        cantidadPorTipo.setText(Integer.toString(cantidad));
+                        cantidadPorTipo.setText(Integer.toString(cantidad)+ " kg");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -668,6 +670,7 @@ public class MenuSecundario extends javax.swing.JFrame {
             tipoAnimal.setVisible(true);
             cantidadPorTipo.setVisible(true);
             jPanel3.setVisible(true);
+            cantidadPorTipo.setText("Elija una opcion");
     }
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
@@ -688,6 +691,7 @@ public class MenuSecundario extends javax.swing.JFrame {
             tipoAnimal.setVisible(true); // Manejo de excepciones
             cantidadPorTipo.setVisible(true);
             jPanel3.setVisible(true);
+            cantidadPorTipo.setText("Elija una opcion");
             
             
         } 
@@ -716,6 +720,7 @@ public class MenuSecundario extends javax.swing.JFrame {
             tipoAnimal.setVisible(true);
             cantidadPorTipo.setVisible(true);
             jPanel3.setVisible(true);
+            cantidadPorTipo.setText("Elija una opcion");
         }
     }//GEN-LAST:event_jCheckBox4ActionPerformed
 
