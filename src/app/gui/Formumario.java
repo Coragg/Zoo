@@ -18,7 +18,7 @@ public class Formumario extends javax.swing.JFrame {
     public String nombre;
     private String tipo;
     private String categoria;
-    
+    private double pesoMinimo
     
     public Formumario() {
         initComponents();
@@ -54,11 +54,9 @@ public class Formumario extends javax.swing.JFrame {
                 this.tipo = tipo;
                 this.categoria = categoria;
                 
-                // Mostrar los resultados
-                System.out.println("ID: " + this.id);
+
                 jTextNombreAnimal.setText(this.nombre);
-                System.out.println("Tipo: " + this.tipo);
-                System.out.println("Categoria: " + this.categoria);
+
             }
 
             // Cerrar el objeto ResultSet, el objeto PreparedStatement y la conexión
