@@ -21,6 +21,8 @@ public class Formumario extends javax.swing.JFrame {
     private double  pesoMinimo;
     private double pesoMaximo;
     
+    //private Map<String, String> animalImagenes = new HashMap<>();
+
     public Formumario() {
         initComponents();
         this.setTitle("Formulario de animales");
