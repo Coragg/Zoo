@@ -51,8 +51,8 @@ public class MenuSecundario extends javax.swing.JFrame {
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
         jCheckBox4 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         cantidadPorTipo = new javax.swing.JLabel();
         tipoAnimal = new javax.swing.JComboBox<>();
@@ -97,18 +97,18 @@ public class MenuSecundario extends javax.swing.JFrame {
         CHKreporte.add(jCheckBox4);
         jCheckBox4.setText("Porcentaje de cada grupo o tipo de animales del zoológico");
 
-        jCheckBox5.setBackground(new java.awt.Color(0, 102, 255));
-        CHKreporte.add(jCheckBox5);
-        jCheckBox5.setText("Mostrar la lista de animales con sus caracteristicas ");
-        jCheckBox5.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBox3.setBackground(new java.awt.Color(0, 102, 255));
+        CHKreporte.add(jCheckBox3);
+        jCheckBox3.setText("Mostrar la lista de animales con sus caracteristicas ");
+        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox5ActionPerformed(evt);
+                jCheckBox3ActionPerformed(evt);
             }
         });
 
-        jCheckBox6.setBackground(new java.awt.Color(0, 102, 255));
-        CHKreporte.add(jCheckBox6);
-        jCheckBox6.setText("Realizar búsqueda del animal por nombre");
+        jCheckBox5.setBackground(new java.awt.Color(0, 102, 255));
+        CHKreporte.add(jCheckBox5);
+        jCheckBox5.setText("Realizar búsqueda del animal por nombre");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -119,8 +119,8 @@ public class MenuSecundario extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jCheckBox1)
                     .addComponent(jCheckBox2)
+                    .addComponent(jCheckBox3)
                     .addComponent(jCheckBox5)
-                    .addComponent(jCheckBox6)
                     .addComponent(jCheckBox4))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -132,11 +132,11 @@ public class MenuSecundario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jCheckBox2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox5)
+                .addComponent(jCheckBox3)
                 .addGap(12, 12, 12)
                 .addComponent(jCheckBox4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox6)
+                .addComponent(jCheckBox5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -527,6 +527,7 @@ public class MenuSecundario extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(jCheckBox2.isSelected() == true){
             // Si no está seleccionado, ocultar el jLabel cantidadPorTipo
+            tipoAnimal.setVisible(true);
             cantidadPorTipo.setVisible(true);
     }
     }//GEN-LAST:event_jCheckBox2ActionPerformed
@@ -553,9 +554,20 @@ public class MenuSecundario extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
-    private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
+    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox5ActionPerformed
+        if(jCheckBox3.isSelected()== true){
+            tipoAnimal.setVisible(false); // Manejo de excepciones
+            cantidadPorTipo.setVisible(false);
+            jPanel3.setVisible(false);
+            tablaAnimales tablaAnimales = new tablaAnimales();
+            tablaAnimales.setVisible(true);
+            this.dispose();
+            
+            
+            
+        }
+    }//GEN-LAST:event_jCheckBox3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -598,9 +610,9 @@ public class MenuSecundario extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
