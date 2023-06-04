@@ -39,6 +39,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             DefaultTableModel model = new DefaultTableModel();
 
             // Agregar las columnas al modelo de tabla
+            model.addColumn("Id");
             model.addColumn("nombre");
             model.addColumn("color");
             model.addColumn("peso");
