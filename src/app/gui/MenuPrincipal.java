@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 
 
 
+import java.util.Random;
 public class MenuPrincipal extends javax.swing.JFrame {
 
     /**
@@ -39,30 +40,33 @@ public class MenuPrincipal extends javax.swing.JFrame {
             DefaultTableModel model = new DefaultTableModel();
 
             // Agregar las columnas al modelo de tabla
+            model.addColumn("Id");
             model.addColumn("nombre");
             model.addColumn("color");
             model.addColumn("peso");
             model.addColumn("tipo");
-            model.addColumn("categoria");
+            model.addColumn("Categoria");
+            model.addColumn("Atributo");
             // Añadir más columnas según sea necesario
 
             // Recorrer el resultado de la consulta y agregar los datos al modelo de tabla
             while (resultSet.next()) {
                 // Obtener los valores de cada columna en una fila
-                Object[] row = new Object[6]; // Cambiar el tamaño según el número de columnas
+                Object[] row = new Object[7]; // Cambiar el tamaño según el número de columnas
                 row[0] = resultSet.getObject("Id");
                 row[1] = resultSet.getObject("Nombre");
                 row[2] = resultSet.getObject("Color");
                 row[3] = resultSet.getObject("Peso");
                 row[4] = resultSet.getObject("Tipo");
+                row[5] = resultSet.getObject("Categoria");
                 // Añadir más columnas según sea necesario
                 
                 // Determinar el valor de la columna "categoria" en función del valor de "tipo"
                 String tipo = resultSet.getString("tipo");
                 if (tipo.equals("Mamifero")) {
-                    row[5] = resultSet.getObject("cantidadPatas");
+                    row[6] = resultSet.getObject("cantidadPatas");
                 } else if (tipo.equals("Equinodermo")) {
-                    row[5] = resultSet.getObject("erizo_o_estrella");
+                    row[6] = resultSet.getObject("erizo_o_estrella");
                 }
     
 
@@ -186,22 +190,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
-            .addGroup(panel1Layout.createSequentialGroup()
-                .addGap(191, 191, 191)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(jLabel1))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(24, 24, 24)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
                         .addComponent(jButton5)
                         .addGap(48, 48, 48)
                         .addComponent(jButton4)
@@ -209,7 +214,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addComponent(jButton2)
                         .addGap(42, 42, 42)
                         .addComponent(jButton3))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -217,7 +224,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,6 +263,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        Random random = new Random();
+        int numeroAleatorio = random.nextInt(129) + 1;
         Formumario mamifero = new Formumario();
         mamifero.setVisible(true);
         this.dispose();
