@@ -161,6 +161,7 @@ public class Formumario extends javax.swing.JFrame {
 
         jLabel2.setText("Peso:");
 
+        jTxtPeso.setText("fsdfdsfds");
         jTxtPeso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTxtPesoActionPerformed(evt);
