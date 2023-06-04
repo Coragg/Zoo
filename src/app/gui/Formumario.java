@@ -17,14 +17,17 @@ import java.util.Random;
 
 public class Formumario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Mamifero
-     */
+    private int id;
+    public String nombre;
+    private String tipo;
+    private String categoria;
+    
+    
     public Formumario() {
         initComponents();
         this.setTitle("Formulario de animales");
         this.setLocationRelativeTo(null);
-
+        
         Conexion conexion = new Conexion();
         Connection connection = conexion.getConexion();
 
@@ -48,12 +51,17 @@ public class Formumario extends javax.swing.JFrame {
                 String nombre = rs.getString("nombre");
                 String tipo = rs.getString("tipo");
                 String categoria = rs.getString("categoria");
-
+                
+                this.id = id;
+                this.nombre = nombre;
+                this.tipo = tipo;
+                this.categoria = categoria;
+                
                 // Mostrar los resultados
-                System.out.println("ID: " + id);
-                System.out.println("Nombre: " + nombre);
-                System.out.println("Tipo: " + tipo);
-                System.out.println("Categoria: " + categoria);
+                System.out.println("ID: " + this.id);
+                jTextNombreAnimal.setText(this.nombre);
+                System.out.println("Tipo: " + this.tipo);
+                System.out.println("Categoria: " + this.categoria);
             }
 
             // Cerrar el objeto ResultSet, el objeto PreparedStatement y la conexión
@@ -63,6 +71,7 @@ public class Formumario extends javax.swing.JFrame {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        
 
     }
 
@@ -142,6 +151,7 @@ public class Formumario extends javax.swing.JFrame {
 
         jLabel1.setText("Nombre:");
 
+        jTxIdAnimal.setText("1");
         jTxIdAnimal.setEnabled(false);
         jTxIdAnimal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
