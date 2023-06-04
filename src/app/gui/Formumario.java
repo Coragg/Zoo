@@ -58,7 +58,6 @@ public class Formumario extends javax.swing.JFrame {
                 this.categoria = categoria;
                 this.pesoMinimo = minimo;
                 this.pesoMaximo = maximo;
-                
 
                 jTextNombreAnimal.setText(this.nombre);
 
@@ -72,7 +71,6 @@ public class Formumario extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
         
-
     }
 
     /**
@@ -96,7 +94,7 @@ public class Formumario extends javax.swing.JFrame {
         jTxIdAnimal = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jTxtPeso = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jButGuardar = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jTextNombreAnimal = new javax.swing.JTextField();
@@ -172,10 +170,10 @@ public class Formumario extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Guardar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButGuardar.setText("Guardar");
+        jButGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButGuardarActionPerformed(evt);
             }
         });
 
@@ -375,7 +373,7 @@ public class Formumario extends javax.swing.JFrame {
                                     .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(43, 43, 43))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(jButGuardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -454,7 +452,7 @@ public class Formumario extends javax.swing.JFrame {
                             .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(jButGuardar)
                     .addComponent(jButton4))
                 .addContainerGap())
         );
@@ -485,11 +483,23 @@ public class Formumario extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_BtSalir
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButGuardarActionPerformed
         // TODO add your handling code here:
         // ESTE BOTÓN GENERARÁ EL ANIMAL ALEATORIO.
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+        if(jTxtPeso.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Es obligatorio colocar un valor en el peso.");
+        } else {
+            double peso = Double.parseDouble(jTxtPeso.getText());
+            if(peso <= 0)
+                JOptionPane.showMessageDialog(null, "Tiene que colocar un valor mayor a 0.");
+        }
+        
+        /*if("Mamifero".equals(this.tipo)) { 
+
+        }*/
+        
+    }//GEN-LAST:event_jButGuardarActionPerformed
 
     private void jTxtPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtPesoActionPerformed
         // TODO add your handling code here:
@@ -604,7 +614,7 @@ public class Formumario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup VertebradoOinvertebrado;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButGuardar;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
