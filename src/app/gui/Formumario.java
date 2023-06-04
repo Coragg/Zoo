@@ -3,10 +3,7 @@ package app.gui;
 import app.bd.Conexion;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
+import java.awt.event.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -498,7 +495,11 @@ public class Formumario extends javax.swing.JFrame {
     private void jTxtPesoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtPesoKeyTyped
         // TODO add your handling code here:
         char caracteres = evt.getKeyChar();
-        if (caracteres < '0' || caracteres > '9'){
+        if(!Character.isDigit(caracteres) && caracteres != '.' && caracteres != KeyEvent.VK_BACK_SPACE){
+            evt.consume();
+        }
+        // verificacion de un solo decimal
+        if(caracteres == '.' && jTxtPeso.getText().contains(".")){
             evt.consume();
         }
     }//GEN-LAST:event_jTxtPesoKeyTyped
