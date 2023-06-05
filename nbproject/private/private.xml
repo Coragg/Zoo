@@ -3,11 +3,29 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/Nico/Desktop/github/Zoo/src/app/gui/tablaAnimales.java</file>
+            <file>file:/C:/Users/Nico/Desktop/github/Zoo/src/app/gui/Formumario.java</file>
+            <file>file:/C:/Users/Nico/Desktop/github/Zoo/src/app/gui/BusquedaPorNombre.java</file>
+            <file>file:/C:/Users/Nico/Desktop/github/Zoo/src/app/bd/Conexion.java</file>
+            <file>file:/C:/Users/Nico/Desktop/github/Zoo/src/app/gui/MenuPrincipal.java</file>
+            <file>file:/C:/Users/Nico/Desktop/github/Zoo/src/app/gui/MenuSecundario.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/D:/documentos/universidad/paradigmas/tareas/tarea2/Zoo/src/app/gui/tablaAnimales.java</file>
+            <file>file:/D:/documentos/universidad/paradigmas/tareas/tarea2/Zoo/src/app/gui/Formumario.java</file>
+=======
+            <file>file:/C:/Users/maxor/OneDrive/Escritorio/Zoo/Zoo/src/app/bd/Conexion.java</file>
+>>>>>>> 0568881095d42f84fcd2e10ac72c82838791201e
             <file>file:/C:/Users/maxor/OneDrive/Escritorio/Zoo/Zoo/src/app/gui/Login.java</file>
             <file>file:/C:/Users/maxor/OneDrive/Escritorio/Zoo/Zoo/src/app/gui/MenuSecundario.java</file>
             <file>file:/C:/Users/maxor/OneDrive/Escritorio/Zoo/Zoo/src/app/gui/MenuPrincipal.java</file>
             <file>file:/C:/Users/maxor/OneDrive/Escritorio/Zoo/Zoo/src/app/gui/Formumario.java</file>
             <file>file:/C:/Users/maxor/OneDrive/Escritorio/Zoo/Zoo/src/app/Main.java</file>
+>>>>>>> c5d7dbe41c1184f843c06b0c498b01150626d6a8
+>>>>>>> e7d53934db9d4824860d215f7c501c863a7f4d83
         </group>
     </open-files>
 </project-private>

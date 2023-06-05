@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 
 public class Conexion {
 
+<<<<<<< HEAD
 
 
 
@@ -26,11 +27,17 @@ public class Conexion {
 
    //String url = "D:\\documentos\\universidad\\paradigmas\\tareas\\tarea2\\Zoo\\animales.db";
 
+=======
+   String url = "D:\\documentos\\universidad\\paradigmas\\tareas\\tarea2\\Zoo\\animales.db";
+>>>>>>> 0568881095d42f84fcd2e10ac72c82838791201e
    // String url = "C:\\Users\\maxor\\OneDrive\\Escritorio\\Zoo\\Zoo\\animales.db";
    //String url = "C:\\Users\\rafis\\OneDrive\\Escritorio\\tarea 2\\Zoo\\animales.db";
    //String url = "C:\\Users\\nicox\\OneDrive\\Escritorio\\Zoo\\animales.db";
     //String url = "C:\\Users\\Nico\\Desktop\\github\\Zoo\\animales.db";
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0568881095d42f84fcd2e10ac72c82838791201e
 
     Connection conexion;
     public Connection getConexion(){
