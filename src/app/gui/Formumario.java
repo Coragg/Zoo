@@ -16,9 +16,6 @@ import java.io.File;
 import java.net.URL;
 
 
-
-
-
 public class Formumario extends javax.swing.JFrame {
 
     private int id;
@@ -47,8 +44,7 @@ public class Formumario extends javax.swing.JFrame {
         Random random = new Random();
         int numeroAleatorio = random.nextInt(129) + 1;
         
-       
-        
+      
         try {
             // Crear un objeto PreparedStatement para ejecutar la consulta SQL
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM animal WHERE id=?");
@@ -84,10 +80,8 @@ public class Formumario extends javax.swing.JFrame {
                 
                 
              
-
-
                 jTextTipo.setText(this.tipo);
-
+                jTextCategoria.setText(this.categoria);
             }
             String nombreAnimalito = jTextNombreAnimal.getText();
             String directorio_fotos = "src\\image\\animales\\" + nombreAnimalito + ".jpg" ;
@@ -143,8 +137,6 @@ public class Formumario extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextNombreAnimal = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
         jTextTipo = new javax.swing.JTextField();
         jTextColor = new javax.swing.JTextField();
@@ -172,6 +164,8 @@ public class Formumario extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabelimagen = new javax.swing.JLabel();
         jComboBox7 = new javax.swing.JComboBox<>();
+        jTextCategoria = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -241,25 +235,14 @@ public class Formumario extends javax.swing.JFrame {
 
         jLabel4.setText("Color:");
 
-        jRadioButton1.setBackground(new java.awt.Color(0, 102, 255));
-        VertebradoOinvertebrado.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jRadioButton1.setText("Vertebrado");
-        jRadioButton1.setEnabled(false);
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
-            }
-        });
-
-        jRadioButton2.setBackground(new java.awt.Color(0, 102, 255));
-        VertebradoOinvertebrado.add(jRadioButton2);
-        jRadioButton2.setText("Invertebrado");
-        jRadioButton2.setEnabled(false);
-
         jLabel5.setText("Grupo o tipo:");
 
         jTextTipo.setEnabled(false);
+        jTextTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextTipoActionPerformed(evt);
+            }
+        });
 
         jTextColor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -369,6 +352,15 @@ public class Formumario extends javax.swing.JFrame {
 
         jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tierra", "Mar", "Ambos" }));
 
+        jTextCategoria.setEditable(false);
+        jTextCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextCategoriaActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Categoria:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -377,41 +369,11 @@ public class Formumario extends javax.swing.JFrame {
                 .addGap(65, 65, 65)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButGuardar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jRadioButton2)
-                                .addComponent(jRadioButton1))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton4)
-                                .addGap(50, 50, 50)))
-                        .addGap(190, 190, 190))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(306, 306, 306)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel13)
-                                            .addComponent(jLabel12)
-                                            .addComponent(jLabel11)
-                                            .addComponent(jLabel14)
-                                            .addComponent(jLabel15)
-                                            .addComponent(jLabel16)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(78, 78, 78)
-                                        .addComponent(jTxIdAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextParesPatas)
-                                    .addComponent(jComboBox4, 0, 148, Short.MAX_VALUE)
-                                    .addComponent(jComboBox5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox7, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                                .addComponent(jTxIdAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
@@ -429,7 +391,9 @@ public class Formumario extends javax.swing.JFrame {
                                     .addComponent(jTextNombreAnimal)
                                     .addComponent(jTextColor)
                                     .addComponent(jTextTipo)
-                                    .addComponent(jBoxNumeroAletas, 0, 152, Short.MAX_VALUE))
+                                    .addComponent(jBoxNumeroAletas, 0, 152, Short.MAX_VALUE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(75, 75, 75)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel17)
@@ -437,32 +401,47 @@ public class Formumario extends javax.swing.JFrame {
                                 .addGap(24, 24, 24)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox6, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(jComboBox6, 0, 148, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(76, 76, 76)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel16))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTextParesPatas)
+                                    .addComponent(jComboBox4, 0, 148, Short.MAX_VALUE)
+                                    .addComponent(jComboBox5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBox7, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(77, 77, 77)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(176, 176, 176))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextCategoria, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel6))
+                        .addGap(176, 176, 176))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButGuardar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4)
+                        .addGap(144, 144, 144))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTxIdAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addComponent(jRadioButton2))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)))
-                .addGap(7, 7, 7)
+                .addGap(18, 67, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTxIdAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -508,15 +487,19 @@ public class Formumario extends javax.swing.JFrame {
                             .addComponent(jLabel18)
                             .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jBoxNumeroAletas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 90, Short.MAX_VALUE)
+                        .addGap(0, 22, Short.MAX_VALUE)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(89, 89, 89)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButGuardar)
-                    .addComponent(jButton4))
-                .addContainerGap())
+                        .addGap(71, 71, 71)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton4)
+                            .addComponent(jButGuardar))
+                        .addGap(24, 24, 24))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -899,10 +882,6 @@ public class Formumario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTxtPesoKeyTyped
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
-
     private void jTextNombreAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNombreAnimalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextNombreAnimalActionPerformed
@@ -955,6 +934,14 @@ public class Formumario extends javax.swing.JFrame {
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox4ActionPerformed
+
+    private void jTextCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCategoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextCategoriaActionPerformed
+
+    private void jTextTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextTipoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1020,17 +1007,17 @@ public class Formumario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelimagen;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTextCategoria;
     private javax.swing.JTextField jTextColor;
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextNombreAnimal;
