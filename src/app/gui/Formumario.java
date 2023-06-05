@@ -29,16 +29,11 @@ public class Formumario extends javax.swing.JFrame {
     private double pesoMaximo;
     private List<String> listaAnimales = new ArrayList<>(); // Declarar la lista de animales
     private HashMap<String, String> diccionarioAnimales;
-    
-    
+
     
     private void obtenerDirectorioImagenes() {
-        
-        
-        
-}
-    
-    
+    }
+
     public Formumario() {
         initComponents();
         this.setTitle("Formulario de animales");
@@ -562,7 +557,7 @@ public class Formumario extends javax.swing.JFrame {
         // TODO add your handling code here:
         // ESTE BOTÓN GENERARÁ EL ANIMAL ALEATORIO.
         Conexion conexion = new Conexion();
-        Connection connection = conexion.getConexion();
+        Connection connection = conexion.getConexion(); // generar coneccion a la base de datos
 
         if(jTxtPeso.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Es obligatorio colocar un valor en el peso.");
@@ -571,7 +566,7 @@ public class Formumario extends javax.swing.JFrame {
             double peso = Double.parseDouble(jTxtPeso.getText());
 
             if(peso < this.pesoMinimo || peso > this.pesoMaximo)
-                JOptionPane.showMessageDialog(null, "Tiene que colocar un valor mayor a " + pesoMinimo + " y menor a " + pesoMaximo);
+                JOptionPane.showMessageDialog(null, "Tiene que colocar un valor menor a " + pesoMinimo + " y mayor a " + pesoMaximo);
 
             else if(jTextColor.getText().equals(""))
                 JOptionPane.showMessageDialog(null, "Tiene que ingresar un color");
@@ -617,7 +612,6 @@ public class Formumario extends javax.swing.JFrame {
                     try {
                         String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, cantidadAlas) VALUES (?, ?, ?, ?, ?, ?)";
                         PreparedStatement statement = connection.prepareStatement(sql);
-
                         statement.setString(1, this.nombre);
                         statement.setString(2, color);
                         statement.setDouble(3, peso);
@@ -642,22 +636,250 @@ public class Formumario extends javax.swing.JFrame {
             }else if("Pez".equals(this.tipo)){
                 // para que mande a la base de datos
 
+                String seleccionNumeroAletas = jBoxNumeroAletas.getSelectedItem().toString();
+                int numeroAletas = Integer.parseInt(seleccionNumeroAletas);
+                String tieneEscamas = jComboBox2.getSelectedItem().toString();
+
+                try {
+                    String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, cantidadAletas, escamas) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    PreparedStatement statement = connection.prepareStatement(sql);
+                    statement.setString(1, this.nombre);
+                    statement.setString(2, color);
+                    statement.setDouble(3, peso);
+                    statement.setString(4, this.tipo);
+                    statement.setString(5, this.categoria);
+                    statement.setInt(6, numeroAletas);
+                    statement.setString(7, tieneEscamas);
+
+                    statement.executeUpdate();
+                    System.out.println("Los datos han sido enviados");
+                    MenuPrincipal menu =  new MenuPrincipal();
+                    menu.setVisible(true);
+                    this.dispose();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
 
             }else if("Anfibio".equals(this.tipo)){
+                String tienePiel = jComboBox3.getSelectedItem().toString();
+
+
+                try {
+                    String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, , piel) VALUES (?, ?, ?, ?, ?, ?)";
+                    PreparedStatement statement = connection.prepareStatement(sql);
+                    statement.setString(1, this.nombre);
+                    statement.setString(2, color);
+                    statement.setDouble(3, peso);
+                    statement.setString(4, this.tipo);
+                    statement.setString(5, this.categoria);
+                    statement.setString(6, tienePiel);
+
+
+                    statement.executeUpdate();
+                    System.out.println("Los datos han sido enviados");
+                    MenuPrincipal menu =  new MenuPrincipal();
+                    menu.setVisible(true);
+                    this.dispose();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+
+
 
             }else if("Reptil".equals(this.tipo)){
+                /*String tierraMar_ambos = jTextField9.getText().toString();
 
-            }else if("Artropodo".equals(this.tipo)){
+
+                try {
+                    String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, tierraMar_ambos) VALUES (?, ?, ?, ?, ?, ?)";
+                    PreparedStatement statement = connection.prepareStatement(sql);
+                    statement.setString(1, this.nombre);
+                    statement.setString(2, color);
+                    statement.setDouble(3, peso);
+                    statement.setString(4, this.tipo);
+                    statement.setString(5, this.categoria);
+                    statement.setString(6, tierraMar_ambos);
+
+
+                    statement.executeUpdate();
+                    System.out.println("Los datos han sido enviados");
+                    MenuPrincipal menu =  new MenuPrincipal();
+                    menu.setVisible(true);
+                    this.dispose();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }*/
+
+            }else if("Artropodo".equals(this.tipo)) {
+
+                String NumeroAntenas = jComboBox4.getSelectedItem().toString();
+                int cantidadParesPatas = Integer.parseInt(jTextField10.getText());
+
+
+
+
+                try {
+                    String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, cantidadParesPatas,antenas) VALUES (?, ?, ?, ?, ?, ?,?)";
+                    PreparedStatement statement = connection.prepareStatement(sql);
+                    statement.setString(1, this.nombre);
+                    statement.setString(2, color);
+                    statement.setDouble(3, peso);
+                    statement.setString(4, this.tipo);
+                    statement.setString(5, this.categoria);
+                    statement.setInt(6, cantidadParesPatas);
+                    statement.setString(7, NumeroAntenas);
+
+
+                    statement.executeUpdate();
+                    System.out.println("Los datos han sido enviados");
+                    MenuPrincipal menu = new MenuPrincipal();
+                    menu.setVisible(true);
+                    this.dispose();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+
+
+
+
 
             }else if ("Molusco".equals(this.tipo)){
+                String erizo_o_estrella = jComboBox5.getSelectedItem().toString();
+
+
+
+                try {
+                    String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, erizo_o_estrella) VALUES (?, ?, ?, ?, ?, ?)";
+                    PreparedStatement statement = connection.prepareStatement(sql);
+                    statement.setString(1, this.nombre);
+                    statement.setString(2, color);
+                    statement.setDouble(3, peso);
+                    statement.setString(4, this.tipo);
+                    statement.setString(5, this.categoria);
+                    statement.setString(6, erizo_o_estrella);
+
+
+
+                    statement.executeUpdate();
+                    System.out.println("Los datos han sido enviados");
+                    MenuPrincipal menu = new MenuPrincipal();
+                    menu.setVisible(true);
+                    this.dispose();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+
 
             }else if ("Equinodermo".equals(this.tipo)){
+                String erizo_o_estrella = jComboBox5.getSelectedItem().toString();
+
+
+                try {
+                    String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, erizo_o_estrella) VALUES (?, ?, ?, ?, ?, ?)";
+                    PreparedStatement statement = connection.prepareStatement(sql);
+                    statement.setString(1, this.nombre);
+                    statement.setString(2, color);
+                    statement.setDouble(3, peso);
+                    statement.setString(4, this.tipo);
+                    statement.setString(5, this.categoria);
+                    statement.setString(6, erizo_o_estrella);
+
+
+
+                    statement.executeUpdate();
+                    System.out.println("Los datos han sido enviados");
+                    MenuPrincipal menu = new MenuPrincipal();
+                    menu.setVisible(true);
+                    this.dispose();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+
 
             }else if ("Gusano".equals(this.tipo)){
+                String tipoCuerpo = jComboBox1.getSelectedItem().toString();
 
-            }else if ("Porifero".equals(this.tipo)){
+
+
+                try {
+                    String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo,categoria, tipoCuerpo) VALUES (?, ?, ?, ?, ?, ?)";
+                    PreparedStatement statement = connection.prepareStatement(sql);
+                    statement.setString(1, this.nombre);
+                    statement.setString(2, color);
+                    statement.setDouble(3, peso);
+                    statement.setString(4, this.tipo);
+                    statement.setString(5, this.categoria);
+                    statement.setString(6, tipoCuerpo);
+
+
+
+                    statement.executeUpdate();
+                    System.out.println("Los datos han sido enviados");
+                    MenuPrincipal menu = new MenuPrincipal();
+                    menu.setVisible(true);
+                    this.dispose();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+            }else if ("Porifero".equals(this.tipo)){ // se verifica si los datos de porifero estan correctamente puesto para mandar los datos a la tabla animalesZoo
+
+                try {
+                    String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria) VALUES (?, ?, ?, ?, ?)";
+                    PreparedStatement statement = connection.prepareStatement(sql);
+                    statement.setString(1, this.nombre);
+                    statement.setString(2, color);
+                    statement.setDouble(3, peso);
+                    statement.setString(4, this.tipo);
+                    statement.setString(5, this.categoria);
+
+                    statement.executeUpdate();
+                    System.out.println("Los datos han sido enviados");
+                    MenuPrincipal menu = new MenuPrincipal();
+                    menu.setVisible(true);
+                    this.dispose();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
 
             }else if ("Celentereo".equals(this.tipo)){
+                String tentaculos = jComboBox6.getSelectedItem().toString();
+
+
+
+                try {
+                    String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, tentaculos) VALUES (?, ?, ?, ?, ?, ?)";
+                    PreparedStatement statement = connection.prepareStatement(sql);
+                    statement.setString(1, this.nombre);
+                    statement.setString(2, color);
+                    statement.setDouble(3, peso);
+                    statement.setString(4, this.tipo);
+                    statement.setString(5, this.categoria);
+                    statement.setString(6, tentaculos);
+
+
+
+                    statement.executeUpdate();
+                    System.out.println("Los datos han sido enviados");
+                    MenuPrincipal menu = new MenuPrincipal();
+                    menu.setVisible(true);
+                    this.dispose();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
 
             }
 
