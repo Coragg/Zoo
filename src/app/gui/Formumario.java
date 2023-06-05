@@ -494,31 +494,53 @@ public class Formumario extends javax.swing.JFrame {
         if(jTxtPeso.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Es obligatorio colocar un valor en el peso.");
         } else {
-
+            String color = jTextColor.getText();
             double peso = Double.parseDouble(jTxtPeso.getText());
 
             if(peso < this.pesoMinimo || peso > this.pesoMaximo)
                 JOptionPane.showMessageDialog(null, "Tiene que colocar un valor mayor a " + pesoMinimo + " y menor a " + pesoMaximo);
 
-            else if("Mamifero".equals(this.tipo)) {
+            else if(jTextColor.getText().equals(""))
+                JOptionPane.showMessageDialog(null, "Tiene que ingresar un color");
 
+            else if ("Mamifero".equals(this.tipo)) {
+                if (jTextNumeroPatas.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Tiene que ingresar el número de patas del animal.");
+                } else if ((!"Delfin".equals(this.nombre) && !"Ballena".equals(this.nombre)) && Integer.parseInt(jTextNumeroPatas.getText()) < 1) {
+                    JOptionPane.showMessageDialog(null, "El número de patas debe ser mayor a 0.");
+                } else {
+                    String nombreAnimal = this.nombre;
+                    int cantidadPatas = Integer.parseInt(jTextNumeroPatas.getText());
+                    try {
+                        String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, cantidadPatas) VALUES (?, ?, ?, ?, ?, ?)";
+                        PreparedStatement statement = connection.prepareStatement(sql);
 
-                if(jTextNumeroPatas.getText().equals(""))
-                    JOptionPane.showMessageDialog(null, "Tiene que ingresar el numero de patas del animal.");
+                        statement.setString(1, nombreAnimal);
+                        statement.setString(2, color);
+                        statement.setDouble(3, peso);
+                        statement.setString(4, this.tipo);
+                        statement.setString(5, this.categoria);
+                        statement.setInt(6, cantidadPatas);
 
-                else if((this.nombre != "Delfin" && this.nombre != "Ballena") && Integer.parseInt(jTextNumeroPatas.getText()) < 1  ){
-                    JOptionPane.showMessageDialog(null, "Tiene que ser mayor 0 a  el numero de patas.");
+                        statement.executeUpdate();
+                        System.out.println("Los datos han sido enviados");
+                        MenuPrincipal menu =  new MenuPrincipal();
+                        menu.setVisible(true);
+                        this.dispose();
 
-                }else{
-                    System.out.println("Weee, mandando datos a la base de datos. Sabia que no eras un idiota ");
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+
+                    System.out.println("Weee, mandando datos a la base de datos. Sabía que no eras un idiota.");
                 }
-
             }else if("Ave".equals(this.tipo)){
                 if (jTextNumeroAlas.getText().equals(""))
                     JOptionPane.showMessageDialog(null, "Tiene que ingresar el numero de alas del animal.");
                 else if(Integer.parseInt(jTextNumeroAlas.getText()) <= 0)
                     JOptionPane.showMessageDialog(null, "El numero de alas tiene que ser mayor a 0.");
                 else {
+
                     System.out.println("Weee, mandando datos a la base de datos. Sabia que no eras un idiota ");
                 }
 
