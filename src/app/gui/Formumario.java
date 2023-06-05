@@ -155,7 +155,6 @@ public class Formumario extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jTextField10 = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
@@ -172,6 +171,7 @@ public class Formumario extends javax.swing.JFrame {
         jBoxNumeroAletas = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jLabelimagen = new javax.swing.JLabel();
+        jComboBox7 = new javax.swing.JComboBox<>();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -295,13 +295,6 @@ public class Formumario extends javax.swing.JFrame {
 
         jLabel13.setText("Tipo Reptil:");
 
-        jTextField9.setText("(Tierra, mar o ambos.)");
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
-            }
-        });
-
         jLabel14.setText("N° pares de patas:");
 
         jTextField10.setText("(1 A 400 pares)");
@@ -375,6 +368,8 @@ public class Formumario extends javax.swing.JFrame {
                 .addGap(0, 184, Short.MAX_VALUE))
         );
 
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tierra", "Mar", "Ambos" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -413,11 +408,11 @@ public class Formumario extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                                     .addComponent(jTextField10)
-                                    .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBox4, 0, 148, Short.MAX_VALUE)
                                     .addComponent(jComboBox5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBox7, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
@@ -481,7 +476,7 @@ public class Formumario extends javax.swing.JFrame {
                             .addComponent(jTxtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
                             .addComponent(jLabel13)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(15, 15, 15)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -690,7 +685,7 @@ public class Formumario extends javax.swing.JFrame {
 
 
             }else if("Reptil".equals(this.tipo)){
-                /*String tierraMar_ambos = jTextField9.getText().toString();
+                String tierraMar_ambos = jComboBox7.getSelectedItem().toString();
 
 
                 try {
@@ -712,7 +707,7 @@ public class Formumario extends javax.swing.JFrame {
 
                 } catch (SQLException e) {
                     e.printStackTrace();
-                }*/
+                }
 
             }else if("Artropodo".equals(this.tipo)) {
 
@@ -918,11 +913,6 @@ public class Formumario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextColorActionPerformed
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jTextField9ActionPerformed
-
     private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField10ActionPerformed
@@ -1016,6 +1006,7 @@ public class Formumario extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
+    private javax.swing.JComboBox<String> jComboBox7;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1045,7 +1036,6 @@ public class Formumario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextColor;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField jTextNombreAnimal;
     private javax.swing.JTextField jTextNumeroAlas;
     private javax.swing.JTextField jTextNumeroPatas;
