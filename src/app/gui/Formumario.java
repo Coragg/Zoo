@@ -81,7 +81,6 @@ public class Formumario extends javax.swing.JFrame {
                 this.pesoMaximo = maximo;
 
                 jTextNombreAnimal.setText(this.nombre);
-<<<<<<< HEAD
                 listaAnimales.add(this.nombre); // Agregar el nombre del animal a la lista
                 String nombreArchivo = obtenerNombreArchivo(this.nombre); // Obtener el nombre del archivo correspondiente al animal
                 diccionarioAnimales.put(this.nombre, nombreArchivo); // Agregar la entrada al diccionario
@@ -91,12 +90,12 @@ public class Formumario extends javax.swing.JFrame {
                 
              
 
-=======
+
                 jTextTipo.setText(this.tipo);
->>>>>>> 0568881095d42f84fcd2e10ac72c82838791201e
+
             }
             String nombreAnimalito = jTextNombreAnimal.getText();
-            String directorio_fotos = "C:\\Users\\maxor\\OneDrive\\Escritorio\\Zoo\\Zoo\\src\\image\\animales\\" + nombreAnimalito + ".jpg" ;
+            String directorio_fotos = "src\\image\\animales\\" + nombreAnimalito + ".jpg" ;
             ImageIcon imagen = new ImageIcon(directorio_fotos);
             Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(200, 200, 1));
             jLabelimagen.setIcon(icono);
@@ -152,12 +151,7 @@ public class Formumario extends javax.swing.JFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
-<<<<<<< HEAD
-        jTextField3 = new javax.swing.JTextField();
-=======
         jTextTipo = new javax.swing.JTextField();
-        jLabelimagen = new javax.swing.JLabel();
->>>>>>> 0568881095d42f84fcd2e10ac72c82838791201e
         jTextColor = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jTextNumeroPatas = new javax.swing.JTextField();
@@ -180,13 +174,9 @@ public class Formumario extends javax.swing.JFrame {
         jTextNumeroAlas = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jComboBox6 = new javax.swing.JComboBox<>();
-<<<<<<< HEAD
-        jComboBox7 = new javax.swing.JComboBox<>();
+        jBoxNumeroAletas = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jLabelimagen = new javax.swing.JLabel();
-=======
-        jBoxNumeroAletas = new javax.swing.JComboBox<>();
->>>>>>> 0568881095d42f84fcd2e10ac72c82838791201e
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -246,7 +236,7 @@ public class Formumario extends javax.swing.JFrame {
 
         jLabel3.setText("ID:");
 
-        jTextNombreAnimal.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextNombreAnimal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextNombreAnimal.setEnabled(false);
         jTextNombreAnimal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -449,15 +439,9 @@ public class Formumario extends javax.swing.JFrame {
                                     .addComponent(jTxtPeso)
                                     .addComponent(jTextNombreAnimal)
                                     .addComponent(jTextColor)
-<<<<<<< HEAD
-                                    .addComponent(jTextField3)
-                                    .addComponent(jComboBox7, 0, 152, Short.MAX_VALUE))
-                                .addGap(75, 75, 75)
-=======
                                     .addComponent(jTextTipo)
                                     .addComponent(jBoxNumeroAletas, 0, 152, Short.MAX_VALUE))
-                                .addGap(64, 64, 64)
->>>>>>> 0568881095d42f84fcd2e10ac72c82838791201e
+                                .addGap(75, 75, 75)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel17)
                                     .addComponent(jLabel18))
@@ -534,17 +518,12 @@ public class Formumario extends javax.swing.JFrame {
                             .addComponent(jLabel10)
                             .addComponent(jLabel18)
                             .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-<<<<<<< HEAD
-                            .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jBoxNumeroAletas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 90, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(89, 89, 89)))
-=======
-                            .addComponent(jBoxNumeroAletas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
->>>>>>> 0568881095d42f84fcd2e10ac72c82838791201e
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButGuardar)
                     .addComponent(jButton4))
