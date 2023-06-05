@@ -612,7 +612,6 @@ public class Formumario extends javax.swing.JFrame {
                     try {
                         String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, cantidadAlas) VALUES (?, ?, ?, ?, ?, ?)";
                         PreparedStatement statement = connection.prepareStatement(sql);
-
                         statement.setString(1, this.nombre);
                         statement.setString(2, color);
                         statement.setDouble(3, peso);
@@ -637,6 +636,30 @@ public class Formumario extends javax.swing.JFrame {
             }else if("Pez".equals(this.tipo)){
                 // para que mande a la base de datos
 
+                String seleccionNumeroAletas = jBoxNumeroAletas.getSelectedItem().toString();
+                int numeroAletas = Integer.parseInt(seleccionNumeroAletas);
+                String tieneEscamas = jComboBox2.getSelectedItem().toString();
+
+                try {
+                    String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, cantidadAletas, escamas) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    PreparedStatement statement = connection.prepareStatement(sql);
+                    statement.setString(1, this.nombre);
+                    statement.setString(2, color);
+                    statement.setDouble(3, peso);
+                    statement.setString(4, this.tipo);
+                    statement.setString(5, this.categoria);
+                    statement.setInt(6, numeroAletas);
+                    statement.setString(7, tieneEscamas);
+
+                    statement.executeUpdate();
+                    System.out.println("Los datos han sido enviados");
+                    MenuPrincipal menu =  new MenuPrincipal();
+                    menu.setVisible(true);
+                    this.dispose();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
 
             }else if("Anfibio".equals(this.tipo)){
                 String tienePiel = jComboBox3.getSelectedItem().toString();
