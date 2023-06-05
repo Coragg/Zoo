@@ -540,8 +540,30 @@ public class Formumario extends javax.swing.JFrame {
                 else if(Integer.parseInt(jTextNumeroAlas.getText()) <= 0)
                     JOptionPane.showMessageDialog(null, "El numero de alas tiene que ser mayor a 0.");
                 else {
+                    int cantidadAlas = Integer.parseInt(jTextNumeroAlas.getText());
+                    try {
+                        String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, cantidadAlas) VALUES (?, ?, ?, ?, ?, ?)";
+                        PreparedStatement statement = connection.prepareStatement(sql);
 
-                    System.out.println("Weee, mandando datos a la base de datos. Sabia que no eras un idiota ");
+                        statement.setString(1, this.nombre);
+                        statement.setString(2, color);
+                        statement.setDouble(3, peso);
+                        statement.setString(4, this.tipo);
+                        statement.setString(5, this.categoria);
+                        statement.setInt(6, cantidadAlas);
+
+                        statement.executeUpdate();
+                        System.out.println("Los datos han sido enviados");
+                        MenuPrincipal menu =  new MenuPrincipal();
+                        menu.setVisible(true);
+                        this.dispose();
+
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+
+                    System.out.println("Weee, mandando datos a la base de datos. Sabía que no eras un idiota.");
+
                 }
 
             }else if("Pez".equals(this.tipo)){
