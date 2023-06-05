@@ -156,7 +156,7 @@ public class Formumario extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        jTextParesPatas = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -297,15 +297,14 @@ public class Formumario extends javax.swing.JFrame {
 
         jLabel14.setText("N° pares de patas:");
 
-        jTextField10.setText("(1 A 400 pares)");
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+        jTextParesPatas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
+                jTextParesPatasActionPerformed(evt);
             }
         });
-        jTextField10.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextParesPatas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField10KeyTyped(evt);
+                jTextParesPatasKeyTyped(evt);
             }
         });
 
@@ -408,7 +407,7 @@ public class Formumario extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField10)
+                                    .addComponent(jTextParesPatas)
                                     .addComponent(jComboBox4, 0, 148, Short.MAX_VALUE)
                                     .addComponent(jComboBox5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -482,7 +481,7 @@ public class Formumario extends javax.swing.JFrame {
                             .addComponent(jTextColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
                             .addComponent(jLabel14)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextParesPatas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel15)
@@ -661,7 +660,7 @@ public class Formumario extends javax.swing.JFrame {
 
 
                 try {
-                    String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, , piel) VALUES (?, ?, ?, ?, ?, ?)";
+                    String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, piel) VALUES (?, ?, ?, ?, ?, ?)";
                     PreparedStatement statement = connection.prepareStatement(sql);
                     statement.setString(1, this.nombre);
                     statement.setString(2, color);
@@ -711,38 +710,37 @@ public class Formumario extends javax.swing.JFrame {
 
             }else if("Artropodo".equals(this.tipo)) {
 
-                String NumeroAntenas = jComboBox4.getSelectedItem().toString();
-                int cantidadParesPatas = Integer.parseInt(jTextField10.getText());
+
+                if(jTextParesPatas.getText().equals(""))
+                    JOptionPane.showMessageDialog(null, "Tienes que poner el numero de pares de patas.");
+                else if(Integer.parseInt(jTextNumeroPatas.getText()) < 1)
+                    JOptionPane.showMessageDialog(null, "Ingrese un numero valido de patas");
+                else {
+                    String NumeroAntenas = jComboBox4.getSelectedItem().toString();
+                    int cantidadParesPatas = Integer.parseInt(jTextParesPatas.getText());
+
+                    try {
+                        String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, cantidadParesPatas,antenas) VALUES (?, ?, ?, ?, ?, ?,?)";
+                        PreparedStatement statement = connection.prepareStatement(sql);
+                        statement.setString(1, this.nombre);
+                        statement.setString(2, color);
+                        statement.setDouble(3, peso);
+                        statement.setString(4, this.tipo);
+                        statement.setString(5, this.categoria);
+                        statement.setInt(6, cantidadParesPatas);
+                        statement.setString(7, NumeroAntenas);
 
 
+                        statement.executeUpdate();
+                        System.out.println("Los datos han sido enviados");
+                        MenuPrincipal menu = new MenuPrincipal();
+                        menu.setVisible(true);
+                        this.dispose();
 
-
-                try {
-                    String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, cantidadParesPatas,antenas) VALUES (?, ?, ?, ?, ?, ?,?)";
-                    PreparedStatement statement = connection.prepareStatement(sql);
-                    statement.setString(1, this.nombre);
-                    statement.setString(2, color);
-                    statement.setDouble(3, peso);
-                    statement.setString(4, this.tipo);
-                    statement.setString(5, this.categoria);
-                    statement.setInt(6, cantidadParesPatas);
-                    statement.setString(7, NumeroAntenas);
-
-
-                    statement.executeUpdate();
-                    System.out.println("Los datos han sido enviados");
-                    MenuPrincipal menu = new MenuPrincipal();
-                    menu.setVisible(true);
-                    this.dispose();
-
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                 }
-
-
-
-
-
 
             }else if ("Molusco".equals(this.tipo)){
                 String erizo_o_estrella = jComboBox5.getSelectedItem().toString();
@@ -913,9 +911,9 @@ public class Formumario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextColorActionPerformed
 
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+    private void jTextParesPatasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextParesPatasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
+    }//GEN-LAST:event_jTextParesPatasActionPerformed
 
     private void jTextNumeroPatasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNumeroPatasActionPerformed
         // TODO add your handling code here:
@@ -936,12 +934,12 @@ public class Formumario extends javax.swing.JFrame {
         }            // TODO add your handling code here:
     }//GEN-LAST:event_jTextNumeroAlasKeyTyped
 
-    private void jTextField10KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyTyped
+    private void jTextParesPatasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextParesPatasKeyTyped
     char caracteres = evt.getKeyChar();
         if (caracteres < '0' || caracteres > '9'){
             evt.consume();
         }        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10KeyTyped
+    }//GEN-LAST:event_jTextParesPatasKeyTyped
 
     private void jTextNumeroAlasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNumeroAlasActionPerformed
         // TODO add your handling code here:
@@ -1034,11 +1032,11 @@ public class Formumario extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextColor;
-    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextNombreAnimal;
     private javax.swing.JTextField jTextNumeroAlas;
     private javax.swing.JTextField jTextNumeroPatas;
+    private javax.swing.JTextField jTextParesPatas;
     private javax.swing.JTextField jTextTipo;
     private javax.swing.JTextField jTxIdAnimal;
     private javax.swing.JTextField jTxtPeso;
