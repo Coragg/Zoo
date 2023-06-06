@@ -11,19 +11,34 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 
+import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
-import java.util.Random;
-/**
- *
- * @author Nico
- */
 public class tablaAnimales extends javax.swing.JFrame {
 
-    /**
-     * Creates new form tablaAnimales
-     */
+    private int filaSeleccionada;
+
+   
     public tablaAnimales() {
         initComponents();
+        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarAnimal();
+            }
+        });
+        
+        jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent event) {
+                if (!event.getValueIsAdjusting()) {
+                    filaSeleccionada = jTable1.getSelectedRow();
+                }
+            }
+        });
+
+
+        
         this.setTitle("Animales con sus caracteristicas");
         this.setLocationRelativeTo(null);
         try {
@@ -109,7 +124,7 @@ public class tablaAnimales extends javax.swing.JFrame {
             }
 
             // Asignar el modelo de tabla a la JTable
-            jTable1.setModel(model);
+            this.jTable1.setModel(model);
 
             // Cerrar la conexión y liberar los recursos
             resultSet.close();
@@ -120,6 +135,158 @@ public class tablaAnimales extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }
+
+
+    
+    private void actualizarTablaAnimales() {
+    try {
+        // Crear una instancia de la clase Conexion para obtener la conexión a la base de datos
+        Conexion conexion = new Conexion();
+        Connection conn = conexion.getConexion();
+
+        // Crear la sentencia SQL para seleccionar todos los registros de la tabla "animalesZoo"
+        String sql = "SELECT * FROM animalesZoo";
+
+        // Crear un objeto Statement para ejecutar la consulta SQL
+        Statement statement = conn.createStatement();
+
+        // Ejecutar la consulta SQL y obtener el resultado en un objeto ResultSet
+        ResultSet resultSet = statement.executeQuery(sql);
+
+        // Crear un modelo de tabla por defecto para almacenar los datos de la consulta
+        DefaultTableModel model = new DefaultTableModel();
+
+        // Agregar las columnas al modelo de tabla
+        model.addColumn("Id");
+        model.addColumn("nombre");
+        model.addColumn("color");
+        model.addColumn("peso");
+        model.addColumn("tipo");
+        model.addColumn("Categoria");
+        model.addColumn("Atributo");
+        model.addColumn("Atributo Secundario");
+        // Añadir más columnas según sea necesario
+
+        // Recorrer el resultado de la consulta y agregar los datos al modelo de tabla
+        while (resultSet.next()) {
+            // Obtener los valores de cada columna en una fila
+            Object[] row = new Object[8]; // Cambiar el tamaño según el número de columnas
+            row[0] = resultSet.getObject("Id");
+            row[1] = resultSet.getObject("Nombre");
+            row[2] = resultSet.getObject("Color");
+            row[3] = resultSet.getObject("Peso");
+            row[4] = resultSet.getObject("Tipo");
+            row[5] = resultSet.getObject("Categoria");
+            // Añadir más columnas según sea necesario
+
+            // Determinar el valor de la columna "categoria" en función del valor de "tipo"
+            String tipo = resultSet.getString("tipo");
+            if (tipo.equals("Mamifero")) {
+                row[6] = resultSet.getObject("cantidadPatas");
+                row[7] = "Null";
+            } else if (tipo.equals("Ave")) {
+                row[6] = resultSet.getObject("cantidadAlas");
+                row[7] = "Null";
+            } else if (tipo.equals("Pez")) {
+                row[6] = resultSet.getObject("cantidadAletas");
+                row[7] = resultSet.getObject("escamas");
+            } else if (tipo.equals("Anfibio")) {
+                row[6] = resultSet.getObject("piel");
+                row[7] = "Null";
+            } else if (tipo.equals("Reptil")) {
+                row[6] = resultSet.getObject("tierraMar_ambos");
+                row[7] = "Null";
+            } else if (tipo.equals("Antropodo")) {
+                row[6] = resultSet.getObject("cantidadParesPatas");
+                row[7] = resultSet.getObject("antenas");
+            } else if (tipo.equals("Molusco")) {
+                row[6] = resultSet.getObject("erizo_o_estrella");
+                row[7] = "Null";
+            } else if (tipo.equals("Equinodermo")) {
+                row[6] = resultSet.getObject("erizo_o_estrella");
+                row[7] = "Null";
+            } else if (tipo.equals("Gusano")) {
+                row[6] = resultSet.getObject("tipoCuerpo");
+                row[7] = "Null";
+            } else if (tipo.equals("Porifero")) {
+                    row[6] = "Null";
+                    row[7] = "Null";
+            } else if (tipo.equals("Celentereo")) {
+                row[6] = resultSet.getObject("tentaculos");
+                row[7] = "Null";
+            }
+        
+        // Agregar la fila al modelo de tabla
+        model.addRow(row);
+        }
+
+        // Cerrar la conexión y liberar los recursos
+        resultSet.close();
+        statement.close();
+        conn.close();
+
+        // Establecer el modelo de tabla actualizado en la JTable
+        jTable1.setModel(model);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    
+        
+    }
+    
+    
+    
+
+
+    
+    private void eliminarAnimal() {
+        // Obtiene la fila seleccionada en la tabla
+        filaSeleccionada = jTable1.convertRowIndexToModel(jTable1.getSelectedRow());
+
+
+        // Verifica si se ha seleccionado una fila
+        if (filaSeleccionada >= 0) {
+            // Obtén el valor del campo "Id" de la fila seleccionada
+            String idAnimal = jTable1.getValueAt(filaSeleccionada, 0).toString();
+
+            try {
+                // Crea una instancia de la clase Conexion para obtener la conexión a la base de datos
+                Conexion conexion = new Conexion();
+                Connection conn = conexion.getConexion();
+
+                // Crea la sentencia SQL para eliminar el animal con el Id correspondiente
+                String sql = "DELETE FROM animalesZoo WHERE Id = ?";
+
+                // Crea un objeto PreparedStatement para ejecutar la consulta SQL
+                PreparedStatement statement = conn.prepareStatement(sql);
+
+                // Establece el valor del parámetro en la sentencia SQL
+                statement.setString(1, idAnimal);
+
+                // Ejecuta la consulta SQL
+                int filasAfectadas = statement.executeUpdate();
+
+                if (filasAfectadas > 0) {
+                    // Actualiza la tabla para reflejar los cambios
+                    actualizarTablaAnimales();
+                    JOptionPane.showMessageDialog(null, "Animal eliminado correctamente");
+                } else {
+                    JOptionPane.showMessageDialog(null,"No se pudo eliminar el animal");
+                }
+
+                // Cierra la conexión y libera los recursos
+                statement.close();
+                conn.close();
+            } catch (SQLException ex) {
+                // Maneja el error en caso de que ocurra una excepción
+                ex.printStackTrace();
+            }
+        } else {
+            System.out.println("No se ha seleccionado ninguna fila");
+        }
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -135,11 +302,13 @@ public class tablaAnimales extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButtonEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 255));
 
+        jTable1.setAutoCreateRowSorter(true);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -151,7 +320,8 @@ public class tablaAnimales extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable1.setEnabled(false);
+        jTable1.setColumnSelectionAllowed(true);
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(jTable1);
         jTable1.getTableHeader().setReorderingAllowed(false) ;
 
@@ -165,6 +335,13 @@ public class tablaAnimales extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
         jLabel1.setText("Tabla Animales");
 
+        jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -177,8 +354,12 @@ public class tablaAnimales extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 903, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 903, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButtonEliminar)
+                                .addGap(30, 30, 30)
+                                .addComponent(jButton1)
+                                .addGap(23, 23, 23)))))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -189,7 +370,9 @@ public class tablaAnimales extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButtonEliminar))
                 .addContainerGap())
         );
 
@@ -215,6 +398,13 @@ public class tablaAnimales extends javax.swing.JFrame {
         MenuSecundario.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jButtonEliminarActionPerformed
+
+    
 
     /**
      * @param args the command line arguments
@@ -253,6 +443,7 @@ public class tablaAnimales extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonEliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
