@@ -196,7 +196,7 @@ public class tablaAnimales extends javax.swing.JFrame {
             } else if (tipo.equals("Reptil")) {
                 row[6] = resultSet.getObject("tierraMar_ambos");
                 row[7] = "Null";
-            } else if (tipo.equals("Antropodo")) {
+            } else if (tipo.equals("Artropodo")) {
                 row[6] = resultSet.getObject("cantidadParesPatas");
                 row[7] = resultSet.getObject("antenas");
             } else if (tipo.equals("Molusco")) {

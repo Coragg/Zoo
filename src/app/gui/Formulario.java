@@ -688,14 +688,14 @@ public class Formulario extends javax.swing.JFrame {
 
             }else if("Artropodo".equals(this.tipo)) {
 
-
+                String paresPatas = jTextParesPatas.getText().toString();
                 if(jTextParesPatas.getText().equals(""))
                     JOptionPane.showMessageDialog(null, "Tienes que poner el numero de pares de patas.");
-                else if(Integer.parseInt(jTextNumeroPatas.getText()) < 1)
+                else if(Integer.parseInt(paresPatas) < 1)
                     JOptionPane.showMessageDialog(null, "Ingrese un numero valido de patas");
                 else {
                     String NumeroAntenas = jCAntenas.getSelectedItem().toString();
-                    int cantidadParesPatas = Integer.parseInt(jTextParesPatas.getText());
+                    int cantidadParesPatas = Integer.parseInt(paresPatas);
 
                     try {
                         String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, cantidadParesPatas,antenas) VALUES (?, ?, ?, ?, ?, ?,?)";
