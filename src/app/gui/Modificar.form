@@ -102,34 +102,30 @@
                   <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="78" max="32767" attributes="0"/>
-                                  <Component id="jTxIdAnimal" min="-2" pref="152" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="22" pref="22" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="jTextNumeroAlas" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTextNumeroPatas" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTxtPeso" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jTextNombreAnimal" max="32767" attributes="0"/>
-                                      <Component id="jTextColor" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jTextTipo" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jBoxNumeroAletas" pref="152" max="32767" attributes="0"/>
-                                  </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jTxIdAnimal" min="-2" pref="152" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jTextNumeroAlas" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextNumeroPatas" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTxtPeso" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jTextNombreAnimal" max="32767" attributes="0"/>
+                                  <Component id="jTextColor" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jTextTipo" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jBoxNumeroAletas" pref="152" max="32767" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
@@ -535,7 +531,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabelimagen" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="160" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="166" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -543,7 +539,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabelimagen" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="184" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="186" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
