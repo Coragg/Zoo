@@ -194,7 +194,7 @@ public class BusquedaPorNombre extends javax.swing.JFrame {
             while (resultSet.next()) {
                 // Obtener los valores de cada columna en una fila
                 
-            
+                
                 Object[] row = new Object[8]; // Cambiar el tamaño según el número de columnas
                 row[0] = resultSet.getObject("Id");
                 row[1] = resultSet.getObject("Nombre");
@@ -202,8 +202,42 @@ public class BusquedaPorNombre extends javax.swing.JFrame {
                 row[3] = resultSet.getObject("Peso");
                 row[4] = resultSet.getObject("Tipo");
                 row[5] = resultSet.getObject("Categoria");
-                row[6] = resultSet.getObject("cantidadPatas");
-                row[7] = "Null";
+                
+                String tipo = resultSet.getString("tipo");
+                if (tipo.equals("Mamifero")) {
+                    row[6] = resultSet.getObject("cantidadPatas");
+                    row[7] = "Null";
+                } else if (tipo.equals("Ave")) {
+                    row[6] = resultSet.getObject("cantidadAlas");
+                    row[7] = "Null";
+                } else if (tipo.equals("Pez")) {
+                    row[6] = resultSet.getObject("cantidadAletas");
+                    row[7] = resultSet.getObject("escamas");
+                } else if (tipo.equals("Anfibio")) {
+                    row[6] = resultSet.getObject("piel");
+                    row[7] = "Null";
+                } else if (tipo.equals("Reptil")) {
+                    row[6] = resultSet.getObject("tierraMar_ambos");
+                    row[7] = "Null";
+                } else if (tipo.equals("Artropodo")) {
+                    row[6] = resultSet.getObject("cantidadParesPatas");
+                    row[7] = resultSet.getObject("antenas");
+                } else if (tipo.equals("Molusco")) {
+                    row[6] = resultSet.getObject("erizo_o_estrella");
+                    row[7] = "Null";
+                } else if (tipo.equals("Equinodermo")) {
+                    row[6] = resultSet.getObject("erizo_o_estrella");
+                    row[7] = "Null";
+                } else if (tipo.equals("Gusano")) {
+                    row[6] = resultSet.getObject("tipoCuerpo");
+                    row[7] = "Null";
+                } else if (tipo.equals("Porifero")) {
+                        row[6] = "Null";
+                        row[7] = "Null";
+                } else if (tipo.equals("Celentereo")) {
+                    row[6] = resultSet.getObject("tentaculos");
+                    row[7] = "Null";
+                }
                 model.addRow(row);
             }
                 
