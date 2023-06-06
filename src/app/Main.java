@@ -1,7 +1,5 @@
 package app;
 
-
-import java.util.Random;
 import app.gui.Login;
 
 public class Main {

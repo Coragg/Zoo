@@ -236,6 +236,7 @@ public class MenuSecundario extends javax.swing.JFrame {
 
     private void tipoAnimalActionPerformed(java.awt.event.ActionEvent evt) {
         int cantidad = 0;
+        double peso = 0;
             // Obtener una conexión a la base de datos
             try {
                 Conexion conexion = new Conexion();
@@ -256,12 +257,12 @@ public class MenuSecundario extends javax.swing.JFrame {
                         conn.close();
                     }
                     else if(jCheckBox2.isSelected() == true){
-                        String sql = "SELECT AVG(peso) AS promedio FROM animalesZoo WHERE tipo = 'Mamifero'";
+                        String sql = "SELECT ROUND(AVG(peso),2  ) AS promedio FROM animalesZoo WHERE tipo = 'Mamifero'";
                         Statement statement = conn.createStatement();
                         ResultSet resultSet = statement.executeQuery(sql);
-                        cantidad = resultSet.getInt("promedio");
+                        peso = resultSet.getDouble("promedio");
                         cantidadPorTipo.setText("0");
-                        cantidadPorTipo.setText(Integer.toString(cantidad)+ " kg");
+                        cantidadPorTipo.setText(Double.toString(peso)+ " kg");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -296,12 +297,12 @@ public class MenuSecundario extends javax.swing.JFrame {
                         conn.close();
                     }
                     else if(jCheckBox2.isSelected() == true){
-                        String sql = "SELECT AVG(peso) AS promedio FROM animalesZoo WHERE tipo = 'Ave'";
+                        String sql = "SELECT ROUND(AVG(peso),2) AS promedio FROM animalesZoo WHERE tipo = 'Ave'";
                         Statement statement = conn.createStatement();
                         ResultSet resultSet = statement.executeQuery(sql);
-                        cantidad = resultSet.getInt("promedio");
+                        peso = resultSet.getDouble("promedio");
                         cantidadPorTipo.setText("0");
-                        cantidadPorTipo.setText(Integer.toString(cantidad)+ " kg");
+                        cantidadPorTipo.setText(Double.toString(peso)+ " kg");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -334,12 +335,12 @@ public class MenuSecundario extends javax.swing.JFrame {
                         conn.close();
                     }
                     else if(jCheckBox2.isSelected() == true){
-                        String sql = "SELECT AVG(peso) AS promedio FROM animalesZoo WHERE tipo = 'Pez'";
+                        String sql = "SELECT ROUND(AVG(peso),2) AS promedio FROM animalesZoo WHERE tipo = 'Pez'";
                         Statement statement = conn.createStatement();
                         ResultSet resultSet = statement.executeQuery(sql);
-                        cantidad = resultSet.getInt("promedio");
+                        peso = resultSet.getDouble("promedio");
                         cantidadPorTipo.setText("0");
-                        cantidadPorTipo.setText(Integer.toString(cantidad)+ " kg");
+                        cantidadPorTipo.setText(Double.toString(peso)+ " kg");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -372,12 +373,12 @@ public class MenuSecundario extends javax.swing.JFrame {
                         conn.close();
                     }
                     else if(jCheckBox2.isSelected() == true){
-                        String sql = "SELECT AVG(peso) AS promedio FROM animalesZoo WHERE tipo = 'Anfibio'";
+                        String sql = "SELECT ROUND(AVG(peso),2) AS promedio FROM animalesZoo WHERE tipo = 'Anfibio'";
                         Statement statement = conn.createStatement();
                         ResultSet resultSet = statement.executeQuery(sql);
-                        cantidad = resultSet.getInt("promedio");
+                        peso = resultSet.getDouble("promedio");
                         cantidadPorTipo.setText("0");
-                        cantidadPorTipo.setText(Integer.toString(cantidad)+ " kg");
+                        cantidadPorTipo.setText(Double.toString(peso)+ " kg");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -410,12 +411,12 @@ public class MenuSecundario extends javax.swing.JFrame {
                         conn.close();
                     }
                     else if(jCheckBox2.isSelected() == true){
-                        String sql = "SELECT AVG(peso) AS promedio FROM animalesZoo WHERE tipo = 'Reptil'";
+                        String sql = "SELECT ROUND(AVG(peso),2) AS promedio FROM animalesZoo WHERE tipo = 'Reptil'";
                         Statement statement = conn.createStatement();
                         ResultSet resultSet = statement.executeQuery(sql);
-                        cantidad = resultSet.getInt("promedio");
+                        peso = resultSet.getDouble("promedio");
                         cantidadPorTipo.setText("0");
-                        cantidadPorTipo.setText(Integer.toString(cantidad)+ " kg");
+                        cantidadPorTipo.setText(Double.toString(peso)+ " kg");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -448,12 +449,12 @@ public class MenuSecundario extends javax.swing.JFrame {
                         conn.close();
                     }
                     else if(jCheckBox2.isSelected() == true){
-                        String sql = "SELECT AVG(peso) AS promedio FROM animalesZoo WHERE tipo = 'Antropodo'";
+                        String sql = "SELECT ROUND(AVG(peso),2) AS promedio FROM animalesZoo WHERE tipo = 'Antropodo'";
                         Statement statement = conn.createStatement();
                         ResultSet resultSet = statement.executeQuery(sql);
-                        cantidad = resultSet.getInt("promedio");
+                        peso = resultSet.getDouble("promedio");
                         cantidadPorTipo.setText("0");
-                        cantidadPorTipo.setText(Integer.toString(cantidad)+ " kg");
+                        cantidadPorTipo.setText(Double.toString(peso)+ " kg");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -486,12 +487,12 @@ public class MenuSecundario extends javax.swing.JFrame {
                         conn.close();
                     }
                     else if(jCheckBox2.isSelected() == true){
-                        String sql = "SELECT AVG(peso) AS promedio FROM animalesZoo WHERE tipo = 'Molusco'";
+                        String sql = "SELECT ROUND(AVG(peso),2) AS promedio FROM animalesZoo WHERE tipo = 'Molusco'";
                         Statement statement = conn.createStatement();
                         ResultSet resultSet = statement.executeQuery(sql);
-                        cantidad = resultSet.getInt("promedio");
+                        peso = resultSet.getDouble("promedio");
                         cantidadPorTipo.setText("0");
-                        cantidadPorTipo.setText(Integer.toString(cantidad)+ " kg");
+                        cantidadPorTipo.setText(Double.toString(peso)+ " kg");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -524,12 +525,12 @@ public class MenuSecundario extends javax.swing.JFrame {
                         conn.close();
                     }
                     else if(jCheckBox2.isSelected() == true){
-                        String sql = "SELECT AVG(peso) AS promedio FROM animalesZoo WHERE tipo = 'Equinodermo'";
+                        String sql = "SELECT ROUND(AVG(peso),2) AS promedio FROM animalesZoo WHERE tipo = 'Equinodermo'";
                         Statement statement = conn.createStatement();
                         ResultSet resultSet = statement.executeQuery(sql);
-                        cantidad = resultSet.getInt("promedio");
+                        peso = resultSet.getDouble("promedio");
                         cantidadPorTipo.setText("0");
-                        cantidadPorTipo.setText(Integer.toString(cantidad)+ " kg");
+                        cantidadPorTipo.setText(Double.toString(peso)+ " kg");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -562,12 +563,12 @@ public class MenuSecundario extends javax.swing.JFrame {
                         conn.close();
                     }
                     else if(jCheckBox2.isSelected() == true){
-                        String sql = "SELECT AVG(peso) AS promedio FROM animalesZoo WHERE tipo = 'Gusano'";
+                        String sql = "SELECT ROUND(AVG(peso),2) AS promedio FROM animalesZoo WHERE tipo = 'Gusano'";
                         Statement statement = conn.createStatement();
                         ResultSet resultSet = statement.executeQuery(sql);
-                        cantidad = resultSet.getInt("promedio");
+                        peso = resultSet.getDouble("promedio");
                         cantidadPorTipo.setText("0");
-                        cantidadPorTipo.setText(Integer.toString(cantidad)+ " kg");
+                        cantidadPorTipo.setText(Double.toString(peso)+ " kg");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -600,12 +601,12 @@ public class MenuSecundario extends javax.swing.JFrame {
                         conn.close();
                     }
                     else if(jCheckBox2.isSelected() == true){
-                        String sql = "SELECT AVG(peso) AS promedio FROM animalesZoo WHERE tipo = 'Porifero'";
+                        String sql = "SELECT ROUND(AVG(peso),2) AS promedio FROM animalesZoo WHERE tipo = 'Porifero'";
                         Statement statement = conn.createStatement();
                         ResultSet resultSet = statement.executeQuery(sql);
-                        cantidad = resultSet.getInt("promedio");
+                        peso = resultSet.getDouble("promedio");
                         cantidadPorTipo.setText("0");
-                        cantidadPorTipo.setText(Integer.toString(cantidad)+ " kg");
+                        cantidadPorTipo.setText(Double.toString(peso)+ " kg");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
@@ -638,12 +639,12 @@ public class MenuSecundario extends javax.swing.JFrame {
                         conn.close();
                     }
                     else if(jCheckBox2.isSelected() == true){
-                        String sql = "SELECT AVG(peso) AS promedio FROM animalesZoo WHERE tipo = 'Celentereo'";
+                        String sql = "SELECT ROUND(AVG(peso),2) AS promedio FROM animalesZoo WHERE tipo = 'Celentereo'";
                         Statement statement = conn.createStatement();
                         ResultSet resultSet = statement.executeQuery(sql);
-                        cantidad = resultSet.getInt("promedio");
+                        peso = resultSet.getDouble("promedio");
                         cantidadPorTipo.setText("0");
-                        cantidadPorTipo.setText(Integer.toString(cantidad)+ " kg");
+                        cantidadPorTipo.setText(Double.toString(peso)+ " kg");
                         // Cerrar los recursos
                         resultSet.close();
                         statement.close();
