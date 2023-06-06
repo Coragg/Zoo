@@ -16,7 +16,7 @@ import java.io.File;
 import java.net.URL;
 
 
-public class Formumario extends javax.swing.JFrame {
+public class Formulario extends javax.swing.JFrame {
 
     private int id;
     public String nombre;
@@ -27,11 +27,8 @@ public class Formumario extends javax.swing.JFrame {
     private List<String> listaAnimales = new ArrayList<>(); // Declarar la lista de animales
     private HashMap<String, String> diccionarioAnimales;
 
-    
-    private void obtenerDirectorioImagenes() {
-    }
 
-    public Formumario() {
+    public Formulario() {
         initComponents();
         this.setTitle("Formulario de animales");
         this.setLocationRelativeTo(null);
@@ -47,24 +44,30 @@ public class Formumario extends javax.swing.JFrame {
       
         try {
             // Crear un objeto PreparedStatement para ejecutar la consulta SQL
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM animal WHERE id=?");
+            PreparedStatement insertarDatosTabla = connection.prepareStatement("SELECT * FROM animal WHERE id=?");
+            PreparedStatement obtencionId =  connection.prepareStatement("SELECT seq FROM sqlite_sequence WHERE name='animalesZoo'");
 
             // Establecer el valor de la id en el objeto PreparedStatement
-            ps.setInt(1, numeroAleatorio);
+            insertarDatosTabla.setInt(1, numeroAleatorio);
 
             // Ejecutar la consulta SQL
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = insertarDatosTabla.executeQuery();
+            ResultSet searchId = obtencionId.executeQuery();
+
+            while(searchId.next()){
+                this.id = searchId.getInt("seq");
+                jTxIdAnimal.setText(String.valueOf(this.id + 1));
+            }
+
 
             // Obtener los resultados
-            while (rs.next()) {
-                int id = rs.getInt("id");
+            while(rs.next()) {
                 String nombre = rs.getString("nombre");
                 String tipo = rs.getString("tipo");
                 String categoria = rs.getString("categoria");
                 double minimo = rs.getDouble("min");
                 double maximo = rs.getDouble("max");
                 // poner datos en variables globales
-                this.id = id;
                 this.nombre = nombre;
                 this.tipo = tipo;
                 this.categoria = categoria;
@@ -77,9 +80,7 @@ public class Formumario extends javax.swing.JFrame {
                 diccionarioAnimales.put(this.nombre, nombreArchivo); // Agregar la entrada al diccionario
                 System.out.println(listaAnimales);
 
-                
-                
-             
+
                 jTextTipo.setText(this.tipo);
                 jTextCategoria.setText(this.categoria);
             }
@@ -92,7 +93,8 @@ public class Formumario extends javax.swing.JFrame {
 
             // Cerrar el objeto ResultSet, el objeto PreparedStatement y la conexión
             rs.close();
-            ps.close();
+            searchId.close();
+            insertarDatosTabla.close();
             connection.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -188,7 +190,6 @@ public class Formumario extends javax.swing.JFrame {
 
         jLabel1.setText("Nombre:");
 
-        jTxIdAnimal.setText("1");
         jTxIdAnimal.setEnabled(false);
         jTxIdAnimal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -961,21 +962,23 @@ public class Formumario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Formumario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Formumario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Formumario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Formumario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Formulario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Formumario().setVisible(true);
+                new Formulario().setVisible(true);
             }
         });
     }

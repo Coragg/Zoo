@@ -180,7 +180,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        Formumario formulario = new Formumario();
+        Formulario formulario = new Formulario();
         formulario.setVisible(true);
         this.dispose();
         
