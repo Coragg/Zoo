@@ -18,7 +18,7 @@ public class Registrar extends javax.swing.JFrame {
      */
     public Registrar() {
         initComponents();
-        this.setTitle("Login");
+        this.setTitle("Registrar");
         this.setLocationRelativeTo(null);
     }
 
