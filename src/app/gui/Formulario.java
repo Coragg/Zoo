@@ -26,13 +26,17 @@ public class Formulario extends javax.swing.JFrame {
     private double pesoMaximo;
     private List<String> listaAnimales = new ArrayList<>(); // Declarar la lista de animales
     private HashMap<String, String> diccionarioAnimales;
+    
 
 
     public Formulario() {
         initComponents();
         this.setTitle("Formulario de animales");
         this.setLocationRelativeTo(null);
-
+        
+        
+        
+        
         //conectar base de datos
         Conexion conexion = new Conexion();
         Connection connection = conexion.getConexion();
@@ -95,6 +99,92 @@ public class Formulario extends javax.swing.JFrame {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        
+        jLabelAtributo3.setVisible(false);
+        jComboBoxAtributo3.setVisible(false);
+        switch (this.tipo) {
+            case "Mamifero":
+                jLabelAtributo2.setVisible(false);
+                jComboBoxAtributo2.setVisible(false);
+                jLabelAtributo1.setText("Cantidad de patas");
+                break;
+            case "Ave":
+                jLabelAtributo2.setVisible(false);
+                jComboBoxAtributo2.setVisible(false);
+                jLabelAtributo1.setText("N° de Alas");
+                
+                break;
+            case "Pez":
+                jLabelAtributo1.setVisible(false);
+                jTextAtributo1.setVisible(false);
+                jLabelAtributo3.setVisible(true);
+                jComboBoxAtributo3.setVisible(true);
+                jLabelAtributo2.setText("N° de aletas");
+                jLabelAtributo3.setText("Escamas");
+                jComboBoxAtributo2.addItem("4");
+                jComboBoxAtributo2.addItem("5");
+                jComboBoxAtributo2.addItem("6");
+                jComboBoxAtributo3.addItem("Si");
+                jComboBoxAtributo3.addItem("No");
+                break;
+            case "Anfibio":
+                jLabelAtributo1.setVisible(false);
+                jTextAtributo1.setVisible(false);
+                jLabelAtributo2.setText("Piel anfibio");
+                jComboBoxAtributo2.addItem("si");
+                jComboBoxAtributo2.addItem("no");
+                break;
+            case "Reptil":
+                jLabelAtributo1.setVisible(false);
+                jTextAtributo1.setVisible(false);
+                jLabelAtributo2.setText("Habitat reptil");
+                jComboBoxAtributo2.addItem("Tierra");
+                jComboBoxAtributo2.addItem("Mar");
+                jComboBoxAtributo2.addItem("Ambos");
+                break;
+            case "Artropodo":
+                jLabelAtributo1.setText("N° pares de patas");
+                jLabelAtributo2.setText("Antenas");
+                jComboBoxAtributo2.addItem("Par de antenas");
+                jComboBoxAtributo2.addItem("Sin antenas");
+                break;
+            case "Molusco":
+                jLabelAtributo1.setVisible(false);
+                jTextAtributo1.setVisible(false);
+                jLabelAtributo2.setText("Tipo Cuerpo");
+                jComboBoxAtributo2.addItem("Erizo");
+                jComboBoxAtributo2.addItem("Estrella");
+                break;
+            case "Equinodermo":
+                jLabelAtributo1.setVisible(false);
+                jTextAtributo1.setVisible(false);
+                jLabelAtributo2.setText("Tipo Cuerpo");
+                jComboBoxAtributo2.addItem("Erizo");
+                jComboBoxAtributo2.addItem("Estrella");
+                break;
+            case "Gusano":
+                jLabelAtributo1.setVisible(false);
+                jTextAtributo1.setVisible(false);
+                jLabelAtributo2.setText("Cuerpo gusano");
+                jComboBoxAtributo2.addItem("Si");
+                jComboBoxAtributo2.addItem("No");
+                break;
+            case "Porifero":
+                jLabelAtributo2.setVisible(false);
+                jLabelAtributo1.setVisible(false);
+                jComboBoxAtributo2.setVisible(false);
+                jTextAtributo1.setVisible(false);
+                break;
+            case "Celentereo":
+                jLabelAtributo1.setVisible(false);
+                jTextAtributo1.setVisible(false);
+                jLabelAtributo2.setText("Tentaculos");
+                jComboBoxAtributo2.addItem("Contiene tentaculos");
+                jComboBoxAtributo2.addItem("No contiene");
+                break;
+            default:
+                break;
+        }
     }
 
     private String obtenerNombreArchivo(String nombreAnimal) {
@@ -138,32 +228,16 @@ public class Formulario extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jTextTipo = new javax.swing.JTextField();
         jTextColor = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jTextNumeroPatas = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jTextParesPatas = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jCGusano = new javax.swing.JComboBox<>();
-        jCEscamas = new javax.swing.JComboBox<>();
-        jCPielAnfibio = new javax.swing.JComboBox<>();
-        jCAntenas = new javax.swing.JComboBox<>();
-        jCErizoEstrella = new javax.swing.JComboBox<>();
-        jTextNumeroAlas = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
-        jCTentaculo = new javax.swing.JComboBox<>();
-        jBoxNumeroAletas = new javax.swing.JComboBox<>();
+        jLabelAtributo1 = new javax.swing.JLabel();
+        jTextAtributo1 = new javax.swing.JTextField();
+        jLabelAtributo2 = new javax.swing.JLabel();
+        jComboBoxAtributo2 = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jLabelimagen = new javax.swing.JLabel();
-        jCTipoReptil = new javax.swing.JComboBox<>();
         jTextCategoria = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        jLabelAtributo3 = new javax.swing.JLabel();
+        jComboBoxAtributo3 = new javax.swing.JComboBox<>();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -252,81 +326,20 @@ public class Formulario extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("N° de Patas:");
+        jLabelAtributo1.setText("Atributo1");
 
-        jTextNumeroPatas.addActionListener(new java.awt.event.ActionListener() {
+        jTextAtributo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextNumeroPatasActionPerformed(evt);
+                jTextAtributo1ActionPerformed(evt);
             }
         });
-        jTextNumeroPatas.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextAtributo1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextNumeroPatasKeyTyped(evt);
+                jTextAtributo1KeyTyped(evt);
             }
         });
 
-        jLabel9.setText("N° de Alas:");
-
-        jLabel10.setText("N° de Aletas:");
-
-        jLabel11.setText("Escamas:");
-
-        jLabel12.setText("Piel anfibio:");
-
-        jLabel13.setText("Tipo Reptil:");
-
-        jLabel14.setText("N° pares de patas:");
-
-        jTextParesPatas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextParesPatasActionPerformed(evt);
-            }
-        });
-        jTextParesPatas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextParesPatasKeyTyped(evt);
-            }
-        });
-
-        jLabel15.setText("Antenas:");
-
-        jLabel16.setText("Tipo equinodermo:");
-
-        jLabel17.setText("Cuerpo gusano:");
-
-        jCGusano.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Si", "No" }));
-
-        jCEscamas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Si", "No" }));
-
-        jCPielAnfibio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Si", "No" }));
-
-        jCAntenas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Par de antenas", "Sin antenas" }));
-        jCAntenas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCAntenasActionPerformed(evt);
-            }
-        });
-
-        jCErizoEstrella.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Erizo", "Estrella" }));
-
-        jTextNumeroAlas.setEditable(false);
-        jTextNumeroAlas.setText("2");
-        jTextNumeroAlas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextNumeroAlasActionPerformed(evt);
-            }
-        });
-        jTextNumeroAlas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextNumeroAlasKeyTyped(evt);
-            }
-        });
-
-        jLabel18.setText("Tentáculos:");
-
-        jCTentaculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Contiene tentáculos", "No contiene" }));
-
-        jBoxNumeroAletas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "4", "5", "6" }));
+        jLabelAtributo2.setText("Atributo2");
 
         jPanel2.setPreferredSize(new java.awt.Dimension(200, 200));
 
@@ -338,16 +351,14 @@ public class Formulario extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabelimagen)
-                .addGap(0, 166, Short.MAX_VALUE))
+                .addGap(0, 161, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabelimagen)
-                .addGap(0, 186, Short.MAX_VALUE))
+                .addGap(0, 184, Short.MAX_VALUE))
         );
-
-        jCTipoReptil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tierra", "Mar", "Ambos" }));
 
         jTextCategoria.setEditable(false);
         jTextCategoria.addActionListener(new java.awt.event.ActionListener() {
@@ -358,164 +369,167 @@ public class Formulario extends javax.swing.JFrame {
 
         jLabel6.setText("Categoria:");
 
+        jLabelAtributo3.setText("Atributo3");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel3))
-                        .addGap(22, 22, 22)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTxIdAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextNumeroAlas, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextNumeroPatas, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTxtPeso)
-                                .addComponent(jTextNombreAnimal)
-                                .addComponent(jTextColor)
-                                .addComponent(jTextTipo)
-                                .addComponent(jBoxNumeroAletas, 0, 152, Short.MAX_VALUE)))
-                        .addGap(7, 7, 7)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTxIdAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(75, 75, 75)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jLabel18))
-                                .addGap(24, 24, 24)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel4))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCGusano, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jCTentaculo, 0, 148, Short.MAX_VALUE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(30, 30, 30)
+                                        .addComponent(jTextColor, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jTextNombreAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(76, 76, 76)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel13)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel16))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jCPielAnfibio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextParesPatas)
-                                    .addComponent(jCAntenas, 0, 148, Short.MAX_VALUE)
-                                    .addComponent(jCErizoEstrella, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jCEscamas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jCTipoReptil, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(77, 77, 77)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextCategoria, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel6))
-                        .addGap(176, 176, 176))
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabelAtributo1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextAtributo1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTxtPeso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabelAtributo2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboBoxAtributo2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabelAtributo3)
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboBoxAtributo3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButGuardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4)
-                        .addGap(144, 144, 144))))
+                        .addComponent(jButton4)))
+                .addGap(458, 458, 458))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 67, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBoxAtributo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelAtributo2))
+                        .addGap(25, 25, 25))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTxIdAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTxIdAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(jCEscamas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextNombreAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxAtributo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelAtributo3))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTxtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel6)
+                    .addComponent(jTextCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextNombreAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12)
-                            .addComponent(jCPielAnfibio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTxtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel13)
-                            .addComponent(jCTipoReptil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(15, 15, 15)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel14)
-                            .addComponent(jTextParesPatas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(jLabel4))
+                        .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15)
-                            .addComponent(jCAntenas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addGap(18, 18, 18)
+                            .addComponent(jLabel5)
+                            .addComponent(jTextTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(jTextNumeroPatas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16)
-                            .addComponent(jCErizoEstrella, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel9)
-                                .addComponent(jTextNumeroAlas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel17)
-                                .addComponent(jCGusano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel18)
-                            .addComponent(jCTentaculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBoxNumeroAletas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabelAtributo1)
+                            .addComponent(jTextAtributo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 22, Short.MAX_VALUE)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(71, 71, 71)
+                        .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton4)
-                            .addComponent(jButGuardar))
-                        .addGap(24, 24, 24))))
+                            .addComponent(jButGuardar))))
+                .addGap(19, 30, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTxIdAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxIdAnimalActionPerformed
+    private void jTextCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCategoriaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTxIdAnimalActionPerformed
+    }//GEN-LAST:event_jTextCategoriaActionPerformed
+
+    private void jTextAtributo1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextAtributo1KeyTyped
+        // TODO add your handling code here:
+        char caracteres = evt.getKeyChar();
+        if (caracteres < '0' || caracteres > '9'){
+            evt.consume();}
+    }//GEN-LAST:event_jTextAtributo1KeyTyped
+
+    private void jTextAtributo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextAtributo1ActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jTextAtributo1ActionPerformed
+
+    private void jTextColorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextColorKeyTyped
+        // TODO add your handling code here:
+        char limitarCaracteres = evt.getKeyChar();
+        if((limitarCaracteres<'a'||limitarCaracteres>'z') && (limitarCaracteres<'A'||limitarCaracteres>'Z') && (limitarCaracteres<' '||limitarCaracteres>' '))evt.consume();
+
+    }//GEN-LAST:event_jTextColorKeyTyped
+
+    private void jTextColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextColorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextColorActionPerformed
+
+    private void jTextTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextTipoActionPerformed
+
+    private void jTextNombreAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNombreAnimalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextNombreAnimalActionPerformed
 
     private void BtSalir(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSalir
         // TODO add your handling code here:
@@ -538,19 +552,19 @@ public class Formulario extends javax.swing.JFrame {
             double peso = Double.parseDouble(jTxtPeso.getText());
 
             if(peso < this.pesoMinimo || peso > this.pesoMaximo)
-                JOptionPane.showMessageDialog(null, "Tiene que colocar un valor menor a " + pesoMinimo + " y mayor a " + pesoMaximo);
+            JOptionPane.showMessageDialog(null, "Tiene que colocar un valor menor a " + pesoMinimo + " y mayor a " + pesoMaximo);
 
             else if(jTextColor.getText().equals(""))
-                JOptionPane.showMessageDialog(null, "Tiene que ingresar un color");
+            JOptionPane.showMessageDialog(null, "Tiene que ingresar un color");
 
             else if ("Mamifero".equals(this.tipo)) {
-                if (jTextNumeroPatas.getText().equals("")) {
+                if (jTextAtributo1.getText().equals("")) {
                     JOptionPane.showMessageDialog(null, "Tiene que ingresar el número de patas del animal.");
-                } else if ((!"Delfin".equals(this.nombre) && !"Ballena".equals(this.nombre)) && Integer.parseInt(jTextNumeroPatas.getText()) < 1) {
+                } else if ((!"Delfin".equals(this.nombre) && !"Ballena".equals(this.nombre)) && Integer.parseInt(jTextAtributo1.getText()) < 1) {
                     JOptionPane.showMessageDialog(null, "El número de patas debe ser mayor a 0.");
                 } else {
                     String nombreAnimal = this.nombre;
-                    int cantidadPatas = Integer.parseInt(jTextNumeroPatas.getText());
+                    int cantidadPatas = Integer.parseInt(jTextAtributo1.getText());
                     try {
                         String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, cantidadPatas) VALUES (?, ?, ?, ?, ?, ?)";
                         PreparedStatement statement = connection.prepareStatement(sql);
@@ -575,12 +589,12 @@ public class Formulario extends javax.swing.JFrame {
                     System.out.println("Weee, mandando datos a la base de datos. Sabía que no eras un idiota.");
                 }
             }else if("Ave".equals(this.tipo)){
-                if (jTextNumeroAlas.getText().equals(""))
-                    JOptionPane.showMessageDialog(null, "Tiene que ingresar el numero de alas del animal.");
-                else if(Integer.parseInt(jTextNumeroAlas.getText()) <= 0)
-                    JOptionPane.showMessageDialog(null, "El numero de alas tiene que ser mayor a 0.");
+                if (jTextAtributo1.getText().equals(""))
+                JOptionPane.showMessageDialog(null, "Tiene que ingresar el numero de alas del animal.");
+                else if(Integer.parseInt(jTextAtributo1.getText()) <= 0)
+                JOptionPane.showMessageDialog(null, "El numero de alas tiene que ser mayor a 0.");
                 else {
-                    int cantidadAlas = Integer.parseInt(jTextNumeroAlas.getText());
+                    int cantidadAlas = Integer.parseInt(jTextAtributo1.getText());
                     try {
                         String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, cantidadAlas) VALUES (?, ?, ?, ?, ?, ?)";
                         PreparedStatement statement = connection.prepareStatement(sql);
@@ -608,9 +622,9 @@ public class Formulario extends javax.swing.JFrame {
             }else if("Pez".equals(this.tipo)){
                 // para que mande a la base de datos
 
-                String seleccionNumeroAletas = jBoxNumeroAletas.getSelectedItem().toString();
+                String seleccionNumeroAletas = jComboBoxAtributo2.getSelectedItem().toString();
                 int numeroAletas = Integer.parseInt(seleccionNumeroAletas);
-                String tieneEscamas = jCEscamas.getSelectedItem().toString();
+                String tieneEscamas = jComboBoxAtributo3.getSelectedItem().toString();
 
                 try {
                     String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, cantidadAletas, escamas) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -634,8 +648,7 @@ public class Formulario extends javax.swing.JFrame {
                 }
 
             }else if("Anfibio".equals(this.tipo)){
-                String tienePiel = jCPielAnfibio.getSelectedItem().toString();
-
+                String tienePiel = jComboBoxAtributo2.getSelectedItem().toString();
 
                 try {
                     String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, piel) VALUES (?, ?, ?, ?, ?, ?)";
@@ -647,7 +660,6 @@ public class Formulario extends javax.swing.JFrame {
                     statement.setString(5, this.categoria);
                     statement.setString(6, tienePiel);
 
-
                     statement.executeUpdate();
                     System.out.println("Los datos han sido enviados");
                     MenuPrincipal menu =  new MenuPrincipal();
@@ -658,12 +670,8 @@ public class Formulario extends javax.swing.JFrame {
                     e.printStackTrace();
                 }
 
-
-
-
             }else if("Reptil".equals(this.tipo)){
-                String tierraMar_ambos = jCTipoReptil.getSelectedItem().toString();
-
+                String tierraMar_ambos = jComboBoxAtributo2.getSelectedItem().toString();
 
                 try {
                     String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, tierraMar_ambos) VALUES (?, ?, ?, ?, ?, ?)";
@@ -674,7 +682,6 @@ public class Formulario extends javax.swing.JFrame {
                     statement.setString(4, this.tipo);
                     statement.setString(5, this.categoria);
                     statement.setString(6, tierraMar_ambos);
-
 
                     statement.executeUpdate();
                     System.out.println("Los datos han sido enviados");
@@ -688,13 +695,13 @@ public class Formulario extends javax.swing.JFrame {
 
             }else if("Artropodo".equals(this.tipo)) {
 
-                String paresPatas = jTextParesPatas.getText().toString();
-                if(jTextParesPatas.getText().equals(""))
-                    JOptionPane.showMessageDialog(null, "Tienes que poner el numero de pares de patas.");
+                String paresPatas = jTextAtributo1.getText().toString();
+                if(jTextAtributo1.getText().equals(""))
+                JOptionPane.showMessageDialog(null, "Tienes que poner el numero de pares de patas.");
                 else if(Integer.parseInt(paresPatas) < 1)
-                    JOptionPane.showMessageDialog(null, "Ingrese un numero valido de patas");
+                JOptionPane.showMessageDialog(null, "Ingrese un numero valido de patas");
                 else {
-                    String NumeroAntenas = jCAntenas.getSelectedItem().toString();
+                    String NumeroAntenas = jComboBoxAtributo2.getSelectedItem().toString();
                     int cantidadParesPatas = Integer.parseInt(paresPatas);
 
                     try {
@@ -708,7 +715,6 @@ public class Formulario extends javax.swing.JFrame {
                         statement.setInt(6, cantidadParesPatas);
                         statement.setString(7, NumeroAntenas);
 
-
                         statement.executeUpdate();
                         System.out.println("Los datos han sido enviados");
                         MenuPrincipal menu = new MenuPrincipal();
@@ -721,9 +727,7 @@ public class Formulario extends javax.swing.JFrame {
                 }
 
             }else if ("Molusco".equals(this.tipo)){
-                String erizo_o_estrella = jCErizoEstrella.getSelectedItem().toString();
-
-
+                String erizo_o_estrella = jComboBoxAtributo2.getSelectedItem().toString();
 
                 try {
                     String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, erizo_o_estrella) VALUES (?, ?, ?, ?, ?, ?)";
@@ -735,8 +739,6 @@ public class Formulario extends javax.swing.JFrame {
                     statement.setString(5, this.categoria);
                     statement.setString(6, erizo_o_estrella);
 
-
-
                     statement.executeUpdate();
                     System.out.println("Los datos han sido enviados");
                     MenuPrincipal menu = new MenuPrincipal();
@@ -746,12 +748,9 @@ public class Formulario extends javax.swing.JFrame {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-
-
 
             }else if ("Equinodermo".equals(this.tipo)){
-                String erizo_o_estrella = jCErizoEstrella.getSelectedItem().toString();
-
+                String erizo_o_estrella = jComboBoxAtributo2.getSelectedItem().toString();
 
                 try {
                     String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, erizo_o_estrella) VALUES (?, ?, ?, ?, ?, ?)";
@@ -763,8 +762,6 @@ public class Formulario extends javax.swing.JFrame {
                     statement.setString(5, this.categoria);
                     statement.setString(6, erizo_o_estrella);
 
-
-
                     statement.executeUpdate();
                     System.out.println("Los datos han sido enviados");
                     MenuPrincipal menu = new MenuPrincipal();
@@ -775,12 +772,8 @@ public class Formulario extends javax.swing.JFrame {
                     e.printStackTrace();
                 }
 
-
-
             }else if ("Gusano".equals(this.tipo)){
-                String tipoCuerpo = jCGusano.getSelectedItem().toString();
-
-
+                String tipoCuerpo = jComboBoxAtributo2.getSelectedItem().toString();
 
                 try {
                     String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo,categoria, tipoCuerpo) VALUES (?, ?, ?, ?, ?, ?)";
@@ -791,8 +784,6 @@ public class Formulario extends javax.swing.JFrame {
                     statement.setString(4, this.tipo);
                     statement.setString(5, this.categoria);
                     statement.setString(6, tipoCuerpo);
-
-
 
                     statement.executeUpdate();
                     System.out.println("Los datos han sido enviados");
@@ -826,9 +817,7 @@ public class Formulario extends javax.swing.JFrame {
                 }
 
             }else if ("Celentereo".equals(this.tipo)){
-                String tentaculos = jCTentaculo.getSelectedItem().toString();
-
-
+                String tentaculos = jComboBoxAtributo2.getSelectedItem().toString();
 
                 try {
                     String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, tentaculos) VALUES (?, ?, ?, ?, ?, ?)";
@@ -839,8 +828,6 @@ public class Formulario extends javax.swing.JFrame {
                     statement.setString(4, this.tipo);
                     statement.setString(5, this.categoria);
                     statement.setString(6, tentaculos);
-
-
 
                     statement.executeUpdate();
                     System.out.println("Los datos han sido enviados");
@@ -854,16 +841,9 @@ public class Formulario extends javax.swing.JFrame {
 
             }
 
-
         }
-        
 
-        
     }//GEN-LAST:event_jButGuardarActionPerformed
-
-    private void jTxtPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtPesoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTxtPesoActionPerformed
 
     private void jTxtPesoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtPesoKeyTyped
         // TODO add your handling code here:
@@ -877,66 +857,13 @@ public class Formulario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTxtPesoKeyTyped
 
-    private void jTextNombreAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNombreAnimalActionPerformed
+    private void jTxtPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtPesoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextNombreAnimalActionPerformed
+    }//GEN-LAST:event_jTxtPesoActionPerformed
 
-    private void jTextColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextColorActionPerformed
+    private void jTxIdAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxIdAnimalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextColorActionPerformed
-
-    private void jTextParesPatasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextParesPatasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextParesPatasActionPerformed
-
-    private void jTextNumeroPatasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNumeroPatasActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jTextNumeroPatasActionPerformed
-
-    private void jTextNumeroPatasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNumeroPatasKeyTyped
-        // TODO add your handling code here:
-        char caracteres = evt.getKeyChar();
-        if (caracteres < '0' || caracteres > '9'){
-            evt.consume();}
-    }//GEN-LAST:event_jTextNumeroPatasKeyTyped
-
-    private void jTextNumeroAlasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNumeroAlasKeyTyped
-    char caracteres = evt.getKeyChar();
-        if (caracteres < '0' || caracteres > '9'){
-            evt.consume();
-        }            // TODO add your handling code here:
-    }//GEN-LAST:event_jTextNumeroAlasKeyTyped
-
-    private void jTextParesPatasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextParesPatasKeyTyped
-    char caracteres = evt.getKeyChar();
-        if (caracteres < '0' || caracteres > '9'){
-            evt.consume();
-        }        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextParesPatasKeyTyped
-
-    private void jTextNumeroAlasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNumeroAlasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextNumeroAlasActionPerformed
-
-    private void jTextColorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextColorKeyTyped
-        // TODO add your handling code here:
-        char limitarCaracteres = evt.getKeyChar();
-        if((limitarCaracteres<'a'||limitarCaracteres>'z') && (limitarCaracteres<'A'||limitarCaracteres>'Z') && (limitarCaracteres<' '||limitarCaracteres>' '))evt.consume();
-        
-    }//GEN-LAST:event_jTextColorKeyTyped
-
-    private void jCAntenasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCAntenasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCAntenasActionPerformed
-
-    private void jTextCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCategoriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextCategoriaActionPerformed
-
-    private void jTextTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextTipoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextTipoActionPerformed
+    }//GEN-LAST:event_jTxIdAnimalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -979,34 +906,20 @@ public class Formulario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup VertebradoOinvertebrado;
-    private javax.swing.JComboBox<String> jBoxNumeroAletas;
     private javax.swing.JButton jButGuardar;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jCAntenas;
-    private javax.swing.JComboBox<String> jCErizoEstrella;
-    private javax.swing.JComboBox<String> jCEscamas;
-    private javax.swing.JComboBox<String> jCGusano;
-    private javax.swing.JComboBox<String> jCPielAnfibio;
-    private javax.swing.JComboBox<String> jCTentaculo;
-    private javax.swing.JComboBox<String> jCTipoReptil;
+    private javax.swing.JComboBox<String> jComboBoxAtributo2;
+    private javax.swing.JComboBox<String> jComboBoxAtributo3;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelAtributo1;
+    private javax.swing.JLabel jLabelAtributo2;
+    private javax.swing.JLabel jLabelAtributo3;
     private javax.swing.JLabel jLabelimagen;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
@@ -1014,13 +927,11 @@ public class Formulario extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTextAtributo1;
     private javax.swing.JTextField jTextCategoria;
     private javax.swing.JTextField jTextColor;
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextNombreAnimal;
-    private javax.swing.JTextField jTextNumeroAlas;
-    private javax.swing.JTextField jTextNumeroPatas;
-    private javax.swing.JTextField jTextParesPatas;
     private javax.swing.JTextField jTextTipo;
     private javax.swing.JTextField jTxIdAnimal;
     private javax.swing.JTextField jTxtPeso;
