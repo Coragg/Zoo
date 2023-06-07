@@ -524,9 +524,16 @@ public class Formulario extends javax.swing.JFrame {
             else if ("Mamifero".equals(this.tipo)) {
                 if (jTextAtributo1.getText().equals("")) {
                     JOptionPane.showMessageDialog(null, "Tiene que ingresar el número de patas del animal.");
-                } else if ((!"Delfin".equals(this.nombre) && !"Ballena".equals(this.nombre)) && Integer.parseInt(jTextAtributo1.getText()) < 1) {
+                } 
+                else if ((!"Delfin".equals(this.nombre) && !"Ballena".equals(this.nombre)) && Integer.parseInt(jTextAtributo1.getText()) < 1) {
                     JOptionPane.showMessageDialog(null, "El número de patas debe ser mayor a 0.");
-                } else {
+                   }
+                else if (Integer.parseInt(jTextAtributo1.getText()) > 4){
+                    JOptionPane.showMessageDialog(null, "Error. El número de patas debe ser menor que 5.");
+                    
+                }
+                
+                else {
                     String nombreAnimal = this.nombre;
                     int cantidadPatas = Integer.parseInt(jTextAtributo1.getText());
                     try {
