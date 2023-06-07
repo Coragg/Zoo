@@ -557,6 +557,8 @@ public class Formulario extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Debe ingresar el N° de alas del ave.");
                 else if(Integer.parseInt(jTextAtributo1.getText()) <= 0)
                 JOptionPane.showMessageDialog(null, "Error. El número de alas debe mayor que 0.");
+                else if(Integer.parseInt(jTextAtributo1.getText()) > 2)
+                JOptionPane.showMessageDialog(null, "Error. El número de alas debe ser menor que 2.");
                 else {
                     int cantidadAlas = Integer.parseInt(jTextAtributo1.getText());
                     try {
