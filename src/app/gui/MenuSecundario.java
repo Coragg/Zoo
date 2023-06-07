@@ -710,7 +710,7 @@ public class MenuSecundario extends javax.swing.JFrame {
             tipoAnimal.setVisible(false); // Manejo de excepciones
             cantidadPorTipo.setVisible(false);
             jPanel3.setVisible(false);
-            tablaAnimales tablaAnimales = new tablaAnimales();
+            TablaAnimales tablaAnimales = new TablaAnimales();
             tablaAnimales.setVisible(true);
             this.dispose();
             
