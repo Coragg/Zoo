@@ -9,11 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Random;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.io.File;
-import java.net.URL;
+
 
 
 public class Formulario extends javax.swing.JFrame {
@@ -24,8 +20,7 @@ public class Formulario extends javax.swing.JFrame {
     public String categoria;
     private double  pesoMinimo;
     private double pesoMaximo;
-    private List<String> listaAnimales = new ArrayList<>(); // Declarar la lista de animales
-    private HashMap<String, String> diccionarioAnimales;
+   
     
 
 
@@ -40,7 +35,7 @@ public class Formulario extends javax.swing.JFrame {
         //conectar base de datos
         Conexion conexion = new Conexion();
         Connection connection = conexion.getConexion();
-        diccionarioAnimales = new HashMap<>(); // Inicializar el diccionario
+        
 
         // Generar un número aleatorio para la id
         Random random = new Random();
@@ -78,10 +73,6 @@ public class Formulario extends javax.swing.JFrame {
                 this.pesoMaximo = maximo;
 
                 jTextNombreAnimal.setText(this.nombre);
-                listaAnimales.add(this.nombre); // Agregar el nombre del animal a la lista
-                String nombreArchivo = obtenerNombreArchivo(this.nombre); // Obtener el nombre del archivo correspondiente al animal
-                diccionarioAnimales.put(this.nombre, nombreArchivo); // Agregar la entrada al diccionario
-
                 jTextTipo.setText(this.tipo);
                 jTextCategoria.setText(this.categoria);
             }
@@ -187,18 +178,8 @@ public class Formulario extends javax.swing.JFrame {
         }
     }
 
-    private String obtenerNombreArchivo(String nombreAnimal) {
-    //int indice = listaAnimales.indexOf(nombreAnimal);
-    //if (indice != -1) {
-        //
-        //String nombreArchivo = listaNombresArchivos.get(indice);
-       // String rutaCompletaArchivo = directorio_fotos + nombreArchivo;
-        //return rutaCompletaArchivo;
-   // } else {
-        //throw new IllegalArgumentException("No se encontró el nombre del animal: " + nombreAnimal);
-    //}
-    return null;
-    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -529,16 +510,16 @@ public class Formulario extends javax.swing.JFrame {
         Connection connection = conexion.getConexion(); // generar coneccion a la base de datos
 
         if(jTxtPeso.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Es obligatorio colocar un valor en el peso.");
+            JOptionPane.showMessageDialog(null, "Debe ingresar un valor en peso.");
         } else {
             String color = jTextColor.getText();
             double peso = Double.parseDouble(jTxtPeso.getText());
 
             if(peso < this.pesoMinimo || peso > this.pesoMaximo)
-            JOptionPane.showMessageDialog(null, "Tiene que colocar un valor menor a " + pesoMinimo + " y mayor a " + pesoMaximo);
+            JOptionPane.showMessageDialog(null, "Error. Ingrese un valor mayor que " + pesoMinimo + " y menor que " + pesoMaximo + " kilógramos(KG).");
 
             else if(jTextColor.getText().equals(""))
-            JOptionPane.showMessageDialog(null, "Tiene que ingresar un color");
+            JOptionPane.showMessageDialog(null, "Debe ingresar un color.");
 
             else if ("Mamifero".equals(this.tipo)) {
                 if (jTextAtributo1.getText().equals("")) {
@@ -573,9 +554,9 @@ public class Formulario extends javax.swing.JFrame {
                 }
             }else if("Ave".equals(this.tipo)){
                 if (jTextAtributo1.getText().equals(""))
-                JOptionPane.showMessageDialog(null, "Tiene que ingresar el numero de alas del animal.");
+                JOptionPane.showMessageDialog(null, "Debe ingresar el N° de alas del ave.");
                 else if(Integer.parseInt(jTextAtributo1.getText()) <= 0)
-                JOptionPane.showMessageDialog(null, "El numero de alas tiene que ser mayor a 0.");
+                JOptionPane.showMessageDialog(null, "Error. El número de alas debe mayor que 0.");
                 else {
                     int cantidadAlas = Integer.parseInt(jTextAtributo1.getText());
                     try {
@@ -680,9 +661,9 @@ public class Formulario extends javax.swing.JFrame {
 
                 String paresPatas = jTextAtributo1.getText().toString();
                 if(jTextAtributo1.getText().equals(""))
-                JOptionPane.showMessageDialog(null, "Tienes que poner el numero de pares de patas.");
+                JOptionPane.showMessageDialog(null, "Ingrese un número de pares de patas.");
                 else if(Integer.parseInt(paresPatas) < 1)
-                JOptionPane.showMessageDialog(null, "Ingrese un numero valido de patas");
+                JOptionPane.showMessageDialog(null, "Error. Ingrese un número valido de pares de patas.");
                 else {
                     String NumeroAntenas = jComboBoxAtributo2.getSelectedItem().toString();
                     int cantidadParesPatas = Integer.parseInt(paresPatas);
