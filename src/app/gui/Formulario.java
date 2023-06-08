@@ -29,9 +29,6 @@ public class Formulario extends javax.swing.JFrame {
         this.setTitle("Formulario de animales");
         this.setLocationRelativeTo(null);
         
-        
-        
-        
         //conectar base de datos
         Conexion conexion = new Conexion();
         Connection connection = conexion.getConexion();

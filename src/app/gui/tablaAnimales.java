@@ -1,17 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package app.gui;
 
 import app.bd.Conexion;
-import app.bd.ModificarAnimales;
-
 import java.sql.*;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
-
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -19,7 +10,7 @@ import javax.swing.event.ListSelectionListener;
 public class TablaAnimales extends javax.swing.JFrame {
 
     private int filaSeleccionada;
-   
+
     public TablaAnimales() {
         initComponents();
         jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -36,6 +27,7 @@ public class TablaAnimales extends javax.swing.JFrame {
                 }
             }
         });
+
 
         this.setTitle("Animales con sus caracteristicas");
         this.setLocationRelativeTo(null);
@@ -133,9 +125,7 @@ public class TablaAnimales extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }
-
-
-    
+   
     private void actualizarTablaAnimales() {
         try {
             // Crear una instancia de la clase Conexion para obtener la conexión a la base de datos
@@ -232,22 +222,6 @@ public class TablaAnimales extends javax.swing.JFrame {
         
     }
 
-
-    private void modificarDatos(){
-        filaSeleccionada = jTable1.convertRowIndexToModel(jTable1.getSelectedRow());
-        if (filaSeleccionada >= 0){
-            String idAnimal = jTable1.getValueAt(filaSeleccionada, 0).toString();
-
-            FormularioModificar formularioModificar = new FormularioModificar();
-            formularioModificar.setVisible(true);
-            this.dispose();
-
-        } else {
-            JOptionPane.showMessageDialog(null, "No has seleccionado");
-        }
-    }
-
-
     
     private void eliminarAnimal() {
         // Obtiene la fila seleccionada en la tabla
@@ -318,6 +292,7 @@ public class TablaAnimales extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 102, 255));
 
         jTable1.setAutoCreateRowSorter(true);
+        jTable1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -331,6 +306,19 @@ public class TablaAnimales extends javax.swing.JFrame {
         ));
         jTable1.setColumnSelectionAllowed(true);
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTable1.setEditingColumn(0);
+        jTable1.setEditingRow(0);
+        jTable1.setFocusable(false);
+        jTable1.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        jTable1.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jTable1MouseEntered(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
         jTable1.getTableHeader().setReorderingAllowed(false) ;
 
@@ -427,13 +415,40 @@ public class TablaAnimales extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonEliminarActionPerformed
 
+       
+    
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
         // TODO add your handling code here:
-        modificarDatos();
-        /*FormularioModificar modificar = new FormularioModificar();
-        modificar.setVisible(true);
-        this.dispose();*/
+        filaSeleccionada = jTable1.convertRowIndexToModel(jTable1.getSelectedRow());
+        if(filaSeleccionada >= 0 ){
+            String idAnimal = jTable1.getValueAt(filaSeleccionada, 0).toString();
+            String nombre = jTable1.getValueAt(filaSeleccionada, 1).toString();
+            String color = jTable1.getValueAt(filaSeleccionada, 2).toString();
+            String peso = jTable1.getValueAt(filaSeleccionada, 3).toString();
+            String tipo = jTable1.getValueAt(filaSeleccionada, 4).toString();
+            String categoria = jTable1.getValueAt(filaSeleccionada, 5).toString();
+            int id = Integer.parseInt(idAnimal);
+
+            FormularioModificar modificar = new FormularioModificar();
+            modificar.setId(id);
+            modificar.setNombre(nombre);
+            modificar.setColor(color);
+            //modificar.setPeso(peso);
+            modificar.setVisible(true);
+            this.dispose();
+        }else {
+            System.out.println("No se ha seleccionado ninguna fila");
+        }
+
     }//GEN-LAST:event_jButtonModificarActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jTable1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1MouseEntered
 
     
 
