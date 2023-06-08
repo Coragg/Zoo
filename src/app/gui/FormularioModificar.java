@@ -1,6 +1,7 @@
 package app.gui;
 
 import app.bd.Conexion;
+import app.bd.ModificarAnimales;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -14,86 +15,30 @@ import java.util.Random;
 
 public class FormularioModificar extends javax.swing.JFrame {
 
-    public int id;
-    public String nombre;
-    public String tipo;
-    public String categoria;
+    private int id;
+    private String nombre;
+    private String color;
+    private String tipo;
+    private String categoria;
     private double  pesoMinimo;
     private double pesoMaximo;
-   
-    
 
 
     public FormularioModificar() {
         initComponents();
         this.setTitle("Formulario de animales");
         this.setLocationRelativeTo(null);
-        
-        
+        int idAnimal = 10;
         
         
         //conectar base de datos
         Conexion conexion = new Conexion();
         Connection connection = conexion.getConexion();
-        
-
-        // Generar un número aleatorio para la id
-        Random random = new Random();
-        int numeroAleatorio = random.nextInt(129) + 1;
-
-        try {
-            // Crear un objeto PreparedStatement para ejecutar la consulta SQL
-            PreparedStatement insertarDatosTabla = connection.prepareStatement("SELECT * FROM animal WHERE id=?");
-            PreparedStatement obtencionId =  connection.prepareStatement("SELECT seq FROM sqlite_sequence WHERE name='animalesZoo'");
-
-            // Establecer el valor de la id en el objeto PreparedStatement
-            insertarDatosTabla.setInt(1, numeroAleatorio);
-
-            // Ejecutar la consulta SQL
-            ResultSet rs = insertarDatosTabla.executeQuery();
-            ResultSet searchId = obtencionId.executeQuery();
-
-            while(searchId.next()){
-                this.id = searchId.getInt("seq");
-                jTxIdAnimal.setText(String.valueOf(this.id + 1));
-            }
-
-            // Obtener los resultados
-            while(rs.next()) {
-                String nombre = rs.getString("nombre");
-                String tipo = rs.getString("tipo");
-                String categoria = rs.getString("categoria");
-                double minimo = rs.getDouble("min");
-                double maximo = rs.getDouble("max");
-                // poner datos en variables globales
-                this.nombre = nombre;
-                this.tipo = tipo;
-                this.categoria = categoria;
-                this.pesoMinimo = minimo;
-                this.pesoMaximo = maximo;
-
-                jTextNombreAnimal.setText(this.nombre);
-                jTextTipo.setText(this.tipo);
-                jTextCategoria.setText(this.categoria);
-            }
-            String nombreAnimalito = jTextNombreAnimal.getText();
-            String directorio_fotos = "src\\image\\animales\\" + nombreAnimalito + ".jpg" ;
-            ImageIcon imagen = new ImageIcon(directorio_fotos);
-            Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(200, 200, 1));
-            jLabelimagen.setIcon(icono);
-
-            // Cerrar el objeto ResultSet, el objeto PreparedStatement y la conexión
-            rs.close();
-            searchId.close();
-            insertarDatosTabla.close();
-            connection.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
+        jTxIdAnimal.setText(String.valueOf(idAnimal));
         
         jLabelAtributo3.setVisible(false);
         jComboBoxAtributo3.setVisible(false);
-        switch (this.tipo) {
+        /*switch (this.tipo) {
             case "Mamifero":
                 jLabelAtributo2.setVisible(false);
                 jComboBoxAtributo2.setVisible(false);
@@ -175,10 +120,8 @@ public class FormularioModificar extends javax.swing.JFrame {
                 break;
             default:
                 break;
-        }
+        }*/
     }
-
-    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -508,7 +451,8 @@ public class FormularioModificar extends javax.swing.JFrame {
         // ESTE BOTÓN GENERARÁ EL ANIMAL ALEATORIO.
         Conexion conexion = new Conexion();
         Connection connection = conexion.getConexion(); // generar coneccion a la base de datos
-
+        ModificarAnimales modificarAnimal = new ModificarAnimales();
+        TablaAnimales llamarTabla = new TablaAnimales();
         if(jTxtPeso.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Debe ingresar un valor en peso.");
         } else {
@@ -531,63 +475,28 @@ public class FormularioModificar extends javax.swing.JFrame {
                 else if (Integer.parseInt(jTextAtributo1.getText()) > 4){
                     JOptionPane.showMessageDialog(null, "Error. El número de patas debe ser menor que 5.");
                     
-                }
-                
-                else {
+                } else {
                     String nombreAnimal = this.nombre;
                     int cantidadPatas = Integer.parseInt(jTextAtributo1.getText());
-                    try {
-                        String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, cantidadPatas) VALUES (?, ?, ?, ?, ?, ?)";
-                        PreparedStatement statement = connection.prepareStatement(sql);
-
-                        statement.setString(1, nombreAnimal);
-                        statement.setString(2, color);
-                        statement.setDouble(3, peso);
-                        statement.setString(4, this.tipo);
-                        statement.setString(5, this.categoria);
-                        statement.setInt(6, cantidadPatas);
-
-                        statement.executeUpdate();
-                        System.out.println("Los datos han sido enviados");
-                        MenuPrincipal menu =  new MenuPrincipal();
-                        menu.setVisible(true);
-                        this.dispose();
-
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-
+                    modificarAnimal.mamifero(this.id, nombreAnimal, color, peso, this.tipo, this.categoria, cantidadPatas);
+                    llamarTabla.setVisible(true);
+                    this.dispose();
                     System.out.println("Weee, mandando datos a la base de datos. Sabía que no eras un idiota.");
                 }
+
             }else if("Ave".equals(this.tipo)){
                 if (jTextAtributo1.getText().equals(""))
-                JOptionPane.showMessageDialog(null, "Debe ingresar el N° de alas del ave.");
+                    JOptionPane.showMessageDialog(null, "Debe ingresar el N° de alas del ave.");
                 else if(Integer.parseInt(jTextAtributo1.getText()) <= 0)
-                JOptionPane.showMessageDialog(null, "Error. El número de alas debe mayor que 0.");
+                    JOptionPane.showMessageDialog(null, "Error. El número de alas debe mayor que 0.");
                 else if(Integer.parseInt(jTextAtributo1.getText()) > 2)
-                JOptionPane.showMessageDialog(null, "Error. El número de alas debe ser menor que 2.");
+                    JOptionPane.showMessageDialog(null, "Error. El número de alas debe ser menor que 2.");
                 else {
                     int cantidadAlas = Integer.parseInt(jTextAtributo1.getText());
-                    try {
-                        String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, cantidadAlas) VALUES (?, ?, ?, ?, ?, ?)";
-                        PreparedStatement statement = connection.prepareStatement(sql);
-                        statement.setString(1, this.nombre);
-                        statement.setString(2, color);
-                        statement.setDouble(3, peso);
-                        statement.setString(4, this.tipo);
-                        statement.setString(5, this.categoria);
-                        statement.setInt(6, cantidadAlas);
 
-                        statement.executeUpdate();
-                        System.out.println("Los datos han sido enviados");
-                        MenuPrincipal menu =  new MenuPrincipal();
-                        menu.setVisible(true);
-                        this.dispose();
-
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-
+                    modificarAnimal.ave(this.id, this.nombre, color, peso, this.tipo, this.categoria, cantidadAlas);
+                    llamarTabla.setVisible(true);
+                    this.dispose();
                     System.out.println("Weee, mandando datos a la base de datos. Sabía que no eras un idiota.");
 
                 }
@@ -598,27 +507,9 @@ public class FormularioModificar extends javax.swing.JFrame {
                 String seleccionNumeroAletas = jComboBoxAtributo2.getSelectedItem().toString();
                 int numeroAletas = Integer.parseInt(seleccionNumeroAletas);
                 String tieneEscamas = jComboBoxAtributo3.getSelectedItem().toString();
-
-                try {
-                    String sql = "INSERT INTO animalesZoo(nombre, color, peso, tipo, categoria, cantidadAletas, escamas) VALUES (?, ?, ?, ?, ?, ?, ?)";
-                    PreparedStatement statement = connection.prepareStatement(sql);
-                    statement.setString(1, this.nombre);
-                    statement.setString(2, color);
-                    statement.setDouble(3, peso);
-                    statement.setString(4, this.tipo);
-                    statement.setString(5, this.categoria);
-                    statement.setInt(6, numeroAletas);
-                    statement.setString(7, tieneEscamas);
-
-                    statement.executeUpdate();
-                    System.out.println("Los datos han sido enviados");
-                    MenuPrincipal menu =  new MenuPrincipal();
-                    menu.setVisible(true);
-                    this.dispose();
-
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
+                modificarAnimal.pez(this.id, this.nombre, color, peso, this.tipo, this.categoria, numeroAletas, tieneEscamas);
+                llamarTabla.setVisible(true);
+                this.dispose();
 
             }else if("Anfibio".equals(this.tipo)){
                 String tienePiel = jComboBoxAtributo2.getSelectedItem().toString();
