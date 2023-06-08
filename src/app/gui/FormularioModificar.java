@@ -22,6 +22,14 @@ public class FormularioModificar extends javax.swing.JFrame {
     private double  pesoMinimo;
     private double pesoMaximo;
 
+
+    public FormularioModificar() {
+        initComponents();
+        this.setTitle("Formulario de animales");
+        this.setLocationRelativeTo(null);
+
+    }
+
     public void setId(int id) {
         this.id = id;
         jTxIdAnimal.setText(String.valueOf(this.id));
@@ -47,101 +55,157 @@ public class FormularioModificar extends javax.swing.JFrame {
         jTextCategoria.setText(this.categoria);
     }
 
-    /*public void setPesoMinimo(double pesoMinimo) {
+    public void setPeso(double pesoMinimo) {
         this.peso = pesoMinimo;
-        jTextPesoMinimo.setText(String.valueOf(this.pesoMinimo));
-    }*/
+        jTxtPeso.setText(String.valueOf(this.peso));
+    }
 
-    public FormularioModificar() {
-        initComponents();
-        this.setTitle("Formulario de animales");
-        this.setLocationRelativeTo(null);
-
-     /*   jLabelAtributo3.setVisible(false);
+    public void mostrarImgaen(String nombre){
+        String directorio_fotos = "src\\image\\animales\\" + nombre + ".jpg" ;
+        ImageIcon imagen = new ImageIcon(directorio_fotos);
+        Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(200, 200, 1));
+        jLabelimagen.setIcon(icono);
+    }
+    public void changeVariable(){
+        jLabelAtributo3.setVisible(false);
         jComboBoxAtributo3.setVisible(false);
-        switch (this.tipo) {
-            case "Mamifero":
-                jLabelAtributo2.setVisible(false);
-                jComboBoxAtributo2.setVisible(false);
-                jLabelAtributo1.setText("Cantidad de patas");
-                break;
-            case "Ave":
-                jLabelAtributo2.setVisible(false);
-                jComboBoxAtributo2.setVisible(false);
-                jLabelAtributo1.setText("N° de Alas");
 
-                break;
-            case "Pez":
-                jLabelAtributo1.setVisible(false);
-                jTextAtributo1.setVisible(false);
-                jLabelAtributo3.setVisible(true);
-                jComboBoxAtributo3.setVisible(true);
-                jLabelAtributo2.setText("N° de aletas");
-                jLabelAtributo3.setText("Escamas");
-                jComboBoxAtributo2.addItem("4");
-                jComboBoxAtributo2.addItem("5");
-                jComboBoxAtributo2.addItem("6");
-                jComboBoxAtributo3.addItem("Si");
-                jComboBoxAtributo3.addItem("No");
-                break;
-            case "Anfibio":
-                jLabelAtributo1.setVisible(false);
-                jTextAtributo1.setVisible(false);
-                jLabelAtributo2.setText("Piel anfibio");
-                jComboBoxAtributo2.addItem("si");
-                jComboBoxAtributo2.addItem("no");
-                break;
-            case "Reptil":
-                jLabelAtributo1.setVisible(false);
-                jTextAtributo1.setVisible(false);
-                jLabelAtributo2.setText("Habitat reptil");
-                jComboBoxAtributo2.addItem("Tierra");
-                jComboBoxAtributo2.addItem("Mar");
-                jComboBoxAtributo2.addItem("Ambos");
-                break;
-            case "Artropodo":
-                jLabelAtributo1.setText("N° pares de patas");
-                jLabelAtributo2.setText("Antenas");
-                jComboBoxAtributo2.addItem("Par de antenas");
-                jComboBoxAtributo2.addItem("Sin antenas");
-                break;
-            case "Molusco":
-                jLabelAtributo1.setVisible(false);
-                jTextAtributo1.setVisible(false);
-                jLabelAtributo2.setText("Tipo Cuerpo");
-                jComboBoxAtributo2.addItem("Erizo");
-                jComboBoxAtributo2.addItem("Estrella");
-                break;
-            case "Equinodermo":
-                jLabelAtributo1.setVisible(false);
-                jTextAtributo1.setVisible(false);
-                jLabelAtributo2.setText("Tipo Cuerpo");
-                jComboBoxAtributo2.addItem("Erizo");
-                jComboBoxAtributo2.addItem("Estrella");
-                break;
-            case "Gusano":
-                jLabelAtributo1.setVisible(false);
-                jTextAtributo1.setVisible(false);
-                jLabelAtributo2.setText("Cuerpo gusano");
-                jComboBoxAtributo2.addItem("Si");
-                jComboBoxAtributo2.addItem("No");
-                break;
-            case "Porifero":
-                jLabelAtributo2.setVisible(false);
-                jLabelAtributo1.setVisible(false);
-                jComboBoxAtributo2.setVisible(false);
-                jTextAtributo1.setVisible(false);
-                break;
-            case "Celentereo":
-                jLabelAtributo1.setVisible(false);
-                jTextAtributo1.setVisible(false);
-                jLabelAtributo2.setText("Tentaculos");
-                jComboBoxAtributo2.addItem("Contiene tentaculos");
-                jComboBoxAtributo2.addItem("No contiene");
-                break;
-            default:
-                break;
-        }*/
+        Conexion conexion = new Conexion();
+        Connection connection = conexion.getConexion();
+
+        try{
+            PreparedStatement insertarDatosTabla = connection.prepareStatement("SELECT * FROM animalesZoo WHERE id=" + this.id);
+            switch (this.tipo) {
+                case "Mamifero":
+                    jLabelAtributo2.setVisible(false);
+                    jComboBoxAtributo2.setVisible(false);
+                    jLabelAtributo1.setText("Cantidad de patas");
+                    String cantidadPatas = insertarDatosTabla.executeQuery().getString("cantidadPatas");
+                    jTextAtributo1.setText(cantidadPatas);
+
+                    break;
+                case "Ave":
+                    jLabelAtributo2.setVisible(false);
+                    jComboBoxAtributo2.setVisible(false);
+                    jLabelAtributo1.setText("N° de Alas");
+                    String cantidadAlas = insertarDatosTabla.executeQuery().getString("cantidadAlas");
+                    jTextAtributo1.setText(cantidadAlas);
+
+                    break;
+                case "Pez":
+                    jLabelAtributo1.setVisible(false);
+                    jTextAtributo1.setVisible(false);
+                    jLabelAtributo3.setVisible(true);
+                    jComboBoxAtributo3.setVisible(true);
+                    jLabelAtributo2.setText("N° de aletas");
+                    jLabelAtributo3.setText("Escamas");
+                    jComboBoxAtributo2.addItem("4");
+                    jComboBoxAtributo2.addItem("5");
+                    jComboBoxAtributo2.addItem("6");
+                    jComboBoxAtributo3.addItem("Si");
+                    jComboBoxAtributo3.addItem("No");
+                    String cantidadAletas = insertarDatosTabla.executeQuery().getString("cantidadAletas");
+                    String escamas = insertarDatosTabla.executeQuery().getString("escamas");
+                    jComboBoxAtributo2.setSelectedItem(cantidadAletas);
+                    jComboBoxAtributo3.setSelectedItem(escamas);
+                    break;
+                case "Anfibio":
+                    jLabelAtributo1.setVisible(false);
+                    jTextAtributo1.setVisible(false);
+                    jLabelAtributo2.setText("Piel anfibio");
+                    jComboBoxAtributo2.addItem("si");
+                    jComboBoxAtributo2.addItem("no");
+                    String piel = insertarDatosTabla.executeQuery().getString("piel");
+                    jComboBoxAtributo2.setSelectedItem(piel);
+                    break;
+                case "Reptil":
+                    jLabelAtributo1.setVisible(false);
+                    jTextAtributo1.setVisible(false);
+                    jLabelAtributo2.setText("Habitat reptil");
+                    jComboBoxAtributo2.addItem("Tierra");
+                    jComboBoxAtributo2.addItem("Mar");
+                    jComboBoxAtributo2.addItem("Ambos");
+                    String tierraMarAmbos = insertarDatosTabla.executeQuery().getString("tierraMar_ambos");
+                    jComboBoxAtributo2.setSelectedItem(tierraMarAmbos);
+                    break;
+                case "Artropodo":
+                    jLabelAtributo1.setText("N° pares de patas");
+                    jLabelAtributo2.setText("Antenas");
+                    jComboBoxAtributo2.addItem("Par de antenas");
+                    jComboBoxAtributo2.addItem("Sin antenas");
+                    String cantidadParesPatas = insertarDatosTabla.executeQuery().getString("cantidadParesPatas");
+                    String antenas = insertarDatosTabla.executeQuery().getString("antenas");
+                    jTextAtributo1.setText(cantidadParesPatas);
+                    jComboBoxAtributo2.setSelectedItem(antenas);
+                    break;
+                case "Molusco":
+                    jLabelAtributo1.setVisible(false);
+                    jTextAtributo1.setVisible(false);
+                    jLabelAtributo2.setText("Tipo Cuerpo");
+                    jComboBoxAtributo2.addItem("Erizo");
+                    jComboBoxAtributo2.addItem("Estrella");
+                    String tipoCuerpo = insertarDatosTabla.executeQuery().getString("tipoCuerpo");
+                    jComboBoxAtributo2.setSelectedItem(tipoCuerpo);
+                    break;
+                case "Equinodermo":
+                    jLabelAtributo1.setVisible(false);
+                    jTextAtributo1.setVisible(false);
+                    jLabelAtributo2.setText("Tipo Cuerpo");
+                    jComboBoxAtributo2.addItem("Erizo");
+                    jComboBoxAtributo2.addItem("Estrella");
+                    String tipoCuerpo2 = insertarDatosTabla.executeQuery().getString("tipoCuerpo");
+                    jComboBoxAtributo2.setSelectedItem(tipoCuerpo2);
+                    break;
+                case "Gusano":
+                    jLabelAtributo1.setVisible(false);
+                    jTextAtributo1.setVisible(false);
+                    jLabelAtributo2.setText("Cuerpo gusano");
+                    jComboBoxAtributo2.addItem("Si");
+                    jComboBoxAtributo2.addItem("No");
+                    String cuerpoGusano = insertarDatosTabla.executeQuery().getString("cuerpoGusano");
+                    break;
+                case "Porifero":
+                    jLabelAtributo2.setVisible(false);
+                    jLabelAtributo1.setVisible(false);
+                    jComboBoxAtributo2.setVisible(false);
+                    jTextAtributo1.setVisible(false);
+                    break;
+                case "Celentereo":
+                    jLabelAtributo1.setVisible(false);
+                    jTextAtributo1.setVisible(false);
+                    jLabelAtributo2.setText("Tentaculos");
+                    jComboBoxAtributo2.addItem("Contiene tentaculos");
+                    jComboBoxAtributo2.addItem("No contiene");
+                    String tentaculos = insertarDatosTabla.executeQuery().getString("tentaculos");
+                    jComboBoxAtributo2.setSelectedItem(tentaculos);
+                    break;
+                default:
+                    break;
+            }
+            insertarDatosTabla.close();
+            connection.close();
+        }catch (SQLException e){
+            System.out.println(e);
+        }
+
+    }
+
+    public void setPesoMinimoMaximo(String nombre){
+        Conexion conexion = new Conexion();
+        Connection connection = conexion.getConexion();
+        try{
+            PreparedStatement insertarDatosTabla = connection.prepareStatement("SELECT * FROM animal WHERE nombre= '" + nombre + "' ");
+            String minimo = insertarDatosTabla.executeQuery().getString("min");
+            this.pesoMinimo = Double.parseDouble(minimo);
+
+            String maximo = insertarDatosTabla.executeQuery().getString("max");
+            this.pesoMaximo = Double.parseDouble(maximo);
+
+            insertarDatosTabla.close();
+
+        } catch (SQLException error){
+            System.out.println(error);
+        }
     }
 
 
@@ -471,7 +535,7 @@ public class FormularioModificar extends javax.swing.JFrame {
     private void jButGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButGuardarActionPerformed
         // TODO add your handling code here:
         // ESTE BOTÓN GENERARÁ EL ANIMAL ALEATORIO.
-        /*ModificarAnimales modificarAnimal = new ModificarAnimales();
+        ModificarAnimales modificarAnimal = new ModificarAnimales();
         TablaAnimales llamarTabla = new TablaAnimales();
         if(jTxtPeso.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Debe ingresar un valor en peso.");
@@ -587,7 +651,7 @@ public class FormularioModificar extends javax.swing.JFrame {
                 this.dispose();
             }
 
-        }*/
+        }
         System.out.println(this.id);
 
     }//GEN-LAST:event_jButGuardarActionPerformed
