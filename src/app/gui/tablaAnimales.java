@@ -5,6 +5,7 @@
 package app.gui;
 
 import app.bd.Conexion;
+import app.bd.ModificarAnimales;
 
 import java.sql.*;
 import javax.swing.JTable;
@@ -18,7 +19,6 @@ import javax.swing.event.ListSelectionListener;
 public class TablaAnimales extends javax.swing.JFrame {
 
     private int filaSeleccionada;
-
    
     public TablaAnimales() {
         initComponents();
@@ -37,8 +37,6 @@ public class TablaAnimales extends javax.swing.JFrame {
             }
         });
 
-
-        
         this.setTitle("Animales con sus caracteristicas");
         this.setLocationRelativeTo(null);
         try {
@@ -139,111 +137,121 @@ public class TablaAnimales extends javax.swing.JFrame {
 
     
     private void actualizarTablaAnimales() {
-    try {
-        // Crear una instancia de la clase Conexion para obtener la conexión a la base de datos
-        Conexion conexion = new Conexion();
-        Connection conn = conexion.getConexion();
+        try {
+            // Crear una instancia de la clase Conexion para obtener la conexión a la base de datos
+            Conexion conexion = new Conexion();
+            Connection conn = conexion.getConexion();
 
-        // Crear la sentencia SQL para seleccionar todos los registros de la tabla "animalesZoo"
-        String sql = "SELECT * FROM animalesZoo";
+            // Crear la sentencia SQL para seleccionar todos los registros de la tabla "animalesZoo"
+            String sql = "SELECT * FROM animalesZoo";
 
-        // Crear un objeto Statement para ejecutar la consulta SQL
-        Statement statement = conn.createStatement();
+            // Crear un objeto Statement para ejecutar la consulta SQL
+            Statement statement = conn.createStatement();
 
-        // Ejecutar la consulta SQL y obtener el resultado en un objeto ResultSet
-        ResultSet resultSet = statement.executeQuery(sql);
+            // Ejecutar la consulta SQL y obtener el resultado en un objeto ResultSet
+            ResultSet resultSet = statement.executeQuery(sql);
 
-        // Crear un modelo de tabla por defecto para almacenar los datos de la consulta
-        DefaultTableModel model = new DefaultTableModel();
+            // Crear un modelo de tabla por defecto para almacenar los datos de la consulta
+            DefaultTableModel model = new DefaultTableModel();
 
-        // Agregar las columnas al modelo de tabla
-        model.addColumn("Id");
-        model.addColumn("nombre");
-        model.addColumn("color");
-        model.addColumn("peso");
-        model.addColumn("tipo");
-        model.addColumn("Categoria");
-        model.addColumn("Atributo");
-        model.addColumn("Atributo Secundario");
-        // Añadir más columnas según sea necesario
-
-        // Recorrer el resultado de la consulta y agregar los datos al modelo de tabla
-        while (resultSet.next()) {
-            // Obtener los valores de cada columna en una fila
-            Object[] row = new Object[8]; // Cambiar el tamaño según el número de columnas
-            row[0] = resultSet.getObject("Id");
-            row[1] = resultSet.getObject("Nombre");
-            row[2] = resultSet.getObject("Color");
-            row[3] = resultSet.getObject("Peso");
-            row[4] = resultSet.getObject("Tipo");
-            row[5] = resultSet.getObject("Categoria");
+            // Agregar las columnas al modelo de tabla
+            model.addColumn("Id");
+            model.addColumn("nombre");
+            model.addColumn("color");
+            model.addColumn("peso");
+            model.addColumn("tipo");
+            model.addColumn("Categoria");
+            model.addColumn("Atributo");
+            model.addColumn("Atributo Secundario");
             // Añadir más columnas según sea necesario
 
-            // Determinar el valor de la columna "categoria" en función del valor de "tipo"
-            String tipo = resultSet.getString("tipo");
-            if (tipo.equals("Mamifero")) {
-                row[6] = resultSet.getObject("cantidadPatas");
-                row[7] = "Null";
-            } else if (tipo.equals("Ave")) {
-                row[6] = resultSet.getObject("cantidadAlas");
-                row[7] = "Null";
-            } else if (tipo.equals("Pez")) {
-                row[6] = resultSet.getObject("cantidadAletas");
-                row[7] = resultSet.getObject("escamas");
-            } else if (tipo.equals("Anfibio")) {
-                row[6] = resultSet.getObject("piel");
-                row[7] = "Null";
-            } else if (tipo.equals("Reptil")) {
-                row[6] = resultSet.getObject("tierraMar_ambos");
-                row[7] = "Null";
-            } else if (tipo.equals("Artropodo")) {
-                row[6] = resultSet.getObject("cantidadParesPatas");
-                row[7] = resultSet.getObject("antenas");
-            } else if (tipo.equals("Molusco")) {
-                row[6] = resultSet.getObject("erizo_o_estrella");
-                row[7] = "Null";
-            } else if (tipo.equals("Equinodermo")) {
-                row[6] = resultSet.getObject("erizo_o_estrella");
-                row[7] = "Null";
-            } else if (tipo.equals("Gusano")) {
-                row[6] = resultSet.getObject("tipoCuerpo");
-                row[7] = "Null";
-            } else if (tipo.equals("Porifero")) {
-                    row[6] = "Null";
+            // Recorrer el resultado de la consulta y agregar los datos al modelo de tabla
+            while (resultSet.next()) {
+                // Obtener los valores de cada columna en una fila
+                Object[] row = new Object[8]; // Cambiar el tamaño según el número de columnas
+                row[0] = resultSet.getObject("Id");
+                row[1] = resultSet.getObject("Nombre");
+                row[2] = resultSet.getObject("Color");
+                row[3] = resultSet.getObject("Peso");
+                row[4] = resultSet.getObject("Tipo");
+                row[5] = resultSet.getObject("Categoria");
+                // Añadir más columnas según sea necesario
+
+                // Determinar el valor de la columna "categoria" en función del valor de "tipo"
+                String tipo = resultSet.getString("tipo");
+                if (tipo.equals("Mamifero")) {
+                    row[6] = resultSet.getObject("cantidadPatas");
                     row[7] = "Null";
-            } else if (tipo.equals("Celentereo")) {
-                row[6] = resultSet.getObject("tentaculos");
-                row[7] = "Null";
+                } else if (tipo.equals("Ave")) {
+                    row[6] = resultSet.getObject("cantidadAlas");
+                    row[7] = "Null";
+                } else if (tipo.equals("Pez")) {
+                    row[6] = resultSet.getObject("cantidadAletas");
+                    row[7] = resultSet.getObject("escamas");
+                } else if (tipo.equals("Anfibio")) {
+                    row[6] = resultSet.getObject("piel");
+                    row[7] = "Null";
+                } else if (tipo.equals("Reptil")) {
+                    row[6] = resultSet.getObject("tierraMar_ambos");
+                    row[7] = "Null";
+                } else if (tipo.equals("Artropodo")) {
+                    row[6] = resultSet.getObject("cantidadParesPatas");
+                    row[7] = resultSet.getObject("antenas");
+                } else if (tipo.equals("Molusco")) {
+                    row[6] = resultSet.getObject("erizo_o_estrella");
+                    row[7] = "Null";
+                } else if (tipo.equals("Equinodermo")) {
+                    row[6] = resultSet.getObject("erizo_o_estrella");
+                    row[7] = "Null";
+                } else if (tipo.equals("Gusano")) {
+                    row[6] = resultSet.getObject("tipoCuerpo");
+                    row[7] = "Null";
+                } else if (tipo.equals("Porifero")) {
+                        row[6] = "Null";
+                        row[7] = "Null";
+                } else if (tipo.equals("Celentereo")) {
+                    row[6] = resultSet.getObject("tentaculos");
+                    row[7] = "Null";
+                }
+
+            // Agregar la fila al modelo de tabla
+            model.addRow(row);
+            }
+
+            // Cerrar la conexión y liberar los recursos
+            resultSet.close();
+            statement.close();
+            conn.close();
+
+            // Establecer el modelo de tabla actualizado en la JTable
+            jTable1.setModel(model);
+
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         
-        // Agregar la fila al modelo de tabla
-        model.addRow(row);
-        }
-
-        // Cerrar la conexión y liberar los recursos
-        resultSet.close();
-        statement.close();
-        conn.close();
-
-        // Establecer el modelo de tabla actualizado en la JTable
-        jTable1.setModel(model);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    
-        
     }
-    
-    
-    
+
+
+    private void modificarDatos(){
+        filaSeleccionada = jTable1.convertRowIndexToModel(jTable1.getSelectedRow());
+        if (filaSeleccionada >= 0){
+            String idAnimal = jTable1.getValueAt(filaSeleccionada, 0).toString();
+
+            FormularioModificar formularioModificar = new FormularioModificar();
+            formularioModificar.setVisible(true);
+            this.dispose();
+
+        } else {
+            JOptionPane.showMessageDialog(null, "No has seleccionado");
+        }
+    }
 
 
     
     private void eliminarAnimal() {
         // Obtiene la fila seleccionada en la tabla
         filaSeleccionada = jTable1.convertRowIndexToModel(jTable1.getSelectedRow());
-
 
         // Verifica si se ha seleccionado una fila
         if (filaSeleccionada >= 0) {
@@ -421,9 +429,10 @@ public class TablaAnimales extends javax.swing.JFrame {
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
         // TODO add your handling code here:
-        FormularioModificar modificar = new FormularioModificar();
+        modificarDatos();
+        /*FormularioModificar modificar = new FormularioModificar();
         modificar.setVisible(true);
-        this.dispose();
+        this.dispose();*/
     }//GEN-LAST:event_jButtonModificarActionPerformed
 
     
